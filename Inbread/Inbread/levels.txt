@@ -1,0 +1,33 @@
+{
+    "restaurants": [
+        {
+            "background": "kitchen0.jpg",
+            "levels": [
+                {
+                    "orders": ["0"],
+                    "belts": [30,-20,20],
+                    "time": 30,
+                    "plates": 4
+                },
+                {
+                    "orders": ["30"],
+                    "belts": [30,-30,30],
+                    "time": 35,
+                    "plates": 4
+                },
+                {
+                    "orders": ["30","20"],
+                    "belts": [30,-30,30],
+                    "time": 50,
+                    "plates": 4
+                },
+                {
+                    "orders": ["01230","120","0230","010","020"],
+                    "belts": [30,-30,30],
+                    "time": 40,
+                    "plates": 4
+                }
+            ]
+        }
+    ]
+}
