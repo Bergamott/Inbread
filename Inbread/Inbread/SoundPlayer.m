@@ -100,6 +100,12 @@
         [skn runAction:[SKAction playSoundFileNamed:@"score.wav" waitForCompletion:FALSE]];
 }
 
+-(void)playLevelWithDelay:(float)del WithNode:(SKNode*)skn
+{
+    if (soundOn)
+        [skn runAction:[SKAction sequence:@[[SKAction waitForDuration:del],[SKAction playSoundFileNamed:@"level.wav" waitForCompletion:FALSE]]]];
+}
+
 -(void)playBurpWithDelay:(float)del withNode:(SKNode*)skn
 {
     if (soundOn)

@@ -82,6 +82,7 @@
     dialogView.hidden = TRUE;
     logoView.hidden = FALSE;
     menuView.hidden = FALSE;
+    levelIndicatorView.hidden = TRUE;
     [introScene prepareIntro];
     [(SKView *)self.view presentScene:introScene];
 }
@@ -115,6 +116,44 @@
     }
     [kitchenScene setUpWithLevel:l];
     [skView presentScene:kitchenScene];
+}
+
+-(void)showLevelIndicatorForLevel:(int)l
+{
+    levelLabel.text = [NSString stringWithFormat:@"%d",(l+1)];
+    // TODO: Set bread type
+    
+    levelIndicatorView.alpha = 0.0;
+    levelIndicatorView.hidden = FALSE;
+    [UIView animateWithDuration:POPIN_TIME
+                          delay: 0.2
+                        options: UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         levelIndicatorView.transform = CGAffineTransformMakeScale(1.7, 1.7);
+                         levelIndicatorView.alpha = 1.0;
+                     }
+                     completion:^(BOOL finished){
+                         
+                         [UIView animateWithDuration:POPIN_TIME
+                                               delay: 0.0
+                                             options: UIViewAnimationOptionCurveLinear
+                                          animations:^{
+                                              levelIndicatorView.transform = CGAffineTransformMakeScale(1.4, 1.4);
+                                          }
+                                          completion:^(BOOL finished){
+                                              [UIView animateWithDuration:0.3
+                                                                    delay: 1.0
+                                                                  options: UIViewAnimationOptionCurveLinear
+                                                               animations:^{
+                                                                   levelIndicatorView.alpha = 0;
+                                                               }
+                                                               completion:^(BOOL finished){
+                                                                   levelIndicatorView.hidden = TRUE;
+                                                                   
+                                                               }];
+                                              
+                                          }];
+                     }];
 }
 
 -(IBAction)musicButtonPressed:(id)sender

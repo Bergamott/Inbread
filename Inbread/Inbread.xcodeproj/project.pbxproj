@@ -80,6 +80,7 @@
 		9A47DB6E19CF1800005141F8 /* SKEase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A47DB6B19CF1800005141F8 /* SKEase.m */; };
 		9A54285519E347020079B908 /* fragment.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A666C7919D8BC300004EF15 /* fragment.png */; };
 		9A54285619E347040079B908 /* fragment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A666C7A19D8BC300004EF15 /* fragment@2x.png */; };
+		9A6F32B31AC89BEE00F21CFD /* level.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F32B21AC89BEE00F21CFD /* level.wav */; };
 		9A798DCA1A79982E008E0840 /* help.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9A798DC91A79982E008E0840 /* help.atlas */; };
 		9A85F07519E1854500311520 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE3619219E1813900A826E4 /* IntroScene.m */; };
 		9A85F07619E1861E00311520 /* intro.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9AE3619019E1810700A826E4 /* intro.atlas */; };
@@ -275,6 +276,7 @@
 		9A47DB6C19CF1800005141F8 /* SpriteKit-Easing-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpriteKit-Easing-Prefix.pch"; sourceTree = "<group>"; };
 		9A666C7919D8BC300004EF15 /* fragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fragment.png; sourceTree = "<group>"; };
 		9A666C7A19D8BC300004EF15 /* fragment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fragment@2x.png"; sourceTree = "<group>"; };
+		9A6F32B21AC89BEE00F21CFD /* level.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = level.wav; sourceTree = "<group>"; };
 		9A798DC91A79982E008E0840 /* help.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = help.atlas; path = Inbread/help.atlas; sourceTree = "<group>"; };
 		9A85F07719E186F200311520 /* Hillbilly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hillbilly.h; sourceTree = "<group>"; };
 		9A85F07819E186F200311520 /* Hillbilly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hillbilly.m; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 		9AD5325B1A0C2BFD003413F1 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				9A6F32B21AC89BEE00F21CFD /* level.wav */,
 				9A1E6E021A11730B00ACA550 /* popup.wav */,
 				9ABF273C1A0FD8F600F1B6B7 /* drop.wav */,
 				9ABF273A1A0FD79000F1B6B7 /* knock.wav */,
@@ -893,6 +896,7 @@
 				9A8825481A0ADD5900702A2B /* mouth9@2x.png in Resources */,
 				9AC7EC7F1A1804DE000FD6F5 /* tavern0.png in Resources */,
 				9AC6F2E41A0975B100A75E3F /* fail@2x.png in Resources */,
+				9A6F32B31AC89BEE00F21CFD /* level.wav in Resources */,
 				9A0C4FAD1A06C61100AB629D /* nosoundbutton_0@2x.png in Resources */,
 				9A1C8B881A1912B5000E4529 /* lock.png in Resources */,
 				9AC6F2D11A095E6A00A75E3F /* replaybutton_0.png in Resources */,

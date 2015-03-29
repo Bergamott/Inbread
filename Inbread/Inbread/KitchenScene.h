@@ -85,6 +85,7 @@
 }
 
 -(void)setUpWithLevel:(int)l;
+-(void)activateLevel;
 -(void)replayLevel;
 -(void)nextLevel;
 

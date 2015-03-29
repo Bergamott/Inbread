@@ -122,23 +122,32 @@ static float ingredientHeight[4] = {54,54,64,53};
     //    SKSpriteNode *clockSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"clock.png"]];
     //    clockSprite.anchorPoint = CGPointMake(1.0, 1.0);
     //    clockSprite.position = CGPointMake(320.0, 568.0);
+    SKNode *clockNode = [SKNode node];
+    clockNode.position = CGPointMake(-97.0, 568.0);
     SKSpriteNode *clockSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"new_clock.png"]];
     clockSprite.anchorPoint = CGPointMake(0, 1.0);
-    clockSprite.position = CGPointMake(0, 574.0);
-    [conveyorNode addChild:clockSprite];
+//    clockSprite.position = CGPointMake(0, 574.0);
+    clockSprite.position = CGPointMake(0, 0);
+//    [conveyorNode addChild:clockSprite];
+    [clockNode addChild:clockSprite];
     clockHand = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"clock_hand.png"]];
     clockHand.anchorPoint = CGPointMake(0.5, 0.125);
-    clockHand.position = CGPointMake(38.0, 542.0);
-    [conveyorNode addChild:clockHand];
+//    clockHand.position = CGPointMake(38.0, 542.0);
+    clockHand.position = CGPointMake(38.0, -32.0);
+//    [conveyorNode addChild:clockHand];
+    [clockNode addChild:clockHand];
     scoreLabel = [SKLabelNode node];
     scoreLabel.fontName = @"Knewave";
     score = 0;
     scoreLabel.text = @"0";
     scoreLabel.fontSize = 18.0;
     scoreLabel.fontColor = [UIColor whiteColor];
-    scoreLabel.position = CGPointMake(38.0, 496.0);
-    [conveyorNode addChild:scoreLabel];
-
+//    scoreLabel.position = CGPointMake(38.0, 496.0);
+    scoreLabel.position = CGPointMake(38.0, -78.0);
+//    [conveyorNode addChild:scoreLabel];
+    [clockNode addChild:scoreLabel];
+    [conveyorNode addChild:clockNode];
+    [clockNode runAction:[SKAction sequence:@[[SKAction waitForDuration:1.0],[SKEase MoveToWithNode:clockNode EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:0.5 ToVector:CGVectorMake(0, clockNode.position.y)]]]];
     
     // Used for proper random ingredient distribution
     ingredientsString = [NSMutableString stringWithCapacity:100];
@@ -211,9 +220,12 @@ static float ingredientHeight[4] = {54,54,64,53};
     }
     
     // Conveyor belts
-    y = planeY[numPlanes-1];
+//    y = planeY[numPlanes-1];
+    y = planeY[1];
     for (int i=0;i<numPlanes-1;i++)
     {
+        SKNode *beltNode = [SKNode node];
+        beltNode.position = CGPointMake(0, 600.0);
         int beltVelocity = [(NSNumber*)[beltArr objectAtIndex:i] intValue];
         int beltSpeed = beltVelocity;
         if (beltSpeed < 0)
@@ -223,12 +235,15 @@ static float ingredientHeight[4] = {54,54,64,53};
         SKSpriteNode *bottomS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"bottom.png"]];
         bottomS.anchorPoint = CGPointMake(0, 1.0);
         
-        bottomS.position = CGPointMake(0, y - BELT_THICKNESS);
+//        bottomS.position = CGPointMake(0, y - BELT_THICKNESS);
+        bottomS.position = CGPointMake(0, -BELT_THICKNESS);
         if (beltVelocity < 0)
         {
             SKAction *moveLeft = [SKAction moveToX:-40.0 duration:40.0/beltSpeed];
             SKAction *returnLeft = [SKAction moveToX:0 duration:0];
-            SKAction *leftSequence = [SKAction repeatActionForever:[SKAction sequence:@[moveLeft,returnLeft]]];            topS.position = CGPointMake(0, y);
+            SKAction *leftSequence = [SKAction repeatActionForever:[SKAction sequence:@[moveLeft,returnLeft]]];
+//            topS.position = CGPointMake(0, y);
+            topS.position = CGPointMake(0, 0);
             [topS runAction:leftSequence];
         }
         else
@@ -236,14 +251,21 @@ static float ingredientHeight[4] = {54,54,64,53};
             SKAction *moveRight = [SKAction moveToX:0 duration:40.0/beltSpeed];
             SKAction *returnRight = [SKAction moveToX:-40.0 duration:0];
             SKAction *rightSequence = [SKAction repeatActionForever:[SKAction sequence:@[moveRight,returnRight]]];
-            topS.position = CGPointMake(-40.0, y);
+//            topS.position = CGPointMake(-40.0, y);
+            topS.position = CGPointMake(-40.0, 0);
             [topS runAction:rightSequence];
         }
         
         beltVelocities[numPlanes-1-i] = beltVelocity;
-        [conveyorNode addChild:topS];
-        [conveyorNode addChild:bottomS];
-        y-=planeDist;
+//        [conveyorNode addChild:topS];
+//        [conveyorNode addChild:bottomS];
+        [beltNode addChild:topS];
+        [beltNode addChild:bottomS];
+        [conveyorNode addChild:beltNode];
+        [beltNode runAction:[SKAction sequence:@[[SKAction waitForDuration:0.3*i],[SKEase MoveToWithNode:beltNode EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:0.7 ToVector:CGVectorMake(0, y)]]]];
+        
+//        y-=planeDist;
+        y+=planeDist;
     }
     
     // Plates
@@ -252,8 +274,10 @@ static float ingredientHeight[4] = {54,54,64,53};
     {
         SKSpriteNode *plateS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"plate.png"]];
         plateS.anchorPoint = CGPointMake(0.5, 1.0);
-        plateS.position = CGPointMake(i*320.0/numPlates+160.0/numPlates, planeY[0]);
+        float plateX = i*320.0/numPlates+160.0/numPlates;
+        plateS.position = CGPointMake(360.0, planeY[0]);
         [conveyorNode addChild:plateS];
+        [plateS runAction:[SKAction sequence:@[[SKAction waitForDuration:i*0.3],[SKEase MoveToWithNode:plateS EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:0.5 ToVector:CGVectorMake(plateX, plateS.position.y)]]]];
     }
     
     [backgroundNode addChild:conveyorNode];
@@ -261,12 +285,20 @@ static float ingredientHeight[4] = {54,54,64,53};
     
     lastSentNote = [NSDate date];
     
+    [owner showLevelIndicatorForLevel:l];
+    [soundPlayer playLevelWithDelay:0.2 WithNode:conveyorNode];
+    
+    [self performSelector:@selector(activateLevel) withObject:NULL afterDelay:2.0];
+}
+
+-(void)activateLevel
+{
     clockTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self
-                                                      selector: @selector(gameLoop:) userInfo: nil repeats: YES];
+                                                selector: @selector(gameLoop:) userInfo: nil repeats: YES];
     
     spawnFoodTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_DISTANCE/beltVelocities[numPlanes-1] target:self
-                                   selector:@selector(spawnIngredient) userInfo:nil repeats:YES];
-
+                                                    selector:@selector(spawnIngredient) userInfo:nil repeats:YES];
+    
     zCounter = 0;
     totalTime = [(NSNumber*)[levDic objectForKey:@"time"] doubleValue];
     endTime = [NSDate dateWithTimeIntervalSinceNow:totalTime];
@@ -685,7 +717,8 @@ static float ingredientHeight[4] = {54,54,64,53};
     }
     [backgroundNode removeAllActions];
     for (SKNode *tmpN in conveyorNode.children)
-        [tmpN removeAllActions];
+        for (SKNode *tmpN2 in tmpN.children)
+            [tmpN2 removeAllActions];
     for (SKNode *tmpN in foodNode.children)
         [tmpN removeAllActions];
     [NSObject cancelPreviousPerformRequestsWithTarget:self];

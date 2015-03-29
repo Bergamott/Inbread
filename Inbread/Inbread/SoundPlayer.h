@@ -24,6 +24,7 @@
 -(void)playFailWithNode:(SKNode*)skn;
 -(void)playBlipWithNode:(SKNode*)skn;
 -(void)playPopupWithNode:(SKNode*)skn;
+-(void)playLevelWithDelay:(float)del WithNode:(SKNode*)skn;
 -(void)playLandWithDelay:(float)del withNode:(SKNode*)skn;
 -(void)playScoreWithNode:(SKNode*)skn;
 -(void)playBurpWithDelay:(float)del withNode:(SKNode*)skn;

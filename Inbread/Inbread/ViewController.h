@@ -42,12 +42,17 @@
     IBOutlet UIImageView *bubble2;
     
     HelpScene *helpScene;
+    
+    IBOutlet UIView *levelIndicatorView;
+    IBOutlet UIView *levelBread;
+    IBOutlet UILabel *levelLabel;
 }
 
 -(void)showIntro;
 -(IBAction)playPressed:(id)sender;
 -(void)showKitchenSceneWithLevel:(int)l;
 -(void)presentKitchenSceneWithLevel:(int)l;
+-(void)showLevelIndicatorForLevel:(int)l;
 
 -(IBAction)musicButtonPressed:(id)sender;
 -(IBAction)noMusicButtonPressed:(id)sender;
