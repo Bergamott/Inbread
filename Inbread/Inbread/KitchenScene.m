@@ -19,12 +19,12 @@
 #define CRUMB_OFFSET 20.0
 #define HIT_DISTANCE 30.0
 
-#define TOP_PLANE_Y 400
+#define TOP_PLANE_Y 168
 #define BOTTOM_PLANE_Y 10
 #define BELT_THICKNESS 9
 #define FALL_SPEED 150.0
 
-#define NOTE_Y 530.0
+#define NOTE_Y 38.0
 #define NOTE_SCALE 0.8
 
 #define MAX_VISIBLE_NOTES 3
@@ -68,7 +68,8 @@ static float ingredientHeight[4] = {54,54,64,53};
         sprites = [[NSMutableArray alloc] initWithCapacity:50];
         
         backgroundNode = [SKNode node];
-        backgroundNode.yScale = size.height/568.0f;
+        screenHeight = size.height;
+ //       backgroundNode.yScale = size.height/568.0f;
         
         myAtlas = [SKTextureAtlas atlasNamed:@"pieces"];
 
@@ -114,27 +115,20 @@ static float ingredientHeight[4] = {54,54,64,53};
     // Put in background image
     SKSpriteNode *backgroundTiles = [SKSpriteNode spriteNodeWithImageNamed:[restDic objectForKey:@"background"]];
     backgroundTiles.anchorPoint = CGPointMake(0, 0);
-    backgroundTiles.position = CGPointMake(0, 0);
+    backgroundTiles.position = CGPointMake(0, screenHeight-backgroundTiles.size.height);
     [backgroundNode addChild:backgroundTiles];
     
     
     // Clock
-    //    SKSpriteNode *clockSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"clock.png"]];
-    //    clockSprite.anchorPoint = CGPointMake(1.0, 1.0);
-    //    clockSprite.position = CGPointMake(320.0, 568.0);
     SKNode *clockNode = [SKNode node];
-    clockNode.position = CGPointMake(-97.0, 568.0);
+    clockNode.position = CGPointMake(-97.0, screenHeight);
     SKSpriteNode *clockSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"new_clock.png"]];
     clockSprite.anchorPoint = CGPointMake(0, 1.0);
-//    clockSprite.position = CGPointMake(0, 574.0);
     clockSprite.position = CGPointMake(0, 0);
-//    [conveyorNode addChild:clockSprite];
     [clockNode addChild:clockSprite];
     clockHand = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"clock_hand.png"]];
     clockHand.anchorPoint = CGPointMake(0.5, 0.125);
-//    clockHand.position = CGPointMake(38.0, 542.0);
     clockHand.position = CGPointMake(38.0, -32.0);
-//    [conveyorNode addChild:clockHand];
     [clockNode addChild:clockHand];
     scoreLabel = [SKLabelNode node];
     scoreLabel.fontName = @"Knewave";
@@ -142,9 +136,7 @@ static float ingredientHeight[4] = {54,54,64,53};
     scoreLabel.text = @"0";
     scoreLabel.fontSize = 18.0;
     scoreLabel.fontColor = [UIColor whiteColor];
-//    scoreLabel.position = CGPointMake(38.0, 496.0);
     scoreLabel.position = CGPointMake(38.0, -78.0);
-//    [conveyorNode addChild:scoreLabel];
     [clockNode addChild:scoreLabel];
     [conveyorNode addChild:clockNode];
     [clockNode runAction:[SKAction sequence:@[[SKAction waitForDuration:1.0],[SKEase MoveToWithNode:clockNode EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:0.5 ToVector:CGVectorMake(0, clockNode.position.y)]]]];
@@ -155,7 +147,6 @@ static float ingredientHeight[4] = {54,54,64,53};
     numOrders = (int)sandwichOrders.count;
     orderNotes = [NSMutableArray arrayWithCapacity:numOrders];
     int k = 0;
-//    bottomScoreLimit = 0; topScoreLimit = 0;
     for (NSString *tmpS in sandwichOrders)
     {
         [ingredientsString appendString:tmpS];
@@ -164,8 +155,6 @@ static float ingredientHeight[4] = {54,54,64,53};
         for (int i=0;i<numIngredients[k];i++)
         {
             sandwichIngredients[k][numIngredients[k]-i-1] = ([tmpS characterAtIndex:i]-'0');
-//            bottomScoreLimit += WHITE_POINTS;
-//            topScoreLimit += BLACK_POINTS;
         }
         
         // Draw sandwich on order note
@@ -191,7 +180,7 @@ static float ingredientHeight[4] = {54,54,64,53};
         }
         
         noteHolder.zRotation = -0.2;
-        noteHolder.position = CGPointMake(NOTE_START_X, NOTE_Y);
+        noteHolder.position = CGPointMake(NOTE_START_X, screenHeight-NOTE_Y);
         [conveyorNode addChild:noteHolder];
         [orderNotes addObject:noteHolder];
         k++;
@@ -203,14 +192,13 @@ static float ingredientHeight[4] = {54,54,64,53};
     }
     orderCount = 0;
     ordersComplete = 0;
-//    middleScoreLimit = (topScoreLimit+bottomScoreLimit)/2;
     topScoreLimit = [dh getTopScoreForLevel:level];
     bottomScoreLimit = [dh getBottomScoreForLevel:level];
     middleScoreLimit = [dh getMiddleScoreForLevel:level];
     
     // Compute conveyor belt positions
     NSArray *beltArr = [levDic objectForKey:@"belts"];
-    planeDist = (TOP_PLANE_Y-BOTTOM_PLANE_Y)/beltArr.count;
+    planeDist = (screenHeight-TOP_PLANE_Y-BOTTOM_PLANE_Y)/beltArr.count;
     numPlanes = (int)beltArr.count + 1;
     int y = BOTTOM_PLANE_Y;
     for (int i=0;i<numPlanes;i++)
@@ -235,14 +223,12 @@ static float ingredientHeight[4] = {54,54,64,53};
         SKSpriteNode *bottomS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"bottom.png"]];
         bottomS.anchorPoint = CGPointMake(0, 1.0);
         
-//        bottomS.position = CGPointMake(0, y - BELT_THICKNESS);
         bottomS.position = CGPointMake(0, -BELT_THICKNESS);
         if (beltVelocity < 0)
         {
             SKAction *moveLeft = [SKAction moveToX:-40.0 duration:40.0/beltSpeed];
             SKAction *returnLeft = [SKAction moveToX:0 duration:0];
             SKAction *leftSequence = [SKAction repeatActionForever:[SKAction sequence:@[moveLeft,returnLeft]]];
-//            topS.position = CGPointMake(0, y);
             topS.position = CGPointMake(0, 0);
             [topS runAction:leftSequence];
         }
@@ -251,20 +237,16 @@ static float ingredientHeight[4] = {54,54,64,53};
             SKAction *moveRight = [SKAction moveToX:0 duration:40.0/beltSpeed];
             SKAction *returnRight = [SKAction moveToX:-40.0 duration:0];
             SKAction *rightSequence = [SKAction repeatActionForever:[SKAction sequence:@[moveRight,returnRight]]];
-//            topS.position = CGPointMake(-40.0, y);
             topS.position = CGPointMake(-40.0, 0);
             [topS runAction:rightSequence];
         }
         
         beltVelocities[numPlanes-1-i] = beltVelocity;
-//        [conveyorNode addChild:topS];
-//        [conveyorNode addChild:bottomS];
         [beltNode addChild:topS];
         [beltNode addChild:bottomS];
         [conveyorNode addChild:beltNode];
         [beltNode runAction:[SKAction sequence:@[[SKAction waitForDuration:0.3*i],[SKEase MoveToWithNode:beltNode EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:0.7 ToVector:CGVectorMake(0, y)]]]];
         
-//        y-=planeDist;
         y+=planeDist;
     }
     
@@ -353,7 +335,7 @@ static float ingredientHeight[4] = {54,54,64,53};
                     if (dist > 1.0)
                     {
                         [soundPlayer playSlideWithNode:backgroundNode];
-                        [noteNode runAction:[SKEase MoveToWithNode:noteNode EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:dist/300.0 ToVector:CGVectorMake(NOTE_STOP_X-filledPositions*NOTE_DISTANCE, NOTE_Y)]];
+                        [noteNode runAction:[SKEase MoveToWithNode:noteNode EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:dist/300.0 ToVector:CGVectorMake(NOTE_STOP_X-filledPositions*NOTE_DISTANCE, screenHeight-NOTE_Y)]];
                     }
                 }
             }
@@ -361,10 +343,9 @@ static float ingredientHeight[4] = {54,54,64,53};
             // Show next order in line
             SKNode *noteNode = (SKNode*)[orderNotes objectAtIndex:orderCount];
             float dist = NOTE_STOP_X-visibleOrderCount*NOTE_DISTANCE + NOTE_START_X;
-//            [noteNode runAction:[SKAction moveToX:NOTE_STOP_X-visibleOrderCount*NOTE_DISTANCE duration:0.4]];
             
             [soundPlayer playSlideWithNode:backgroundNode];
-            [noteNode runAction:[SKEase MoveToWithNode:noteNode EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:dist/300.0 ToVector:CGVectorMake(NOTE_STOP_X-visibleOrderCount*NOTE_DISTANCE, NOTE_Y)]];
+            [noteNode runAction:[SKEase MoveToWithNode:noteNode EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:dist/300.0 ToVector:CGVectorMake(NOTE_STOP_X-visibleOrderCount*NOTE_DISTANCE, screenHeight-NOTE_Y)]];
             
             ordersShown[orderCount] = TRUE;
             visibleOrderCount++;

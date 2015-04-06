@@ -82,6 +82,14 @@
 		9A54285619E347040079B908 /* fragment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A666C7A19D8BC300004EF15 /* fragment@2x.png */; };
 		9A6F32B31AC89BEE00F21CFD /* level.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F32B21AC89BEE00F21CFD /* level.wav */; };
 		9A798DCA1A79982E008E0840 /* help.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9A798DC91A79982E008E0840 /* help.atlas */; };
+		9A8412A71AD2E279006FE31E /* plus0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A84129F1AD2E279006FE31E /* plus0.png */; };
+		9A8412A81AD2E279006FE31E /* plus0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8412A01AD2E279006FE31E /* plus0@2x.png */; };
+		9A8412A91AD2E279006FE31E /* plus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8412A11AD2E279006FE31E /* plus1.png */; };
+		9A8412AA1AD2E279006FE31E /* plus1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8412A21AD2E279006FE31E /* plus1@2x.png */; };
+		9A8412AB1AD2E279006FE31E /* plus2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8412A31AD2E279006FE31E /* plus2.png */; };
+		9A8412AC1AD2E279006FE31E /* plus2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8412A41AD2E279006FE31E /* plus2@2x.png */; };
+		9A8412AD1AD2E279006FE31E /* plus3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8412A51AD2E279006FE31E /* plus3.png */; };
+		9A8412AE1AD2E279006FE31E /* plus3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A8412A61AD2E279006FE31E /* plus3@2x.png */; };
 		9A85F07519E1854500311520 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE3619219E1813900A826E4 /* IntroScene.m */; };
 		9A85F07619E1861E00311520 /* intro.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9AE3619019E1810700A826E4 /* intro.atlas */; };
 		9A85F07919E186F200311520 /* Hillbilly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85F07819E186F200311520 /* Hillbilly.m */; };
@@ -278,6 +286,14 @@
 		9A666C7A19D8BC300004EF15 /* fragment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fragment@2x.png"; sourceTree = "<group>"; };
 		9A6F32B21AC89BEE00F21CFD /* level.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = level.wav; sourceTree = "<group>"; };
 		9A798DC91A79982E008E0840 /* help.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = help.atlas; path = Inbread/help.atlas; sourceTree = "<group>"; };
+		9A84129F1AD2E279006FE31E /* plus0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus0.png; sourceTree = "<group>"; };
+		9A8412A01AD2E279006FE31E /* plus0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus0@2x.png"; sourceTree = "<group>"; };
+		9A8412A11AD2E279006FE31E /* plus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus1.png; sourceTree = "<group>"; };
+		9A8412A21AD2E279006FE31E /* plus1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus1@2x.png"; sourceTree = "<group>"; };
+		9A8412A31AD2E279006FE31E /* plus2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus2.png; sourceTree = "<group>"; };
+		9A8412A41AD2E279006FE31E /* plus2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus2@2x.png"; sourceTree = "<group>"; };
+		9A8412A51AD2E279006FE31E /* plus3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus3.png; sourceTree = "<group>"; };
+		9A8412A61AD2E279006FE31E /* plus3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus3@2x.png"; sourceTree = "<group>"; };
 		9A85F07719E186F200311520 /* Hillbilly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hillbilly.h; sourceTree = "<group>"; };
 		9A85F07819E186F200311520 /* Hillbilly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hillbilly.m; sourceTree = "<group>"; };
 		9A8773BC19E45C3E00ABFD45 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -684,6 +700,14 @@
 		9AC7EC741A1804DE000FD6F5 /* levels */ = {
 			isa = PBXGroup;
 			children = (
+				9A84129F1AD2E279006FE31E /* plus0.png */,
+				9A8412A01AD2E279006FE31E /* plus0@2x.png */,
+				9A8412A11AD2E279006FE31E /* plus1.png */,
+				9A8412A21AD2E279006FE31E /* plus1@2x.png */,
+				9A8412A31AD2E279006FE31E /* plus2.png */,
+				9A8412A41AD2E279006FE31E /* plus2@2x.png */,
+				9A8412A51AD2E279006FE31E /* plus3.png */,
+				9A8412A61AD2E279006FE31E /* plus3@2x.png */,
 				9AC6091C1A58589900C0E200 /* sign1.png */,
 				9AC6091D1A58589900C0E200 /* sign1@2x.png */,
 				9AC609141A5848EB00C0E200 /* tavern1.png */,
@@ -828,6 +852,7 @@
 				9A1C8BA11A1936CD000E4529 /* mouth17@2x.png in Resources */,
 				9A0C4FB31A06C61100AB629D /* soundbutton_1@2x.png in Resources */,
 				9A0C4FAF1A06C61100AB629D /* nosoundbutton_1@2x.png in Resources */,
+				9A8412AE1AD2E279006FE31E /* plus3@2x.png in Resources */,
 				9A0C4FB91A06EB6000AB629D /* roof@2x.png in Resources */,
 				9A1C8B991A193654000E4529 /* mouth14@2x.png in Resources */,
 				9A20A77819E1F18200C030C0 /* Icon-120.png in Resources */,
@@ -851,6 +876,7 @@
 				9A20A77B19E1F18200C030C0 /* Icon-Small.png in Resources */,
 				9A20A77419E1F18200C030C0 /* Icon-72.png in Resources */,
 				9AC6091A1A584FFE00C0E200 /* head1.png in Resources */,
+				9A8412AA1AD2E279006FE31E /* plus1@2x.png in Resources */,
 				9A1C8B961A193654000E4529 /* mouth13.png in Resources */,
 				9AD5326B1A0C2BFD003413F1 /* score.wav in Resources */,
 				9A0C4F991A06A40500AB629D /* musicbutton_1@2x.png in Resources */,
@@ -870,12 +896,14 @@
 				9A0C4FA31A06A75F00AB629D /* nomusicbutton_1@2x.png in Resources */,
 				9AC6F2D01A095E6A00A75E3F /* homebutton_1@2x.png in Resources */,
 				9A0C4FB11A06C61100AB629D /* soundbutton_0@2x.png in Resources */,
+				9A8412A81AD2E279006FE31E /* plus0@2x.png in Resources */,
 				9A0C4FB81A06EB6000AB629D /* roof.png in Resources */,
 				9A8825541A0ADD5900702A2B /* outline2@2x.png in Resources */,
 				9AC7EC801A1804DE000FD6F5 /* tavern0@2x.png in Resources */,
 				9A20A75C19E1CDBF00C030C0 /* fence@2x.png in Resources */,
 				9AB1EDF619D8B58E0046A9E3 /* scatter.sks in Resources */,
 				9A0C4FAC1A06C61100AB629D /* nosoundbutton_0.png in Resources */,
+				9A8412A91AD2E279006FE31E /* plus1.png in Resources */,
 				9A1C8B9A1A193654000E4529 /* mouth15.png in Resources */,
 				9A20A77519E1F18200C030C0 /* Icon-72@2x.png in Resources */,
 				9A1C8B9D1A193654000E4529 /* mouth16@2x.png in Resources */,
@@ -888,12 +916,15 @@
 				9A20A77319E1F18200C030C0 /* Icon-40@2x.png in Resources */,
 				9AC6F2CC1A095E6A00A75E3F /* forwardbutton_1@2x.png in Resources */,
 				9AD0BB5B1A6C086F00E2F273 /* kitchen0@2x.jpg in Resources */,
+				9A8412AD1AD2E279006FE31E /* plus3.png in Resources */,
 				9AEE465E1A62DF1900876F59 /* entertainer1.mp3 in Resources */,
 				9AC6F2D41A095E6A00A75E3F /* replaybutton_1@2x.png in Resources */,
 				9AC6F2D21A095E6A00A75E3F /* replaybutton_0@2x.png in Resources */,
 				9AC6F2E31A0975B100A75E3F /* fail.png in Resources */,
 				9A0C4F9A1A06A40500AB629D /* playbutton_1.png in Resources */,
+				9A8412AC1AD2E279006FE31E /* plus2@2x.png in Resources */,
 				9A8825481A0ADD5900702A2B /* mouth9@2x.png in Resources */,
+				9A8412A71AD2E279006FE31E /* plus0.png in Resources */,
 				9AC7EC7F1A1804DE000FD6F5 /* tavern0.png in Resources */,
 				9AC6F2E41A0975B100A75E3F /* fail@2x.png in Resources */,
 				9A6F32B31AC89BEE00F21CFD /* level.wav in Resources */,
@@ -924,6 +955,7 @@
 				9AD5326D1A0C2BFD003413F1 /* splat.wav in Resources */,
 				9A8773C019E45CD100ABFD45 /* banjo1.mp3 in Resources */,
 				9ABF27331A0FB46800F1B6B7 /* slide.wav in Resources */,
+				9A8412AB1AD2E279006FE31E /* plus2.png in Resources */,
 				9A0C4FBA1A06EB6000AB629D /* title.png in Resources */,
 				9A0C4F9B1A06A40500AB629D /* playbutton_1@2x.png in Resources */,
 				9AC6F2DB1A0963D600A75E3F /* head0.png in Resources */,

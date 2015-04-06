@@ -26,6 +26,7 @@
 @interface KitchenScene : SKScene {
     
     ViewController *owner;
+    float screenHeight;
     
     SKTextureAtlas *myAtlas;
     

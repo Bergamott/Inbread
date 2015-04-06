@@ -65,21 +65,34 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    DataHandler *dh = [DataHandler sharedDataHandler];
+    
+    NSArray *plusImages = @[[UIImage imageNamed:@"plus0.png"],[UIImage imageNamed:@"plus1.png"],
+                            [UIImage imageNamed:@"plus2.png"],[UIImage imageNamed:@"plus3.png"]];
+    NSArray *tavernViews = @[holderView0,holderView1];
+    NSArray *locks = @[lock0,lock1];
     
     int currentLevelAccess = [DataHandler sharedDataHandler].currentLevelAccess;
+    NSArray *highscores = [[NSUserDefaults standardUserDefaults] objectForKey:@"highscores"];
     
-    for (int i=0;i<LEVELS_PER_RESTAURANT;i++)
+    for (int k=0;k<tavernViews.count;k++)
     {
-        UIButton *tmpB = [holderView0.subviews objectAtIndex:1+i];
-        tmpB.enabled = (i <= currentLevelAccess);
+        for (int i=0;i<LEVELS_PER_RESTAURANT;i++)
+        {
+            int lev = k*LEVELS_PER_RESTAURANT + i;
+            UIButton *tmpB = [((UIImageView*)[tavernViews objectAtIndex:k]).subviews objectAtIndex:1+i];
+            tmpB.enabled = (lev <= currentLevelAccess);
+            tmpB.tag = lev;
+            int score = [(NSNumber*)[highscores objectAtIndex:lev] intValue];
+            if (score > 0)
+            {
+                int plusScore = score>=[dh getTopScoreForLevel:lev]?3:(score>=[dh getMiddleScoreForLevel:lev]?2:1);
+                UIImageView *tmpPlus = [((UIImageView*)[tavernViews objectAtIndex:k]).subviews objectAtIndex:1+i+LEVELS_PER_RESTAURANT];
+                [tmpPlus setImage:[plusImages objectAtIndex:plusScore]];
+            }
+        }
+        ((UIImageView*)[locks objectAtIndex:k]).hidden = currentLevelAccess >= k*LEVELS_PER_RESTAURANT;
     }
-    lock0.hidden = TRUE;
-    for (int i=0;i<LEVELS_PER_RESTAURANT;i++)
-    {
-        UIButton *tmpB = [holderView1.subviews objectAtIndex:1+i];
-        tmpB.enabled = (i + LEVELS_PER_RESTAURANT <= currentLevelAccess);
-    }
-    lock1.hidden = currentLevelAccess >= LEVELS_PER_RESTAURANT;
 }
 
 

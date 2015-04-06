@@ -28,7 +28,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0};
         
         self.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.6 alpha:1.0];
         backgroundNode = [SKNode node];
-        backgroundNode.yScale = size.height/568.0f;
+//        backgroundNode.yScale = size.height/568.0f;
+        backgroundNode.position = CGPointMake(0, size.height-568.0f);
         
         /*        ingredientNames = @[@"loaf.png",@"ham.png",@"lettuce.png",@"cheese.png"];
          sliceNames = @[@"slice.png",@"hams.png",@"leaves.png",@"cheeses.png"];
