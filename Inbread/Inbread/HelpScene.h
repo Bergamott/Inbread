@@ -9,6 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 #define TYPE_SINGLE_SLICE 0
+#define TYPE_BREAD_CHEESE 1
 
 @class ViewController;
 @class SoundPlayer;
@@ -31,8 +32,11 @@
 -(SKSpriteNode*)setSprite:(NSString*)spr atX:(float)x andY:(float)y;
 -(SKSpriteNode*)hideSprite:(NSString*)spr atX:(float)x andY:(float)y;
 -(void)initialHelpAnimation;
+-(void)breadCheeseAnimation;
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h;
+-(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h adjustX:(float)dx;
 -(void)dropSlice:(SKSpriteNode*)slice height:(float)h;
+-(void)dropGroup:(NSArray*)sprites height:(float)h;
 
 -(void)endEverything;
 

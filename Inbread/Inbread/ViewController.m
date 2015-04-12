@@ -424,7 +424,7 @@
     int t = [helpScene findTypeForLevel:l];
     if (t >= 0)
     {
-        [helpScene setUpWithType:TYPE_SINGLE_SLICE];
+        [helpScene setUpWithType:t];
         [skView presentScene:helpScene];
         return TRUE;
     }
