@@ -80,6 +80,9 @@
     int score;
     int bottomScoreLimit,middleScoreLimit,topScoreLimit;
     
+    NSDate *lastSentCondiment;
+    float condimentInterval;
+    
     SoundPlayer *soundPlayer;
     AVAudioPlayer *myAudioPlayer;
     NSArray *backgroundTunes;
@@ -120,6 +123,7 @@
 @property(nonatomic,strong) NSDate *lastSentNote;
 @property(nonatomic,strong) SKSpriteNode *clockHand;
 @property(nonatomic,strong) NSDate *endTime;
+@property(nonatomic,strong) NSDate *lastSentCondiment;
 @property(nonatomic,strong) SKLabelNode *scoreLabel;
 @property(nonatomic,strong) AVAudioPlayer *myAudioPlayer;
 

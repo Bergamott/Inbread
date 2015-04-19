@@ -48,6 +48,7 @@
 @synthesize lastSentNote;
 @synthesize clockHand;
 @synthesize endTime;
+@synthesize lastSentCondiment;
 @synthesize scoreLabel;
 @synthesize myAudioPlayer;
 

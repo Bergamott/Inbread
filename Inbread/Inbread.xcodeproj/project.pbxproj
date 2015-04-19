@@ -76,6 +76,7 @@
 		9A20A77D19E1F18200C030C0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A20A77019E1F18200C030C0 /* Icon.png */; };
 		9A20A77E19E1F18200C030C0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A20A77119E1F18200C030C0 /* Icon@2x.png */; };
 		9A30246B1A0ECA1B005A8F01 /* land.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A30246A1A0ECA1B005A8F01 /* land.wav */; };
+		9A3B9A7E1AE3F07100C6CC32 /* Condiment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3B9A7D1AE3F07100C6CC32 /* Condiment.m */; };
 		9A47DB6D19CF1800005141F8 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A47DB6719CF1800005141F8 /* easing.c */; };
 		9A47DB6E19CF1800005141F8 /* SKEase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A47DB6B19CF1800005141F8 /* SKEase.m */; };
 		9A54285519E347020079B908 /* fragment.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A666C7919D8BC300004EF15 /* fragment.png */; };
@@ -276,6 +277,8 @@
 		9A20A77019E1F18200C030C0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		9A20A77119E1F18200C030C0 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9A30246A1A0ECA1B005A8F01 /* land.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = land.wav; sourceTree = "<group>"; };
+		9A3B9A7C1AE3F07100C6CC32 /* Condiment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Condiment.h; sourceTree = "<group>"; };
+		9A3B9A7D1AE3F07100C6CC32 /* Condiment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Condiment.m; sourceTree = "<group>"; };
 		9A47DB6719CF1800005141F8 /* easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = easing.c; sourceTree = "<group>"; };
 		9A47DB6819CF1800005141F8 /* easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easing.h; sourceTree = "<group>"; };
 		9A47DB6919CF1800005141F8 /* EasingDeclarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasingDeclarations.h; sourceTree = "<group>"; };
@@ -592,6 +595,8 @@
 				9AC7901F19F1B51300EF9D6D /* KitchenScene.m */,
 				9AED49D919AA347900EBD460 /* Food.h */,
 				9AED49DA19AA347900EBD460 /* Food.m */,
+				9A3B9A7C1AE3F07100C6CC32 /* Condiment.h */,
+				9A3B9A7D1AE3F07100C6CC32 /* Condiment.m */,
 				9AE3619119E1813900A826E4 /* IntroScene.h */,
 				9AE3619219E1813900A826E4 /* IntroScene.m */,
 				9A85F07719E186F200311520 /* Hillbilly.h */,
@@ -1030,6 +1035,7 @@
 				9AC7EC831A18057D000FD6F5 /* LevelViewController.m in Sources */,
 				9A47DB6E19CF1800005141F8 /* SKEase.m in Sources */,
 				9AC27B8B19980A1100D7F84B /* main.m in Sources */,
+				9A3B9A7E1AE3F07100C6CC32 /* Condiment.m in Sources */,
 				9AD532701A0C2D3D003413F1 /* SoundPlayer.m in Sources */,
 				9A85F07919E186F200311520 /* Hillbilly.m in Sources */,
 				9AB8758B1A7845CD007D4522 /* HelpScene.m in Sources */,

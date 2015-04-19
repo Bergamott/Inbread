@@ -6,7 +6,9 @@
                 {
                     "orders": ["0"],
                     "belts": [30,-20,20],
-                    "time": 30,
+                    "time": 90,
+                    "condiments": [0,1,2],
+                    "condimentInterval": 10,
                     "plates": 4
                 },
                 {
