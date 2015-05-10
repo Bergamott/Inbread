@@ -12,6 +12,7 @@
 #import "SKEase.h"
 #import "ViewController.h"
 #import "SoundPlayer.h"
+#import "Condiment.h"
 
 #define FOOD_START_X -40.0
 #define FOOD_END_X 360.0
@@ -48,9 +49,9 @@
 @synthesize lastSentNote;
 @synthesize clockHand;
 @synthesize endTime;
-@synthesize lastSentCondiment;
 @synthesize scoreLabel;
 @synthesize myAudioPlayer;
+@synthesize condimentTimer;
 
 //static float sliceYMargin[4] = {1,1,1,1};
 static float sliceHeight[4] = {11,11,11,11};
@@ -263,6 +264,10 @@ static float ingredientHeight[4] = {54,54,64,53};
         [plateS runAction:[SKAction sequence:@[[SKAction waitForDuration:i*0.3],[SKEase MoveToWithNode:plateS EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:0.5 ToVector:CGVectorMake(plateX, plateS.position.y)]]]];
     }
     
+    // Condiments
+    condimentTypes = [levDic objectForKey:@"condiments"];
+    condimentInterval = [(NSNumber*)[levDic objectForKey:@"condimentInterval"] floatValue];
+    
     [backgroundNode addChild:conveyorNode];
     [backgroundNode addChild:foodNode];
     
@@ -281,6 +286,12 @@ static float ingredientHeight[4] = {54,54,64,53};
     
     spawnFoodTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_DISTANCE/beltVelocities[numPlanes-1] target:self
                                                     selector:@selector(spawnIngredient) userInfo:nil repeats:YES];
+    
+    if (condimentTypes != NULL)
+    {
+        condimentTimer = [NSTimer scheduledTimerWithTimeInterval: condimentInterval target: self
+                                                        selector: @selector(spawnCondiment) userInfo: nil repeats: YES];
+    }
     
     zCounter = 0;
     totalTime = [(NSNumber*)[levDic objectForKey:@"time"] doubleValue];
@@ -401,6 +412,16 @@ static float ingredientHeight[4] = {54,54,64,53};
 {
     [fObj removeSprites];
     [sprites removeObject:fObj];
+}
+
+-(void)spawnCondiment
+{
+    NSLog(@"Spawning condiment");
+}
+
+-(void)removeCondiment:(Condiment*)cObj
+{
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

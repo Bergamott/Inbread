@@ -22,6 +22,7 @@
 @class Food;
 @class ViewController;
 @class SoundPlayer;
+@class Condiment;
 
 @interface KitchenScene : SKScene {
     
@@ -80,8 +81,9 @@
     int score;
     int bottomScoreLimit,middleScoreLimit,topScoreLimit;
     
-    NSDate *lastSentCondiment;
     float condimentInterval;
+    NSArray *condimentTypes;
+    NSTimer *condimentTimer;
     
     SoundPlayer *soundPlayer;
     AVAudioPlayer *myAudioPlayer;
@@ -93,13 +95,16 @@
 -(void)replayLevel;
 -(void)nextLevel;
 
+-(void)gameLoop:(NSTimer*)t;
+
 -(void)spawnIngredient;
 
 -(void)removeFood:(Food*)fObj;
 
--(void)gameLoop:(NSTimer*)t;
-
 -(void)dropFood:(Food*)sliceFood;
+
+-(void)spawnCondiment;
+-(void)removeCondiment:(Condiment*)cObj;
 
 -(void)checkPlates;
 
@@ -123,8 +128,9 @@
 @property(nonatomic,strong) NSDate *lastSentNote;
 @property(nonatomic,strong) SKSpriteNode *clockHand;
 @property(nonatomic,strong) NSDate *endTime;
-@property(nonatomic,strong) NSDate *lastSentCondiment;
 @property(nonatomic,strong) SKLabelNode *scoreLabel;
 @property(nonatomic,strong) AVAudioPlayer *myAudioPlayer;
+@property(nonatomic,strong) NSTimer *condimentTimer;
+
 
 @end
