@@ -52,6 +52,7 @@
 @synthesize scoreLabel;
 @synthesize myAudioPlayer;
 @synthesize condimentTimer;
+@synthesize condiments;
 
 //static float sliceYMargin[4] = {1,1,1,1};
 static float sliceHeight[4] = {11,11,11,11};
@@ -68,6 +69,7 @@ static float ingredientHeight[4] = {54,54,64,53};
         crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese"];
         
         sprites = [[NSMutableArray alloc] initWithCapacity:50];
+        condiments = [[NSMutableArray alloc] initWithCapacity:20];
         
         backgroundNode = [SKNode node];
         screenHeight = size.height;
@@ -98,6 +100,7 @@ static float ingredientHeight[4] = {54,54,64,53};
     
     // Clear arrays
     [sprites removeAllObjects];
+    [condiments removeAllObjects];
     [conveyorBelts removeAllObjects];
     for (int i=0;i<MAX_SANDWICHES;i++)
     {
@@ -389,7 +392,7 @@ static float ingredientHeight[4] = {54,54,64,53};
     
     int foodType = (int)([ingredientsString characterAtIndex:(arc4random()%ingredientsString.length)]-'0');
     
-    SKSpriteNode *breadS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[ingredientNames objectAtIndex:foodType    ]]];
+    SKSpriteNode *breadS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[ingredientNames objectAtIndex:foodType]]];
     breadS.anchorPoint = CGPointMake(0.5, ingredientYMargin[foodType]/ingredientHeight[foodType]);
     [breadFood.holderNode addChild:breadS];
     breadFood.height = breadS.size.height;
@@ -417,11 +420,46 @@ static float ingredientHeight[4] = {54,54,64,53};
 -(void)spawnCondiment
 {
     NSLog(@"Spawning condiment");
+    int cPlane = 1+(arc4random()%(numPlanes-2));
+    float cY = planeY[cPlane];
+    int cType = [(NSNumber*)[condimentTypes objectAtIndex:arc4random()%condimentTypes.count] intValue];
+    
+    SKSpriteNode *cS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[extraNames objectAtIndex:cType]]];
+    cS.anchorPoint = CGPointMake(0.5, 0);
+    
+    Condiment *cond = [[Condiment alloc] init];
+    cond.condimentType = cType;
+    cond.condimentSprite = cS;
+    [foodNode addChild:cS];
+    
+    if (beltVelocities[cPlane] > 0)
+    {
+        cS.position = CGPointMake(FOOD_START_X, cY);
+        [cS runAction:[SKAction sequence:@[
+                                       [SKAction group:@[[SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-FOOD_START_X)/beltVelocities[cPlane]/1.5f]]],
+                                       [SKAction runBlock:^{ [self removeCondiment:cond];}]
+                                       ]]
+         ];
+    }
+    else
+    {
+        cS.position = CGPointMake(FOOD_END_X, cY);
+        [cS runAction:[SKAction sequence:@[
+                                           [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-FOOD_END_X)/beltVelocities[cPlane]/1.5f],
+                                           [SKAction runBlock:^{ [self removeCondiment:cond];}]
+                                           ]]
+         ];
+    }
+    
+    [condiments addObject:cond];
 }
 
 -(void)removeCondiment:(Condiment*)cObj
 {
-    
+    NSLog(@"Removing condiment");
+    [cObj.condimentSprite removeAllActions];
+    [cObj removeSprite];
+    [condiments removeObject:cObj];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

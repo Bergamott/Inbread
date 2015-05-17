@@ -84,6 +84,7 @@
     float condimentInterval;
     NSArray *condimentTypes;
     NSTimer *condimentTimer;
+    NSMutableArray *condiments;
     
     SoundPlayer *soundPlayer;
     AVAudioPlayer *myAudioPlayer;
@@ -131,6 +132,7 @@
 @property(nonatomic,strong) SKLabelNode *scoreLabel;
 @property(nonatomic,strong) AVAudioPlayer *myAudioPlayer;
 @property(nonatomic,strong) NSTimer *condimentTimer;
+@property(nonatomic,strong) NSMutableArray *condiments;
 
 
 @end
