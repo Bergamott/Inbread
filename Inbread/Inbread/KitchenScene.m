@@ -430,26 +430,34 @@ static float ingredientHeight[4] = {54,54,64,53};
     Condiment *cond = [[Condiment alloc] init];
     cond.condimentType = cType;
     cond.condimentSprite = cS;
-    [foodNode addChild:cS];
+    SKNode *cH = [SKNode node];
+    cond.condimentHolder = cH;
+    [cH addChild:cS];
+    [foodNode addChild:cH];
     
     if (beltVelocities[cPlane] > 0)
     {
-        cS.position = CGPointMake(FOOD_START_X, cY);
-        [cS runAction:[SKAction sequence:@[
-                                       [SKAction group:@[[SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-FOOD_START_X)/beltVelocities[cPlane]/1.5f]]],
+        cH.position = CGPointMake(FOOD_START_X, cY);
+        [cH runAction:[SKAction sequence:@[[SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-FOOD_START_X)/beltVelocities[cPlane]/2.0f],
                                        [SKAction runBlock:^{ [self removeCondiment:cond];}]
                                        ]]
          ];
     }
     else
     {
-        cS.position = CGPointMake(FOOD_END_X, cY);
-        [cS runAction:[SKAction sequence:@[
-                                           [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-FOOD_END_X)/beltVelocities[cPlane]/1.5f],
+        cH.position = CGPointMake(FOOD_END_X, cY);
+        [cH runAction:[SKAction sequence:@[
+                                           [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-FOOD_END_X)/beltVelocities[cPlane]/2.0f],
                                            [SKAction runBlock:^{ [self removeCondiment:cond];}]
                                            ]]
          ];
     }
+    SKAction *moveUp = [SKAction moveByX:0 y:CONDIMENT_JUMP_HEIGHT duration:CONDIMENT_JUMP_TIME];
+    moveUp.timingMode = SKActionTimingEaseOut;
+    SKAction *moveDown = [SKAction moveByX:0 y:-CONDIMENT_JUMP_HEIGHT duration:CONDIMENT_JUMP_TIME];
+    moveDown.timingMode = SKActionTimingEaseIn;
+    
+    [cS runAction:[SKAction repeatActionForever:[SKAction sequence:@[moveUp,moveDown,[SKAction scaleXTo:1.1 y:0.75 duration:0.1f],[SKAction scaleXTo:1.0 y:1.0 duration:0.1f]]]]];
     
     [condiments addObject:cond];
 }
@@ -457,7 +465,6 @@ static float ingredientHeight[4] = {54,54,64,53};
 -(void)removeCondiment:(Condiment*)cObj
 {
     NSLog(@"Removing condiment");
-    [cObj.condimentSprite removeAllActions];
     [cObj removeSprite];
     [condiments removeObject:cObj];
 }

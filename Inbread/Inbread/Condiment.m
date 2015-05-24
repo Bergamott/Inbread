@@ -12,11 +12,16 @@
 
 @synthesize condimentType;
 @synthesize condimentSprite;
+@synthesize condimentHolder;
 @synthesize xSpeed;
 
 -(void)removeSprite
 {
+    [condimentSprite removeAllActions];
+    [condimentHolder removeAllActions];
     [condimentSprite removeFromParent];
+    [condimentHolder removeFromParent];
+    condimentHolder = NULL;
     condimentSprite = NULL;
 }
 

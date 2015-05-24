@@ -15,7 +15,7 @@
 
 #define CONDIMENT_DELTA_Y 3.0
 #define CONDIMENT_JUMP_HEIGHT 20.0
-#define CONDIMENT_JUMP_TIME 0.5
+#define CONDIMENT_JUMP_TIME 0.3
 
 
 @interface Condiment : NSObject {
@@ -23,6 +23,7 @@
     int condimentType;
     float xSpeed;
     SKSpriteNode *condimentSprite;
+    SKNode *condimentHolder;
 }
 
 -(void)removeSprite;
@@ -30,5 +31,6 @@
 @property(nonatomic) int condimentType;
 @property(nonatomic) float xSpeed;
 @property(nonatomic,strong) SKSpriteNode *condimentSprite;
+@property(nonatomic,strong) SKNode *condimentHolder;
 
 @end
