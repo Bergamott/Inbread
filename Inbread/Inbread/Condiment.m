@@ -14,6 +14,7 @@
 @synthesize condimentSprite;
 @synthesize condimentHolder;
 @synthesize xSpeed;
+@synthesize plane;
 
 -(void)removeSprite
 {

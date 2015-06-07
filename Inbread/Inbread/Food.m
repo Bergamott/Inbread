@@ -11,6 +11,8 @@
 #define MIN_CLICK_HEIGHT 30.0
 #define BOTTOM_CLICK_MARGIN 10.0
 
+#define PLUS_WIDTH 16.0
+
 @implementation Food
 
 @synthesize typeCount;
@@ -19,6 +21,8 @@
 @synthesize height;
 @synthesize holderNode;
 @synthesize plane;
+@synthesize plusCount;
+@synthesize plusNode;
 
 static float sliceHeight[4] = {11,11,11,11};
 static float sliceYMargin[4] = {1,1,1,1};
@@ -27,6 +31,7 @@ static float sliceYMargin[4] = {1,1,1,1};
 {
     if (self = [super init]) {
         holderNode = [[SKNode alloc] init];
+        plusNode = [SKNode node];
         holderNode.position = p;
         typeCount = 0;
         height = 0;
@@ -60,7 +65,22 @@ static float sliceYMargin[4] = {1,1,1,1};
     for (int i=0;i<c;i++)
         [self addType:[topFood getTypeAt:i] withSprite:[topFood.holderNode.children objectAtIndex:0]];
     [topFood.holderNode removeFromParent];
+    for (int i=topFood.plusCount-1;i>=0;i--)
+    {
+        SKSpriteNode *plusS = [topFood.plusNode.children objectAtIndex:i];
+        [plusS removeFromParent];
+        [self addCondimentType:[topFood getPlusNum:i] withSprite:plusS];
+    }
     [self makeCompoundClickable];
+}
+
+-(void)addCondimentType:(int)t withSprite:(SKSpriteNode*)sp
+{
+    sp.position = CGPointMake(PLUS_WIDTH*plusCount, 0);
+    [plusNode addChild:sp];
+    pluses[plusCount] = t;
+    plusNode.position = CGPointMake(plusNode.position.x - PLUS_WIDTH*0.5, height+PLUS_WIDTH);
+    plusCount++;
 }
 
 -(BOOL)isTouchingAtX:(float)x andY:(float)y
@@ -77,6 +97,8 @@ static float sliceYMargin[4] = {1,1,1,1};
     [holderNode removeAllActions];
     [holderNode removeAllChildren];
     [holderNode removeFromParent];
+    [plusNode removeAllChildren];
+    plusNode = NULL;
 }
 
 -(void)makeCompoundClickable
@@ -84,5 +106,9 @@ static float sliceYMargin[4] = {1,1,1,1};
     overallType = TYPE_COMPOUND;
 }
 
+-(int)getPlusNum:(int)n
+{
+    return pluses[n];
+}
 
 @end

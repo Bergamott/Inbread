@@ -21,6 +21,7 @@
 @interface Condiment : NSObject {
     
     int condimentType;
+    int plane;
     float xSpeed;
     SKSpriteNode *condimentSprite;
     SKNode *condimentHolder;
@@ -29,6 +30,7 @@
 -(void)removeSprite;
 
 @property(nonatomic) int condimentType;
+@property(nonatomic) int plane;
 @property(nonatomic) float xSpeed;
 @property(nonatomic,strong) SKSpriteNode *condimentSprite;
 @property(nonatomic,strong) SKNode *condimentHolder;

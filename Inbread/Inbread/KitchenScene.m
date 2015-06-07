@@ -430,6 +430,7 @@ static float ingredientHeight[4] = {54,54,64,53};
     Condiment *cond = [[Condiment alloc] init];
     cond.condimentType = cType;
     cond.condimentSprite = cS;
+    cond.plane = cPlane;
     SKNode *cH = [SKNode node];
     cond.condimentHolder = cH;
     [cH addChild:cS];
@@ -437,17 +438,19 @@ static float ingredientHeight[4] = {54,54,64,53};
     
     if (beltVelocities[cPlane] > 0)
     {
+        cond.xSpeed = 2.0f * beltVelocities[cPlane];
         cH.position = CGPointMake(FOOD_START_X, cY);
-        [cH runAction:[SKAction sequence:@[[SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-FOOD_START_X)/beltVelocities[cPlane]/2.0f],
+        [cH runAction:[SKAction sequence:@[[SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-FOOD_START_X)/cond.xSpeed],
                                        [SKAction runBlock:^{ [self removeCondiment:cond];}]
                                        ]]
          ];
     }
     else
     {
+        cond.xSpeed = - 2.0f * beltVelocities[cPlane];
         cH.position = CGPointMake(FOOD_END_X, cY);
         [cH runAction:[SKAction sequence:@[
-                                           [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-FOOD_END_X)/beltVelocities[cPlane]/2.0f],
+                                           [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-FOOD_END_X)/cond.xSpeed],
                                            [SKAction runBlock:^{ [self removeCondiment:cond];}]
                                            ]]
          ];
@@ -577,6 +580,8 @@ static float ingredientHeight[4] = {54,54,64,53};
                                                              slideOutAction,
                                                              [SKAction runBlock:^{ [self removeFood:sliceFood]; }]
                                                              ]]];
+        // Check if food hits condiment
+        
     }
     else // Possibly land on plate
     {

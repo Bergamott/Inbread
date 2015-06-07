@@ -26,12 +26,15 @@
     int typeCount;
     
     SKNode *holderNode;
+    SKNode *plusNode;
     
     float width;
     float height;
     
     int overallType;
     int types[10];
+    int pluses[10];
+    int plusCount;
     
     int plane;
 }
@@ -41,10 +44,13 @@
 -(int)getTypeAt:(int)p;
 -(void)putOnTop:(Food*)topFood;
 -(void)makeCompoundClickable;
+-(void)addCondimentType:(int)t withSprite:(SKSpriteNode*)sp;
 
 -(BOOL)isTouchingAtX:(float)x andY:(float)y;
 
 -(void)removeSprites;
+
+-(int)getPlusNum:(int)n;
 
 @property(nonatomic) int typeCount;
 @property(nonatomic) int overallType;
@@ -52,5 +58,8 @@
 @property(nonatomic) float width;
 @property(nonatomic) float height;
 @property(nonatomic,strong) SKNode *holderNode;
+@property(nonatomic,strong) SKNode *plusNode;
+@property(nonatomic) int plusCount;
+
 
 @end
