@@ -42,6 +42,8 @@
     NSArray *sliceNames;
     NSArray *extraNames;
     NSArray *crumbNames;
+    NSArray *plusNames;
+    NSArray *condimentCrumbNames;
     
     int level;
     int numPlates;
@@ -106,6 +108,7 @@
 
 -(void)spawnCondiment;
 -(void)removeCondiment:(Condiment*)cObj;
+-(void)splatCondiment:(Condiment*)cObj withFood:(Food*)fObj;
 
 -(void)checkPlates;
 

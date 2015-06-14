@@ -36,6 +36,8 @@
 #define BLACK_POINTS 15
 #define WHITE_POINTS 5
 
+#define CONDIMENT_HEIGHT 20.0
+
 @implementation KitchenScene
 
 @synthesize owner;
@@ -67,6 +69,8 @@ static float ingredientHeight[4] = {54,54,64,53};
         sliceNames = @[@"slice.png",@"hams.png",@"leaves.png",@"cheeses.png"];
         extraNames = @[@"onion.png",@"tomato.png",@"pickle.png"];
         crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese"];
+        plusNames = @[@"plus_onion.png",@"plus_tomato.png",@"plus_pickle.png"];
+        condimentCrumbNames = @[@"crumbs_onion",@"crumbs_tomato",@"crumbs_pickle"];
         
         sprites = [[NSMutableArray alloc] initWithCapacity:50];
         condiments = [[NSMutableArray alloc] initWithCapacity:20];
@@ -436,21 +440,20 @@ static float ingredientHeight[4] = {54,54,64,53};
     [cH addChild:cS];
     [foodNode addChild:cH];
     
+    cond.xVelocity = 2.0f * beltVelocities[cPlane];
     if (beltVelocities[cPlane] > 0)
     {
-        cond.xSpeed = 2.0f * beltVelocities[cPlane];
         cH.position = CGPointMake(FOOD_START_X, cY);
-        [cH runAction:[SKAction sequence:@[[SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-FOOD_START_X)/cond.xSpeed],
+        [cH runAction:[SKAction sequence:@[[SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-FOOD_START_X)/cond.xVelocity],
                                        [SKAction runBlock:^{ [self removeCondiment:cond];}]
                                        ]]
          ];
     }
     else
     {
-        cond.xSpeed = - 2.0f * beltVelocities[cPlane];
         cH.position = CGPointMake(FOOD_END_X, cY);
         [cH runAction:[SKAction sequence:@[
-                                           [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-FOOD_END_X)/cond.xSpeed],
+                                           [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-FOOD_END_X)/cond.xVelocity],
                                            [SKAction runBlock:^{ [self removeCondiment:cond];}]
                                            ]]
          ];
@@ -470,6 +473,18 @@ static float ingredientHeight[4] = {54,54,64,53};
     NSLog(@"Removing condiment");
     [cObj removeSprite];
     [condiments removeObject:cObj];
+}
+
+-(void)splatCondiment:(Condiment*)cObj withFood:(Food*)fObj
+{
+    SKEmitterNode *crumbs = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:[condimentCrumbNames objectAtIndex:cObj.condimentType] ofType:@"sks"]];
+    crumbs.position = cObj.condimentHolder.position;
+    [foodNode addChild:crumbs];
+    SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[plusNames objectAtIndex:cObj.condimentType]]];
+    plusSprite.anchorPoint = CGPointMake(0, 0.5f);
+    [fObj addCondimentType:cObj.condimentType withSprite:plusSprite];
+    
+    [self removeCondiment:cObj];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -581,7 +596,21 @@ static float ingredientHeight[4] = {54,54,64,53};
                                                              [SKAction runBlock:^{ [self removeFood:sliceFood]; }]
                                                              ]]];
         // Check if food hits condiment
-        
+        for (Condiment *cond in condiments)
+        {
+            if (cond.plane == sliceFood.plane)
+            {
+                // Check if falling food is close enough to hit
+                heightDifference = planeY[sliceFood.plane+1] - planeY[sliceFood.plane] - CONDIMENT_HEIGHT;
+                dropTime = heightDifference/FALL_SPEED;
+                impactX = cond.condimentHolder.position.x + dropTime*cond.xVelocity;
+                if (sliceFood.holderNode.position.x < impactX+HIT_DISTANCE && sliceFood.holderNode.position.x > impactX-HIT_DISTANCE) // Success!
+                {
+                    cond.plane = -1; // Block against further impacts
+                    [cond.condimentHolder runAction:[SKAction sequence:@[[SKAction waitForDuration:dropTime],[SKAction runBlock:^{[self splatCondiment:cond withFood:sliceFood];}]]]];
+                }
+            }
+        }
     }
     else // Possibly land on plate
     {

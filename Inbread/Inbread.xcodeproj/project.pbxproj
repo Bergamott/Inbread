@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A09B6501B2DE17D009E01AE /* crumbs_onion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A09B64D1B2DE17D009E01AE /* crumbs_onion.sks */; };
+		9A09B6511B2DE17D009E01AE /* crumbs_pickle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A09B64E1B2DE17D009E01AE /* crumbs_pickle.sks */; };
+		9A09B6521B2DE17D009E01AE /* crumbs_tomato.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A09B64F1B2DE17D009E01AE /* crumbs_tomato.sks */; };
 		9A0C4F891A06869E00AB629D /* knewave.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C4F881A06869E00AB629D /* knewave.ttf */; };
 		9A0C4F8B1A06916600AB629D /* starburst.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C4F8A1A06916600AB629D /* starburst.sks */; };
 		9A0C4F8E1A0691A500AB629D /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A0C4F8C1A0691A500AB629D /* star.png */; };
@@ -210,6 +213,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A09B64D1B2DE17D009E01AE /* crumbs_onion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = crumbs_onion.sks; sourceTree = "<group>"; };
+		9A09B64E1B2DE17D009E01AE /* crumbs_pickle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = crumbs_pickle.sks; sourceTree = "<group>"; };
+		9A09B64F1B2DE17D009E01AE /* crumbs_tomato.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = crumbs_tomato.sks; sourceTree = "<group>"; };
 		9A0C4F881A06869E00AB629D /* knewave.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = knewave.ttf; sourceTree = "<group>"; };
 		9A0C4F8A1A06916600AB629D /* starburst.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = starburst.sks; sourceTree = "<group>"; };
 		9A0C4F8C1A0691A500AB629D /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
@@ -620,6 +626,9 @@
 				9A1C9F5119E720B700354AA7 /* crumbs_cheese.sks */,
 				9A1C9F5219E720B700354AA7 /* crumbs_ham.sks */,
 				9A1C9F5319E720B700354AA7 /* crumbs_lettuce.sks */,
+				9A09B64D1B2DE17D009E01AE /* crumbs_onion.sks */,
+				9A09B64E1B2DE17D009E01AE /* crumbs_pickle.sks */,
+				9A09B64F1B2DE17D009E01AE /* crumbs_tomato.sks */,
 				9A0C4F8A1A06916600AB629D /* starburst.sks */,
 				9AC27B9B19980A1100D7F84B /* Images.xcassets */,
 				9AC27B8519980A1100D7F84B /* Supporting Files */,
@@ -885,6 +894,7 @@
 				9A0C4F971A06A40500AB629D /* musicbutton_0@2x.png in Resources */,
 				9A1C8BA41A195CE4000E4529 /* sign0.png in Resources */,
 				9A20A77B19E1F18200C030C0 /* Icon-Small.png in Resources */,
+				9A09B6511B2DE17D009E01AE /* crumbs_pickle.sks in Resources */,
 				9A20A77419E1F18200C030C0 /* Icon-72.png in Resources */,
 				9AC6091A1A584FFE00C0E200 /* head1.png in Resources */,
 				9A8412AA1AD2E279006FE31E /* plus1@2x.png in Resources */,
@@ -927,6 +937,7 @@
 				9A20A77319E1F18200C030C0 /* Icon-40@2x.png in Resources */,
 				9AC6F2CC1A095E6A00A75E3F /* forwardbutton_1@2x.png in Resources */,
 				9AD0BB5B1A6C086F00E2F273 /* kitchen0@2x.jpg in Resources */,
+				9A09B6521B2DE17D009E01AE /* crumbs_tomato.sks in Resources */,
 				9A8412AD1AD2E279006FE31E /* plus3.png in Resources */,
 				9AEE465E1A62DF1900876F59 /* entertainer1.mp3 in Resources */,
 				9AC6F2D41A095E6A00A75E3F /* replaybutton_1@2x.png in Resources */,
@@ -956,6 +967,7 @@
 				9A1C9F5619E720B700354AA7 /* crumbs_ham.sks in Resources */,
 				9A88254F1A0ADD5900702A2B /* outline0.png in Resources */,
 				9A8825521A0ADD5900702A2B /* outline1@2x.png in Resources */,
+				9A09B6501B2DE17D009E01AE /* crumbs_onion.sks in Resources */,
 				9AEE46631A62ECAE00876F59 /* chattanooga.mp3 in Resources */,
 				9A8825471A0ADD5900702A2B /* mouth9.png in Resources */,
 				9A20A75B19E1CDBF00C030C0 /* fence.png in Resources */,

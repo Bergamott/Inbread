@@ -32,6 +32,7 @@ static float sliceYMargin[4] = {1,1,1,1};
     if (self = [super init]) {
         holderNode = [[SKNode alloc] init];
         plusNode = [SKNode node];
+        [holderNode addChild:plusNode];
         holderNode.position = p;
         typeCount = 0;
         height = 0;

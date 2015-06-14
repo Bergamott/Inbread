@@ -13,7 +13,7 @@
 @synthesize condimentType;
 @synthesize condimentSprite;
 @synthesize condimentHolder;
-@synthesize xSpeed;
+@synthesize xVelocity;
 @synthesize plane;
 
 -(void)removeSprite

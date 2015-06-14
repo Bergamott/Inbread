@@ -22,7 +22,7 @@
     
     int condimentType;
     int plane;
-    float xSpeed;
+    float xVelocity;
     SKSpriteNode *condimentSprite;
     SKNode *condimentHolder;
 }
@@ -31,7 +31,7 @@
 
 @property(nonatomic) int condimentType;
 @property(nonatomic) int plane;
-@property(nonatomic) float xSpeed;
+@property(nonatomic) float xVelocity;
 @property(nonatomic,strong) SKSpriteNode *condimentSprite;
 @property(nonatomic,strong) SKNode *condimentHolder;
 
