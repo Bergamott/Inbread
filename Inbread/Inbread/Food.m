@@ -11,7 +11,7 @@
 #define MIN_CLICK_HEIGHT 30.0
 #define BOTTOM_CLICK_MARGIN 10.0
 
-#define PLUS_WIDTH 16.0
+#define PLUS_WIDTH 21.0
 
 @implementation Food
 
@@ -64,7 +64,7 @@ static float sliceYMargin[4] = {1,1,1,1};
     [topFood.holderNode removeAllActions];
     int c = topFood.typeCount;
     for (int i=0;i<c;i++)
-        [self addType:[topFood getTypeAt:i] withSprite:[topFood.holderNode.children objectAtIndex:0]];
+        [self addType:[topFood getTypeAt:i] withSprite:[topFood.holderNode.children objectAtIndex:1]];
     [topFood.holderNode removeFromParent];
     for (int i=topFood.plusCount-1;i>=0;i--)
     {
@@ -72,6 +72,7 @@ static float sliceYMargin[4] = {1,1,1,1};
         [plusS removeFromParent];
         [self addCondimentType:[topFood getPlusNum:i] withSprite:plusS];
     }
+    plusNode.position = CGPointMake(plusNode.position.x, height+PLUS_WIDTH);
     [self makeCompoundClickable];
 }
 

@@ -23,6 +23,7 @@
 -(void)playSlideWithNode:(SKNode*)skn;
 -(void)playFailWithNode:(SKNode*)skn;
 -(void)playBlipWithNode:(SKNode*)skn;
+-(void)playBoingWithNode:(SKNode*)skn;
 -(void)playPopupWithNode:(SKNode*)skn;
 -(void)playLevelWithDelay:(float)del WithNode:(SKNode*)skn;
 -(void)playLandWithDelay:(float)del withNode:(SKNode*)skn;

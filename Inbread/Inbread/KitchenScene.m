@@ -36,7 +36,9 @@
 #define BLACK_POINTS 15
 #define WHITE_POINTS 5
 
-#define CONDIMENT_HEIGHT 20.0
+#define CONDIMENT_Y_MARGIN 40.0
+#define CONDIMENT_HIT_DISTANCE 25.0
+#define CONDIMENT_SPEED_RATIO 1.6f
 
 @implementation KitchenScene
 
@@ -61,6 +63,8 @@ static float sliceHeight[4] = {11,11,11,11};
 static float sliceYMargin[4] = {1,1,1,1};
 static float ingredientYMargin[4] = {1,1,1,1};
 static float ingredientHeight[4] = {54,54,64,53};
+
+static int condimentScores[3] = {5,5,5};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -250,7 +254,7 @@ static float ingredientHeight[4] = {54,54,64,53};
             [topS runAction:rightSequence];
         }
         
-        beltVelocities[numPlanes-1-i] = beltVelocity;
+        beltVelocities[i+1] = beltVelocity;
         [beltNode addChild:topS];
         [beltNode addChild:bottomS];
         [conveyorNode addChild:beltNode];
@@ -440,7 +444,7 @@ static float ingredientHeight[4] = {54,54,64,53};
     [cH addChild:cS];
     [foodNode addChild:cH];
     
-    cond.xVelocity = 2.0f * beltVelocities[cPlane];
+    cond.xVelocity = CONDIMENT_SPEED_RATIO * beltVelocities[cPlane];
     if (beltVelocities[cPlane] > 0)
     {
         cH.position = CGPointMake(FOOD_START_X, cY);
@@ -482,8 +486,9 @@ static float ingredientHeight[4] = {54,54,64,53};
     [foodNode addChild:crumbs];
     SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[plusNames objectAtIndex:cObj.condimentType]]];
     plusSprite.anchorPoint = CGPointMake(0, 0.5f);
+    [plusSprite runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction rotateToAngle:0.2 duration:0.3],[SKAction rotateToAngle:-0.2 duration:0.3]]]]];
     [fObj addCondimentType:cObj.condimentType withSprite:plusSprite];
-    
+    [soundPlayer playSplatWithNode:foodNode];
     [self removeCondiment:cObj];
 }
 
@@ -601,10 +606,10 @@ static float ingredientHeight[4] = {54,54,64,53};
             if (cond.plane == sliceFood.plane)
             {
                 // Check if falling food is close enough to hit
-                heightDifference = planeY[sliceFood.plane+1] - planeY[sliceFood.plane] - CONDIMENT_HEIGHT;
+                heightDifference = planeY[sliceFood.plane+1] - planeY[sliceFood.plane] - CONDIMENT_Y_MARGIN;
                 dropTime = heightDifference/FALL_SPEED;
                 impactX = cond.condimentHolder.position.x + dropTime*cond.xVelocity;
-                if (sliceFood.holderNode.position.x < impactX+HIT_DISTANCE && sliceFood.holderNode.position.x > impactX-HIT_DISTANCE) // Success!
+                if (sliceFood.holderNode.position.x < impactX+CONDIMENT_HIT_DISTANCE && sliceFood.holderNode.position.x > impactX-CONDIMENT_HIT_DISTANCE) // Success!
                 {
                     cond.plane = -1; // Block against further impacts
                     [cond.condimentHolder runAction:[SKAction sequence:@[[SKAction waitForDuration:dropTime],[SKAction runBlock:^{[self splatCondiment:cond withFood:sliceFood];}]]]];
@@ -742,6 +747,9 @@ static float ingredientHeight[4] = {54,54,64,53};
             }
             else if (matchedFood >= 0)
             {
+                for (int i=0;i<tmpF.plusCount;i++)
+                    foodScore += condimentScores[[tmpF getPlusNum:i]];
+                
                 [soundPlayer playScoreWithNode:backgroundNode];
                 [self updateScore:foodScore];
                 tmpF.plane = -1;
@@ -796,6 +804,11 @@ static float ingredientHeight[4] = {54,54,64,53};
     {
         [spawnFoodTimer invalidate];
         spawnFoodTimer = NULL;
+    }
+    if (condimentTimer)
+    {
+        [condimentTimer invalidate];
+        condimentTimer = NULL;
     }
     [backgroundNode removeAllActions];
     for (SKNode *tmpN in conveyorNode.children)

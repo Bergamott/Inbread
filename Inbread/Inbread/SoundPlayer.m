@@ -74,6 +74,14 @@
     }
 }
 
+-(void)playBoingWithNode:(SKNode*)skn
+{
+    if (soundOn)
+    {
+        [skn runAction:[SKAction playSoundFileNamed:@"boing.wav" waitForCompletion:FALSE]];
+    }
+}
+
 -(void)playPopupWithNode:(SKNode*)skn
 {
     if (soundOn)

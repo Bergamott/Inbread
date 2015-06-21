@@ -200,6 +200,7 @@
 		9AEE465F1A62DF1900876F59 /* entertainer2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9AEE465D1A62DF1900876F59 /* entertainer2.mp3 */; };
 		9AEE46621A62ECAE00876F59 /* beaumont.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9AEE46601A62ECAE00876F59 /* beaumont.mp3 */; };
 		9AEE46631A62ECAE00876F59 /* chattanooga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9AEE46611A62ECAE00876F59 /* chattanooga.mp3 */; };
+		9AFC1E3B1B3762AD008B6987 /* boing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9AFC1E3A1B3762AD008B6987 /* boing.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -425,6 +426,7 @@
 		9AEE465D1A62DF1900876F59 /* entertainer2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = entertainer2.mp3; sourceTree = "<group>"; };
 		9AEE46601A62ECAE00876F59 /* beaumont.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beaumont.mp3; sourceTree = "<group>"; };
 		9AEE46611A62ECAE00876F59 /* chattanooga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chattanooga.mp3; sourceTree = "<group>"; };
+		9AFC1E3A1B3762AD008B6987 /* boing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boing.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -760,6 +762,7 @@
 		9AD5325B1A0C2BFD003413F1 /* sound */ = {
 			isa = PBXGroup;
 			children = (
+				9AFC1E3A1B3762AD008B6987 /* boing.wav */,
 				9A6F32B21AC89BEE00F21CFD /* level.wav */,
 				9A1E6E021A11730B00ACA550 /* popup.wav */,
 				9ABF273C1A0FD8F600F1B6B7 /* drop.wav */,
@@ -907,6 +910,7 @@
 				9AC27B8919980A1100D7F84B /* InfoPlist.strings in Resources */,
 				9AC6F2D71A095E9700A75E3F /* dialog_frame.png in Resources */,
 				9AC6091B1A584FFE00C0E200 /* head1@2x.png in Resources */,
+				9AFC1E3B1B3762AD008B6987 /* boing.wav in Resources */,
 				9A30246B1A0ECA1B005A8F01 /* land.wav in Resources */,
 				9A20A77D19E1F18200C030C0 /* Icon.png in Resources */,
 				9A1C8B891A1912B5000E4529 /* lock@2x.png in Resources */,
