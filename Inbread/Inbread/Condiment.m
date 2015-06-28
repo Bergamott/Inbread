@@ -26,4 +26,9 @@
     condimentSprite = NULL;
 }
 
+-(void)fadeOut
+{
+    [condimentSprite runAction:[SKAction fadeAlphaTo:0 duration:0.5f]];
+}
+
 @end

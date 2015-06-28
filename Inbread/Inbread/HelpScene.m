@@ -28,24 +28,7 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
         
         self.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.6 alpha:1.0];
         backgroundNode = [SKNode node];
-//        backgroundNode.yScale = size.height/568.0f;
         backgroundNode.position = CGPointMake(0, size.height-568.0f);
-        
-        /*        ingredientNames = @[@"loaf.png",@"ham.png",@"lettuce.png",@"cheese.png"];
-         sliceNames = @[@"slice.png",@"hams.png",@"leaves.png",@"cheeses.png"];
-         extraNames = @[@"onion.png",@"tomato.png",@"pickle.png"];
-         crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese"];
-         
-         sprites = [[NSMutableArray alloc] initWithCapacity:50];
-         
-         
-         conveyorNode = [[SKNode alloc] init];
-         foodNode = [[SKNode alloc] init];
-         conveyorBelts = [[NSMutableArray alloc] initWithCapacity:10];
-         
-         [self addChild:backgroundNode];
-         
-         backgroundTunes = @[@"entertainer1",@"entertainer2",@"beaumont",@"chattanooga"];*/
         
         soundPlayer = [SoundPlayer sharedPlayer];
         [self addChild:backgroundNode];

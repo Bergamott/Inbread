@@ -427,7 +427,6 @@ static int condimentScores[3] = {5,5,5};
 
 -(void)spawnCondiment
 {
-    NSLog(@"Spawning condiment");
     int cPlane = 1+(arc4random()%(numPlanes-2));
     float cY = planeY[cPlane];
     int cType = [(NSNumber*)[condimentTypes objectAtIndex:arc4random()%condimentTypes.count] intValue];
@@ -468,7 +467,7 @@ static int condimentScores[3] = {5,5,5};
     moveDown.timingMode = SKActionTimingEaseIn;
     
     [cS runAction:[SKAction repeatActionForever:[SKAction sequence:@[moveUp,moveDown,[SKAction scaleXTo:1.1 y:0.75 duration:0.1f],[SKAction scaleXTo:1.0 y:1.0 duration:0.1f]]]]];
-    
+    [soundPlayer playBoingWithNode:cS];
     [condiments addObject:cond];
 }
 
@@ -816,6 +815,10 @@ static int condimentScores[3] = {5,5,5};
             [tmpN2 removeAllActions];
     for (SKNode *tmpN in foodNode.children)
         [tmpN removeAllActions];
+    for (Condiment *cond in condiments)
+    {
+        [cond fadeOut];
+    }
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
     if (myAudioPlayer != NULL)
@@ -859,6 +862,11 @@ static int condimentScores[3] = {5,5,5};
     else
     {
         [self performSelector:@selector(showLevelCompleteDialog) withObject:NULL afterDelay:1.5];
+    }
+    if (condimentTimer)
+    {
+        [condimentTimer invalidate];
+        condimentTimer = NULL;
     }
 }
 

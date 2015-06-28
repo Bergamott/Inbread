@@ -28,6 +28,7 @@
 }
 
 -(void)removeSprite;
+-(void)fadeOut;
 
 @property(nonatomic) int condimentType;
 @property(nonatomic) int plane;
