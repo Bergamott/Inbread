@@ -140,6 +140,7 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
 
     SKSpriteNode *head2 = [self hideSprite:@"headshoulders.png" atX:261.0 andY:107.0];
     SKSpriteNode *smile = [self hideSprite:@"smile.png" atX:261.0 andY:160.0];
+    [self performSelector:@selector(makeStarsOnSprite:) withObject:slice afterDelay:6.0];
     [head2 runAction:[SKAction sequence:@[[SKAction waitForDuration:6.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
     [smile runAction:[SKAction sequence:@[[SKAction waitForDuration:6.5],[SKAction fadeAlphaTo:1.0 duration:0.3],[SKAction runBlock:^{
         [soundPlayer playScoreWithNode:backgroundNode];
@@ -267,6 +268,14 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self endEverything];
+}
+
+-(void)makeStarsOnSprite:(SKSpriteNode*)sp
+{
+    SKEmitterNode *stars = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"starburst" ofType:@"sks"]];
+    stars.position = sp.position;
+    stars.numParticlesToEmit = 10;
+    [backgroundNode addChild:stars];
 }
 
 -(void)endEverything

@@ -38,6 +38,8 @@
 -(void)dropSlice:(SKSpriteNode*)slice height:(float)h;
 -(void)dropGroup:(NSArray*)sprites height:(float)h;
 
+-(void)makeStarsOnSprite:(SKSpriteNode*)sp;
+
 -(void)endEverything;
 
 @property(nonatomic,strong) ViewController *owner;
