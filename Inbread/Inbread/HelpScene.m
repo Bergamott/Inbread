@@ -43,6 +43,7 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
     for (int i=0;i<NUM_HELP_SCENES;i++)
         if (helpScenes[i] == l)
             foundIndex = i;
+    // Temporarily always show
     if (foundIndex >= 0)
     {
         // Update seen help info
@@ -205,6 +206,7 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
                                          [SKAction moveTo:CGPointMake(259.0, 278.0) duration:0.5],
                                          [SKAction fadeAlphaTo:0.0 duration:0.3]]]];
     
+    [self performSelector:@selector(makeStarsOnSprite:) withObject:slice afterDelay:8.0];
     SKSpriteNode *head2 = [self hideSprite:@"headshoulders.png" atX:261.0 andY:107.0];
     SKSpriteNode *smile = [self hideSprite:@"smile.png" atX:261.0 andY:160.0];
     [head2 runAction:[SKAction sequence:@[[SKAction waitForDuration:8.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];

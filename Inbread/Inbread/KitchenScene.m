@@ -329,7 +329,8 @@ static int condimentScores[3] = {5,5,5};
 
 -(void)nextLevel
 {
-    [self setUpWithLevel:level + 1];
+    [owner showKitchenSceneWithLevel:level + 1];
+//    [self setUpWithLevel:level + 1];
 }
 
 -(void)gameLoop:(NSTimer*)t
