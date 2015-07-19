@@ -58,13 +58,15 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
         }
         else
             newSeenHelp = [seenHelp mutableCopy];
-        if ([newSeenHelp characterAtIndex:foundIndex] == '0')
+/*        if ([newSeenHelp characterAtIndex:foundIndex] == '0')
         {
             [newSeenHelp replaceCharactersInRange:NSMakeRange(foundIndex, 1) withString:@"1"];
             [defaults setObject:newSeenHelp forKey:@"seenHelp"];
             [defaults synchronize];
         }
         else
+            foundIndex = -1;*/
+        if (foundIndex == 0)
             foundIndex = -1;
     }
     return foundIndex;
@@ -209,6 +211,7 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
     [self performSelector:@selector(makeStarsOnSprite:) withObject:slice afterDelay:8.0];
     SKSpriteNode *head2 = [self hideSprite:@"headshoulders.png" atX:261.0 andY:107.0];
     SKSpriteNode *smile = [self hideSprite:@"smile.png" atX:261.0 andY:160.0];
+    [self performSelector:@selector(makeStarsOnSprite:) withObject:slice afterDelay:8.0];
     [head2 runAction:[SKAction sequence:@[[SKAction waitForDuration:8.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
     [smile runAction:[SKAction sequence:@[[SKAction waitForDuration:8.5],[SKAction fadeAlphaTo:1.0 duration:0.3],[SKAction runBlock:^{
         [soundPlayer playScoreWithNode:backgroundNode];
