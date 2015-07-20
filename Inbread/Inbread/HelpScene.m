@@ -81,6 +81,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
         [self initialHelpAnimation];
     else if (helpType == TYPE_BREAD_CHEESE)
         [self breadCheeseAnimation];
+    else if (helpType == TYPE_CONDIMENT)
+        [self condimentAnimation];
 }
 
 -(SKSpriteNode*)setSprite:(NSString*)spr atX:(float)x andY:(float)y
@@ -222,6 +224,10 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
                                           ]]];
 }
 
+-(void)condimentAnimation
+{
+    
+}
 
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h
 {

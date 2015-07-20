@@ -10,6 +10,7 @@
 
 #define TYPE_SINGLE_SLICE 0
 #define TYPE_BREAD_CHEESE 1
+#define TYPE_CONDIMENT 2
 
 @class ViewController;
 @class SoundPlayer;
@@ -33,6 +34,7 @@
 -(SKSpriteNode*)hideSprite:(NSString*)spr atX:(float)x andY:(float)y;
 -(void)initialHelpAnimation;
 -(void)breadCheeseAnimation;
+-(void)condimentAnimation;
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h;
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h adjustX:(float)dx;
 -(void)dropSlice:(SKSpriteNode*)slice height:(float)h;
