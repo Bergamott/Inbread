@@ -72,7 +72,7 @@ static int condimentScores[3] = {5,5,5};
         ingredientNames = @[@"loaf.png",@"ham.png",@"lettuce.png",@"cheese.png",@"brownloaf.png",@"chicken.png", @"roast.png"];
         sliceNames = @[@"slice.png",@"hams.png",@"leaves.png",@"cheeses.png",@"brownslice.png",@"chickens.png", @"roasts.png"];
         extraNames = @[@"onion.png",@"tomato.png",@"pickle.png"];
-        crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese",@"crumbs_brownloaf.png", @"crumbs_chicken.png",@"crumbs_roast.png"];
+        crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese",@"crumbs_brownloaf", @"crumbs_chicken",@"crumbs_roast"];
         plusNames = @[@"plus_onion.png",@"plus_tomato.png",@"plus_pickle.png"];
         condimentCrumbNames = @[@"crumbs_onion",@"crumbs_tomato",@"crumbs_pickle"];
         
@@ -512,7 +512,7 @@ static int condimentScores[3] = {5,5,5};
         }
         if (touchF != NULL)
         {
-            if (touchF.overallType >= TYPE_LOAF && touchF.overallType <= TYPE_CHEESE)
+            if (touchF.overallType >= TYPE_LOAF && touchF.overallType < TYPE_FALLING)
             {
                 // Mark touch with scale animation
                 [soundPlayer playChopWithNode:backgroundNode];

@@ -13,6 +13,9 @@
 #define TYPE_HAM 1
 #define TYPE_LETTUCE 2
 #define TYPE_CHEESE 3
+#define TYPE_BROWN_LOAF 4
+#define TYPE_CHICKEN 5
+#define TYPE_ROAST_BEEF 6
 #define TYPE_CATCHING 98
 #define TYPE_FALLING 99
 #define TYPE_COMPOUND 100
@@ -20,6 +23,10 @@
 #define TYPE_HAMS 1
 #define TYPE_LEAVES 2
 #define TYPE_CHEESES 3
+#define TYPE_BROWN_SLICE 4
+#define TYPE_CHICKENS 5
+#define TYPE_ROAST_BEEFS 6
+
 
 @interface Food : NSObject {
  

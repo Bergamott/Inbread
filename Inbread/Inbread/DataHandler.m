@@ -102,10 +102,14 @@
     NSMutableArray *restaurants = [levelDic objectForKey:@"restaurants"];
     for (NSMutableDictionary *tmpD in restaurants)
     {
-        NSMutableArray *levs = [tmpD objectForKey:@"levels"];
-        if (levs.count + levCount > l)
+        if (result == NULL)
         {
-            result = [levs objectAtIndex:l-levCount];
+            NSMutableArray *levs = [tmpD objectForKey:@"levels"];
+            if (levs.count + levCount > l)
+            {
+                result = [levs objectAtIndex:l-levCount];
+            }
+            levCount+=levs.count;
         }
     }
     return result;
@@ -118,10 +122,14 @@
     NSMutableArray *restaurants = [levelDic objectForKey:@"restaurants"];
     for (NSMutableDictionary *tmpD in restaurants)
     {
-        NSMutableArray *levs = [tmpD objectForKey:@"levels"];
-        if (levs.count + levCount > l)
+        if (result == NULL)
         {
-            result = tmpD;
+            NSMutableArray *levs = [tmpD objectForKey:@"levels"];
+            if (levs.count + levCount > l)
+            {
+                result = tmpD;
+            }
+            levCount+=levs.count;
         }
     }
     return result;

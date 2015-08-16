@@ -1,4 +1,13 @@
 {
+    "condiments": {
+        "loaf": 0,
+        "ham": 1,
+        "lettuce": 2,
+        "cheese": 3,
+        "brown loaf": 4,
+        "chicken": 5,
+        "roast beef": 6,
+    },
     "restaurants": [
         {
             "background": "kitchen0.jpg",
@@ -26,7 +35,18 @@
                 {
                     "orders": ["01230","120","0230","010","020"],
                     "belts": [30,-30,30],
-                    "time": 60,
+                    "time": 360,
+                    "plates": 4
+                }
+            ]
+        },
+        {
+            "background": "kitchen1.jpg",
+            "levels": [
+                {
+                    "orders": ["54"],
+                    "belts": [30,-30,30],
+                    "time": 35,
                     "plates": 4
                 }
             ]
