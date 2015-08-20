@@ -88,6 +88,11 @@
     NSTimer *condimentTimer;
     NSMutableArray *condiments;
     
+    NSMutableArray *animals;
+    NSTimer *animalTimer;
+    float animalInterval;
+    NSArray *animalTypes;
+    
     SoundPlayer *soundPlayer;
     AVAudioPlayer *myAudioPlayer;
     NSArray *backgroundTunes;
@@ -109,6 +114,8 @@
 -(void)spawnCondiment;
 -(void)removeCondiment:(Condiment*)cObj;
 -(void)splatCondiment:(Condiment*)cObj withFood:(Food*)fObj;
+
+-(void)spawnAnimal;
 
 -(void)checkPlates;
 
@@ -136,6 +143,9 @@
 @property(nonatomic,strong) AVAudioPlayer *myAudioPlayer;
 @property(nonatomic,strong) NSTimer *condimentTimer;
 @property(nonatomic,strong) NSMutableArray *condiments;
+@property(nonatomic,strong) NSMutableArray *animals;
+@property(nonatomic,strong) NSTimer *animalTimer;
+@property(nonatomic,strong) NSArray *animalTypes;
 
 
 @end

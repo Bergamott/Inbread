@@ -7,6 +7,9 @@
         "brown loaf": 4,
         "chicken": 5,
         "roast beef": 6,
+
+        "fly": 0,
+        "raccoon": 1
     },
     "restaurants": [
         {
@@ -46,7 +49,9 @@
                 {
                     "orders": ["54"],
                     "belts": [30,-30,30],
-                    "time": 35,
+                    "time": 45,
+                    "animalInterval": 15,
+                    "animalTypes": [0],
                     "plates": 4
                 }
             ]

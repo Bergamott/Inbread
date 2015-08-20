@@ -84,6 +84,9 @@
 		9A47DB6E19CF1800005141F8 /* SKEase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A47DB6B19CF1800005141F8 /* SKEase.m */; };
 		9A54285519E347020079B908 /* fragment.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A666C7919D8BC300004EF15 /* fragment.png */; };
 		9A54285619E347040079B908 /* fragment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A666C7A19D8BC300004EF15 /* fragment@2x.png */; };
+		9A599E101B86802D006FEEBB /* Fly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A599E0F1B86802D006FEEBB /* Fly.m */; };
+		9A5F806B1B85317B00969DF6 /* Animal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5F806A1B85317B00969DF6 /* Animal.m */; };
+		9A6E7A4C1B83CC8A0040F0A7 /* Raccoon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7A4B1B83CC8A0040F0A7 /* Raccoon.m */; };
 		9A6F32B31AC89BEE00F21CFD /* level.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F32B21AC89BEE00F21CFD /* level.wav */; };
 		9A798DCA1A79982E008E0840 /* help.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9A798DC91A79982E008E0840 /* help.atlas */; };
 		9A8412A71AD2E279006FE31E /* plus0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A84129F1AD2E279006FE31E /* plus0.png */; };
@@ -299,8 +302,14 @@
 		9A47DB6A19CF1800005141F8 /* SKEase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEase.h; sourceTree = "<group>"; };
 		9A47DB6B19CF1800005141F8 /* SKEase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEase.m; sourceTree = "<group>"; };
 		9A47DB6C19CF1800005141F8 /* SpriteKit-Easing-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpriteKit-Easing-Prefix.pch"; sourceTree = "<group>"; };
+		9A599E0E1B86802D006FEEBB /* Fly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fly.h; sourceTree = "<group>"; };
+		9A599E0F1B86802D006FEEBB /* Fly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fly.m; sourceTree = "<group>"; };
+		9A5F80691B85317B00969DF6 /* Animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animal.h; sourceTree = "<group>"; };
+		9A5F806A1B85317B00969DF6 /* Animal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animal.m; sourceTree = "<group>"; };
 		9A666C7919D8BC300004EF15 /* fragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fragment.png; sourceTree = "<group>"; };
 		9A666C7A19D8BC300004EF15 /* fragment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fragment@2x.png"; sourceTree = "<group>"; };
+		9A6E7A4A1B83CC8A0040F0A7 /* Raccoon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Raccoon.h; sourceTree = "<group>"; };
+		9A6E7A4B1B83CC8A0040F0A7 /* Raccoon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Raccoon.m; sourceTree = "<group>"; };
 		9A6F32B21AC89BEE00F21CFD /* level.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = level.wav; sourceTree = "<group>"; };
 		9A798DC91A79982E008E0840 /* help.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = help.atlas; path = Inbread/help.atlas; sourceTree = "<group>"; };
 		9A84129F1AD2E279006FE31E /* plus0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus0.png; sourceTree = "<group>"; };
@@ -621,6 +630,12 @@
 				9AED49DA19AA347900EBD460 /* Food.m */,
 				9A3B9A7C1AE3F07100C6CC32 /* Condiment.h */,
 				9A3B9A7D1AE3F07100C6CC32 /* Condiment.m */,
+				9A5F80691B85317B00969DF6 /* Animal.h */,
+				9A5F806A1B85317B00969DF6 /* Animal.m */,
+				9A599E0E1B86802D006FEEBB /* Fly.h */,
+				9A599E0F1B86802D006FEEBB /* Fly.m */,
+				9A6E7A4A1B83CC8A0040F0A7 /* Raccoon.h */,
+				9A6E7A4B1B83CC8A0040F0A7 /* Raccoon.m */,
 				9AE3619119E1813900A826E4 /* IntroScene.h */,
 				9AE3619219E1813900A826E4 /* IntroScene.m */,
 				9A85F07719E186F200311520 /* Hillbilly.h */,
@@ -1071,12 +1086,15 @@
 				9A8773C319E4905400ABFD45 /* DataHandler.m in Sources */,
 				9AC7902019F1B51300EF9D6D /* KitchenScene.m in Sources */,
 				9A47DB6D19CF1800005141F8 /* easing.c in Sources */,
+				9A599E101B86802D006FEEBB /* Fly.m in Sources */,
 				9A85F07519E1854500311520 /* IntroScene.m in Sources */,
 				9AED49DB19AA347900EBD460 /* Food.m in Sources */,
 				9AC27B9819980A1100D7F84B /* MyScene.m in Sources */,
 				9AC27B9519980A1100D7F84B /* ViewController.m in Sources */,
 				9AC27B8F19980A1100D7F84B /* AppDelegate.m in Sources */,
 				9AC7EC831A18057D000FD6F5 /* LevelViewController.m in Sources */,
+				9A5F806B1B85317B00969DF6 /* Animal.m in Sources */,
+				9A6E7A4C1B83CC8A0040F0A7 /* Raccoon.m in Sources */,
 				9A47DB6E19CF1800005141F8 /* SKEase.m in Sources */,
 				9AC27B8B19980A1100D7F84B /* main.m in Sources */,
 				9A3B9A7E1AE3F07100C6CC32 /* Condiment.m in Sources */,

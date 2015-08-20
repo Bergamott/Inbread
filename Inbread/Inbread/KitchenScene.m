@@ -57,6 +57,9 @@
 @synthesize myAudioPlayer;
 @synthesize condimentTimer;
 @synthesize condiments;
+@synthesize animals;
+@synthesize animalTimer;
+@synthesize animalTypes;
 
 //static float sliceYMargin[4] = {1,1,1,1};
 static float sliceHeight[7] = {11,11,11,11,11,11,11};
@@ -78,6 +81,7 @@ static int condimentScores[3] = {5,5,5};
         
         sprites = [[NSMutableArray alloc] initWithCapacity:50];
         condiments = [[NSMutableArray alloc] initWithCapacity:20];
+        animals = [[NSMutableArray alloc] initWithCapacity:20];
         
         backgroundNode = [SKNode node];
         screenHeight = size.height;
@@ -109,6 +113,7 @@ static int condimentScores[3] = {5,5,5};
     // Clear arrays
     [sprites removeAllObjects];
     [condiments removeAllObjects];
+    [animals removeAllObjects];
     [conveyorBelts removeAllObjects];
     for (int i=0;i<MAX_SANDWICHES;i++)
     {
@@ -279,6 +284,13 @@ static int condimentScores[3] = {5,5,5};
     condimentTypes = [levDic objectForKey:@"condiments"];
     condimentInterval = [(NSNumber*)[levDic objectForKey:@"condimentInterval"] floatValue];
     
+    // Animals
+    animalInterval = [(NSNumber*)[levDic objectForKey:@"animalInterval"] floatValue];
+    if (animalInterval > 0)
+        animalTypes = [levDic objectForKey:@"animalTypes"];
+    else
+        animalTypes = NULL;
+    
     [backgroundNode addChild:conveyorNode];
     [backgroundNode addChild:foodNode];
     
@@ -302,6 +314,11 @@ static int condimentScores[3] = {5,5,5};
     {
         condimentTimer = [NSTimer scheduledTimerWithTimeInterval: condimentInterval target: self
                                                         selector: @selector(spawnCondiment) userInfo: nil repeats: YES];
+    }
+    if (animalInterval != 0)
+    {
+        animalTimer = [NSTimer scheduledTimerWithTimeInterval: animalInterval target: self
+                                                        selector: @selector(spawnAnimal) userInfo: nil repeats: YES];
     }
     
     zCounter = 0;
@@ -490,6 +507,11 @@ static int condimentScores[3] = {5,5,5};
     [fObj addCondimentType:cObj.condimentType withSprite:plusSprite];
     [soundPlayer playSplatWithNode:foodNode];
     [self removeCondiment:cObj];
+}
+
+-(void)spawnAnimal
+{
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -810,6 +832,11 @@ static int condimentScores[3] = {5,5,5};
         [condimentTimer invalidate];
         condimentTimer = NULL;
     }
+    if (animalTimer)
+    {
+        [animalTimer invalidate];
+        animalTimer = NULL;
+    }
     [backgroundNode removeAllActions];
     for (SKNode *tmpN in conveyorNode.children)
         for (SKNode *tmpN2 in tmpN.children)
@@ -868,6 +895,11 @@ static int condimentScores[3] = {5,5,5};
     {
         [condimentTimer invalidate];
         condimentTimer = NULL;
+    }
+    if (animalTimer)
+    {
+        [animalTimer invalidate];
+        animalTimer = NULL;
     }
 }
 
