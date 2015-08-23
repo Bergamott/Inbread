@@ -13,6 +13,8 @@
 #import "ViewController.h"
 #import "SoundPlayer.h"
 #import "Condiment.h"
+#import "Animal.h"
+#import "Fly.h"
 
 #define FOOD_START_X -40.0
 #define FOOD_END_X 360.0
@@ -39,6 +41,8 @@
 #define CONDIMENT_Y_MARGIN 40.0
 #define CONDIMENT_HIT_DISTANCE 25.0
 #define CONDIMENT_SPEED_RATIO 1.6f
+
+#define FLY_INDEX 3
 
 @implementation KitchenScene
 
@@ -76,7 +80,7 @@ static int condimentScores[3] = {5,5,5};
         sliceNames = @[@"slice.png",@"hams.png",@"leaves.png",@"cheeses.png",@"brownslice.png",@"chickens.png", @"roasts.png"];
         extraNames = @[@"onion.png",@"tomato.png",@"pickle.png"];
         crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese",@"crumbs_brownloaf", @"crumbs_chicken",@"crumbs_roast"];
-        plusNames = @[@"plus_onion.png",@"plus_tomato.png",@"plus_pickle.png"];
+        plusNames = @[@"plus_onion.png",@"plus_tomato.png",@"plus_pickle.png",@"flyhead.png"];
         condimentCrumbNames = @[@"crumbs_onion",@"crumbs_tomato",@"crumbs_pickle"];
         
         sprites = [[NSMutableArray alloc] initWithCapacity:50];
@@ -88,6 +92,8 @@ static int condimentScores[3] = {5,5,5};
  //       backgroundNode.yScale = size.height/568.0f;
         
         myAtlas = [SKTextureAtlas atlasNamed:@"pieces"];
+        flyFrames = @[[myAtlas textureNamed:@"fly0.png"],[myAtlas textureNamed:@"fly1.png"]];
+
 
         conveyorNode = [[SKNode alloc] init];
         foodNode = [[SKNode alloc] init];
@@ -511,7 +517,15 @@ static int condimentScores[3] = {5,5,5};
 
 -(void)spawnAnimal
 {
-    
+    int aType = [(NSNumber*)[animalTypes objectAtIndex:arc4random()%animalTypes.count] intValue];
+    if (aType == 0) // Fly
+    {
+        Fly *fAn = [[Fly alloc] init];
+        fAn.sprite = [SKSpriteNode spriteNodeWithTexture:[flyFrames objectAtIndex:0]];
+        [fAn startAtX:160.0 andY:screenHeight+40.0 withFrames:flyFrames];
+        [foodNode addChild:fAn.sprite];
+        [animals addObject:fAn];
+    }
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
