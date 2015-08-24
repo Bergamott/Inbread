@@ -10,6 +10,9 @@
 #import <SpriteKit/SpriteKit.h>
 #import "Animal.h"
 
+#define FLY_SCREEN_MARGIN 20.0
+#define FLY_SPEED 80.0
+
 @interface Fly : Animal {
     
 }

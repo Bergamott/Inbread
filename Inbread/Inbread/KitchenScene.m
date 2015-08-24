@@ -520,11 +520,25 @@ static int condimentScores[3] = {5,5,5};
     int aType = [(NSNumber*)[animalTypes objectAtIndex:arc4random()%animalTypes.count] intValue];
     if (aType == 0) // Fly
     {
-        Fly *fAn = [[Fly alloc] init];
-        fAn.sprite = [SKSpriteNode spriteNodeWithTexture:[flyFrames objectAtIndex:0]];
-        [fAn startAtX:160.0 andY:screenHeight+40.0 withFrames:flyFrames];
-        [foodNode addChild:fAn.sprite];
-        [animals addObject:fAn];
+        // Track down food to land on
+        Food *targetFood = NULL;
+        for (Food *tmpF in sprites)
+        {
+            if (tmpF.overallType == TYPE_COMPOUND && tmpF.plane > 0)
+            {
+                // See if it can be targeted
+                
+            }
+        }
+        if (targetFood != NULL)
+        {
+            Fly *fAn = [[Fly alloc] init];
+            fAn.targetFood = targetFood;
+            fAn.sprite = [SKSpriteNode spriteNodeWithTexture:[flyFrames objectAtIndex:0]];
+            [fAn startAtX:160.0 andY:screenHeight+40.0 withFrames:flyFrames];
+            [foodNode addChild:fAn.sprite];
+            [animals addObject:fAn];
+        }
     }
 }
 
