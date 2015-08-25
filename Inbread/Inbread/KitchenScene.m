@@ -593,6 +593,31 @@ static int condimentScores[3] = {5,5,5};
                 [self dropFood:touchF];
             }
         }
+        // Check animal touches
+        Animal *touchA = NULL;
+        for (Animal *tmpA in animals)
+            if ([tmpA isTouchedAtX:location.x andY:location.y])
+            {
+                touchA = tmpA;
+                break;
+            }
+        if (touchA != NULL)
+        {
+            switch(touchA.animalType)
+            {
+                case ANIMAL_FLY:
+                {
+                    SKEmitterNode *splat = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"crumbs_tomato" ofType:@"sks"]];
+                    splat.position = CGPointMake(touchA.sprite.position.x,touchA.sprite.position.y+CRUMB_OFFSET);
+                    [foodNode addChild:splat];
+                    [touchA removeSprite];
+                    [animals removeObject:touchA];
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
     }
 }
 

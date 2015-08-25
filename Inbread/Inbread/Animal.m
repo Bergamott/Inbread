@@ -12,6 +12,7 @@
 
 @synthesize sprite;
 @synthesize targetFood;
+@synthesize animalType;
 
 -(void)removeSprite
 {

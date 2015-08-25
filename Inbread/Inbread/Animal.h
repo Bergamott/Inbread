@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 
+#define ANIMAL_FLY 1
+
 @class Food;
 
 @interface Animal : NSObject {
     
     SKSpriteNode *sprite;
-    
+    int animalType;
     Food *targetFood;
  
 }
@@ -24,5 +26,6 @@
 
 @property(nonatomic,strong) SKSpriteNode *sprite;
 @property(nonatomic,strong) Food *targetFood;
+@property(nonatomic) int animalType;
 
 @end

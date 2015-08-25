@@ -14,6 +14,14 @@
 
 @implementation Fly
 
+-(id)init
+{
+    if (self = [super init]) {
+        animalType = ANIMAL_FLY;
+    }
+    return self;
+}
+
 -(void)startAtX:(float)x andY:(float)y withFrames:(NSArray*)f
 {
     sprite.position = CGPointMake(x, y);
