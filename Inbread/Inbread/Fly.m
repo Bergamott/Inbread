@@ -7,16 +7,17 @@
 //
 
 #import "Fly.h"
+#import "Food.h"
+#import "KitchenScene.h"
 
 #define FLAP_FRAME_TIME 0.05
 #define WOBBLE_TIME 0.15
-#define FLY_RADIUS 20.0
 
 @implementation Fly
 
--(id)init
+-(id)initWithOwner:(KitchenScene*)o;
 {
-    if (self = [super init]) {
+    if (self = [super initWithOwner:o]) {
         animalType = ANIMAL_FLY;
     }
     return self;
@@ -29,9 +30,10 @@
     SKAction *xWobbleLeft = [SKAction moveToX:x-10.0f duration:WOBBLE_TIME];
     xWobbleRight.timingMode = SKActionTimingEaseInEaseOut;
     xWobbleLeft.timingMode = SKActionTimingEaseInEaseOut;
+    float targetY = targetFood.holderNode.position.y+targetFood.height+FLY_RADIUS;
     [sprite runAction:[SKAction group:@[[SKAction repeatActionForever:[SKAction animateWithTextures:f timePerFrame:FLAP_FRAME_TIME]],
                                         [SKAction repeatActionForever:[SKAction sequence:@[xWobbleRight,xWobbleLeft]]],
-                                        [SKAction moveToY:-40.0 duration:6.0]]]];
+                                        [SKAction sequence:@[[SKAction moveToY:targetY duration:(y-targetY)/FLY_SPEED],[SKAction runBlock:^{ [owner flyLanded:self];}]]]]]];
 }
 
 -(BOOL)isTouchedAtX:(float)x andY:(float)y
@@ -39,6 +41,5 @@
     return (x>sprite.position.x-FLY_RADIUS && x<sprite.position.x+FLY_RADIUS &&
             y>sprite.position.y-FLY_RADIUS && y<sprite.position.y+FLY_RADIUS);
 }
-
 
 @end

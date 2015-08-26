@@ -50,7 +50,7 @@
                     "orders": ["54"],
                     "belts": [30,-30,30],
                     "time": 45,
-                    "animalInterval": 15,
+                    "animalInterval": 5,
                     "animalTypes": [0],
                     "plates": 4
                 }

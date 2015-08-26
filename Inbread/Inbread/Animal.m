@@ -8,11 +8,21 @@
 
 #import "Animal.h"
 #import "Food.h"
+#import "KitchenScene.h"
+
 @implementation Animal
 
 @synthesize sprite;
 @synthesize targetFood;
 @synthesize animalType;
+
+-(id)initWithOwner:(KitchenScene*)o;
+{
+    if (self = [super init]) {
+        owner = o;
+    }
+    return self;
+}
 
 -(void)removeSprite
 {

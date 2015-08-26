@@ -13,14 +13,18 @@
 
 @class Food;
 
+@class KitchenScene;
+
 @interface Animal : NSObject {
     
     SKSpriteNode *sprite;
     int animalType;
     Food *targetFood;
  
+    KitchenScene *owner;
 }
 
+-(id)initWithOwner:(KitchenScene*)o;
 -(void)removeSprite;
 -(BOOL)isTouchedAtX:(float)x andY:(float)y;
 

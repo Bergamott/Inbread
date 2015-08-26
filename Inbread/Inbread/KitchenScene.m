@@ -522,24 +522,41 @@ static int condimentScores[3] = {5,5,5};
     {
         // Track down food to land on
         Food *targetFood = NULL;
+        float targetX = 0;
         for (Food *tmpF in sprites)
         {
             if (tmpF.overallType == TYPE_COMPOUND && tmpF.plane > 0)
             {
                 // See if it can be targeted
-                
+                float yDiff = FLY_SCREEN_MARGIN + screenHeight - (tmpF.holderNode.position.y+tmpF.height+FLY_RADIUS);
+                targetX = tmpF.holderNode.position.x+(yDiff/FLY_SPEED)*beltVelocities[tmpF.plane];
+                if (targetX > FLY_RADIUS && targetX < 320.0-FLY_RADIUS)
+                {
+                    targetFood = tmpF;
+                    break;
+                }
             }
         }
         if (targetFood != NULL)
         {
-            Fly *fAn = [[Fly alloc] init];
+            Fly *fAn = [[Fly alloc] initWithOwner:self];
             fAn.targetFood = targetFood;
             fAn.sprite = [SKSpriteNode spriteNodeWithTexture:[flyFrames objectAtIndex:0]];
-            [fAn startAtX:160.0 andY:screenHeight+40.0 withFrames:flyFrames];
+            [fAn startAtX:targetX andY:screenHeight+FLY_SCREEN_MARGIN withFrames:flyFrames];
             [foodNode addChild:fAn.sprite];
             [animals addObject:fAn];
         }
     }
+}
+
+-(void)flyLanded:(Fly*)theFly
+{
+    SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[plusNames objectAtIndex:FLY_INDEX]]];
+    plusSprite.anchorPoint = CGPointMake(0, 0.5f);
+    [plusSprite runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction rotateToAngle:0.2 duration:0.3],[SKAction rotateToAngle:-0.2 duration:0.3]]]]];
+    [theFly.targetFood addCondimentType:FLY_INDEX withSprite:plusSprite];
+    [theFly removeSprite];
+    [animals removeObject:theFly];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

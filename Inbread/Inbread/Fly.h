@@ -12,6 +12,7 @@
 
 #define FLY_SCREEN_MARGIN 20.0
 #define FLY_SPEED 80.0
+#define FLY_RADIUS 20.0
 
 @interface Fly : Animal {
     

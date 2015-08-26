@@ -23,6 +23,7 @@
 @class ViewController;
 @class SoundPlayer;
 @class Condiment;
+@class Fly;
 
 @interface KitchenScene : SKScene {
     
@@ -117,6 +118,7 @@
 -(void)splatCondiment:(Condiment*)cObj withFood:(Food*)fObj;
 
 -(void)spawnAnimal;
+-(void)flyLanded:(Fly*)theFly;
 
 -(void)checkPlates;
 
