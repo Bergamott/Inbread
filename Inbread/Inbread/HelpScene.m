@@ -10,8 +10,9 @@
 #import "ViewController.h"
 #import "SoundPlayer.h"
 #import "SKEase.h"
+#import "Condiment.h"
 
-#define NUM_HELP_SCENES 2
+#define NUM_HELP_SCENES 3
 
 @implementation HelpScene
 
@@ -19,7 +20,7 @@
 @synthesize owner;
 @synthesize backgroundNode;
 
-static int helpScenes[NUM_HELP_SCENES] = {0,1};
+static int helpScenes[NUM_HELP_SCENES] = {0,1,2};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -226,7 +227,55 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
 
 -(void)condimentAnimation
 {
+    [self setSprite:@"plane.png" atX:170.0 andY:345.0];
+    [self setSprite:@"wideplane.png" atX:150.0 andY:227.0];
+    SKSpriteNode *tomato = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"tomato.png"]];
+    tomato.anchorPoint = CGPointMake(0.5, 0);
     
+    SKNode *condimentNode = [SKNode node];
+    condimentNode.position = CGPointMake(75.0, 255.0);
+    [condimentNode addChild:tomato];
+    [backgroundNode addChild:condimentNode];
+    
+    SKSpriteNode *slice = [self setSprite:@"slice.png" atX:200.0 andY:372.0];
+    
+    SKSpriteNode *hand = [self hideSprite:@"hand.png" atX:299.0 andY:374.0];
+    hand.zPosition = 10.0;
+    
+    SKAction *moveUp = [SKAction moveByX:0 y:CONDIMENT_JUMP_HEIGHT duration:CONDIMENT_JUMP_TIME];
+    moveUp.timingMode = SKActionTimingEaseOut;
+    SKAction *moveDown = [SKAction moveByX:0 y:-CONDIMENT_JUMP_HEIGHT duration:CONDIMENT_JUMP_TIME];
+    moveDown.timingMode = SKActionTimingEaseIn;
+    
+    [tomato runAction:[SKAction repeatActionForever:[SKAction sequence:@[moveUp,moveDown,[SKAction scaleXTo:1.1 y:0.75 duration:0.1f],[SKAction scaleXTo:1.0 y:1.0 duration:0.1f]]]]];
+    [condimentNode runAction:[SKAction sequence:@[
+                                                  [SKAction moveToX:slice.position.x duration:3.0],
+                                                  [SKAction runBlock:^{
+        [self putSplat:@"crumbs_tomato" atX:slice.position.x andY:265.0];
+                                                }],
+                                                  [SKAction removeFromParent]
+                                                  ]]];
+    
+    [hand runAction:[SKAction sequence:@[[SKAction waitForDuration:1.7],
+                                         [SKAction fadeAlphaTo:1.0 duration:0.3],
+                                         [SKAction moveTo:CGPointMake(240.0, 354.0) duration:0.5],
+                                         [SKAction runBlock:^{
+        [self dropGroup:@[slice] height:117.0];
+    }],
+                                         [SKAction waitForDuration:0.2],
+                                         [SKAction moveTo:CGPointMake(299.0, 374.0) duration:0.5],
+                                         [SKAction fadeAlphaTo:0.0 duration:0.3],
+                                         [SKAction waitForDuration:4.5],
+                                         [SKAction runBlock:^{
+        [self endEverything];
+    }]
+                                         ]]];
+
+    SKSpriteNode *plusSprite = [self hideSprite:@"plus_tomato.png" atX:190.0 andY:286.0];
+    plusSprite.anchorPoint = CGPointMake(0, 0.5f);
+    [plusSprite runAction:[SKAction sequence:@[[SKAction waitForDuration:3.8],
+                                               [SKAction fadeAlphaTo:1.0 duration:0.05],
+                                               [SKAction repeatActionForever:[SKAction sequence:@[[SKAction rotateToAngle:0.2 duration:0.3],[SKAction rotateToAngle:-0.2 duration:0.3]]]]]]];
 }
 
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h
@@ -274,6 +323,14 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1};
         [slice runAction:[SKEase MoveToWithNode:slice EaseFunction:CurveTypeCartoony Mode:EaseOut Time:0.75 ToVector:CGVectorMake(slice.position.x, slice.position.y-h)]];
     }
     [soundPlayer playLandWithDelay:0.67 withNode:backgroundNode];
+}
+
+-(void)putSplat:(NSString*)cName atX:(float)x andY:(float)y
+{
+    SKEmitterNode *crumbs = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:cName ofType:@"sks"]];
+    crumbs.position = CGPointMake(x,y);
+    [backgroundNode addChild:crumbs];
+    [soundPlayer playSplatWithNode:backgroundNode];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
