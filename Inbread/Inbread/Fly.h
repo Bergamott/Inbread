@@ -19,5 +19,6 @@
 }
 
 -(void)startAtX:(float)x andY:(float)y withFrames:(NSArray*)f;
+-(void)flyAwayToX:(float)x andY:(float)y withFrames:(NSArray*)f;
 
 @end

@@ -549,14 +549,40 @@ static int condimentScores[3] = {5,5,5};
     }
 }
 
+-(void)callOffAnimalAttackForFood:(Food*)f
+{
+    for (Animal *tmpA in animals)
+        if ([tmpA.targetFood isEqual:f])
+        {
+            switch(tmpA.animalType)
+            {
+                case ANIMAL_FLY:
+                {
+                    float targetX = (tmpA.sprite.position.x < 160.0)?-2.0*FLY_RADIUS:320.0+2.0*FLY_RADIUS;
+                    [(Fly*)tmpA flyAwayToX:targetX andY:tmpA.sprite.position.y+200.0 withFrames:flyFrames];
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+}
+
 -(void)flyLanded:(Fly*)theFly
 {
-    SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[plusNames objectAtIndex:FLY_INDEX]]];
-    plusSprite.anchorPoint = CGPointMake(0, 0.5f);
+//    SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[plusNames objectAtIndex:FLY_INDEX]]];
+    SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"fly1.png"]];
+    plusSprite.anchorPoint = CGPointMake(0, 1.0f);
     [plusSprite runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction rotateToAngle:0.2 duration:0.3],[SKAction rotateToAngle:-0.2 duration:0.3]]]]];
     [theFly.targetFood addCondimentType:FLY_INDEX withSprite:plusSprite];
-    [theFly removeSprite];
-    [animals removeObject:theFly];
+    [self removeAnimal:theFly];
+    [soundPlayer playHijackWithNode:backgroundNode];
+}
+
+-(void)removeAnimal:(Animal*)a
+{
+    [a removeSprite];
+    [animals removeObject:a];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -604,6 +630,7 @@ static int condimentScores[3] = {5,5,5};
             }
             else if (touchF.overallType == TYPE_COMPOUND && touchF.plane > 0)
             {
+                [self callOffAnimalAttackForFood:touchF];
                 [soundPlayer playKnockWithNode:backgroundNode];
                 [touchF.holderNode removeAllActions];
                 touchF.plane--;
@@ -629,6 +656,7 @@ static int condimentScores[3] = {5,5,5};
                     [foodNode addChild:splat];
                     [touchA removeSprite];
                     [animals removeObject:touchA];
+                    [soundPlayer playSwatWithNode:backgroundNode];
                     break;
                 }
                 default:
@@ -804,11 +832,15 @@ static int condimentScores[3] = {5,5,5};
                     }
                 }
             
-            if (numVisibleOrders > 0 && mismatches == numVisibleOrders) // Unworkable combination
+            BOOL contaminated = FALSE;
+            for (int i=0;i<tmpF.plusCount;i++)
+                if ([tmpF getPlusNum:i] == FLY_INDEX)
+                    contaminated = TRUE;
+            
+            if (contaminated || (numVisibleOrders > 0 && mismatches == numVisibleOrders)) // Unworkable combination or contaminated with flies
             {
                 [soundPlayer playErrorWithNode:backgroundNode];
                 tmpF.plane = -1;
-                NSLog(@"Number of mismatches: %d",mismatches);
                 SKSpriteNode *handSprite = [SKSpriteNode spriteNodeWithImageNamed:@"sweephand.png"];
                 handSprite.anchorPoint = CGPointMake(0.5, 0);
                 handSprite.position = CGPointMake(tmpF.holderNode.position.x, -30.0);

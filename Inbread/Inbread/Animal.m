@@ -37,4 +37,10 @@
     return FALSE;
 }
 
+-(void)callOffAttack
+{
+    [sprite removeAllActions];
+    targetFood = NULL;
+}
+
 @end

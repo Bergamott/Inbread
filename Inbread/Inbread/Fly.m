@@ -11,7 +11,7 @@
 #import "KitchenScene.h"
 
 #define FLAP_FRAME_TIME 0.05
-#define WOBBLE_TIME 0.15
+#define WOBBLE_TIME 0.45
 
 @implementation Fly
 
@@ -40,6 +40,14 @@
 {
     return (x>sprite.position.x-FLY_RADIUS && x<sprite.position.x+FLY_RADIUS &&
             y>sprite.position.y-FLY_RADIUS && y<sprite.position.y+FLY_RADIUS);
+}
+
+-(void)flyAwayToX:(float)x andY:(float)y withFrames:(NSArray*)f;
+{
+    [super callOffAttack];
+
+    [sprite runAction:[SKAction group:@[[SKAction repeatActionForever:[SKAction animateWithTextures:f timePerFrame:FLAP_FRAME_TIME]],
+                                        [SKAction sequence:@[[SKAction moveTo:CGPointMake(x,y) duration:250.0/FLY_SPEED],[SKAction runBlock:^{ [owner removeAnimal:self];}]]]]]];
 }
 
 @end

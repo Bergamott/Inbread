@@ -27,6 +27,7 @@
 -(id)initWithOwner:(KitchenScene*)o;
 -(void)removeSprite;
 -(BOOL)isTouchedAtX:(float)x andY:(float)y;
+-(void)callOffAttack;
 
 @property(nonatomic,strong) SKSpriteNode *sprite;
 @property(nonatomic,strong) Food *targetFood;

@@ -122,5 +122,17 @@
     }
 }
 
+-(void)playHijackWithNode:(SKNode*)skn;
+{
+    if (soundOn)
+        [skn runAction:[SKAction playSoundFileNamed:@"hijack.wav" waitForCompletion:FALSE]];
+}
+
+-(void)playSwatWithNode:(SKNode*)skn
+{
+    if (soundOn)
+        [skn runAction:[SKAction playSoundFileNamed:@"swat.wav" waitForCompletion:FALSE]];
+}
+
 
 @end
