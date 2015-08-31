@@ -12,7 +12,7 @@
 #import "SKEase.h"
 #import "Condiment.h"
 
-#define NUM_HELP_SCENES 3
+#define NUM_HELP_SCENES 4
 
 @implementation HelpScene
 
@@ -20,7 +20,7 @@
 @synthesize owner;
 @synthesize backgroundNode;
 
-static int helpScenes[NUM_HELP_SCENES] = {0,1,2};
+static int helpScenes[NUM_HELP_SCENES] = {0,1,2,3};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -70,7 +70,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,2};
         if (foundIndex == 0)
             foundIndex = -1;
     }
-    return foundIndex;
+    return 3; // Test
+//    return foundIndex;
 }
 
 -(void)setUpWithType:(int)t
@@ -84,6 +85,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,2};
         [self breadCheeseAnimation];
     else if (helpType == TYPE_CONDIMENT)
         [self condimentAnimation];
+    else if (helpType == TYPE_FLY)
+        [self flyAnimation];
 }
 
 -(SKSpriteNode*)setSprite:(NSString*)spr atX:(float)x andY:(float)y
@@ -277,6 +280,15 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,2};
                                                [SKAction fadeAlphaTo:1.0 duration:0.05],
                                                [SKAction repeatActionForever:[SKAction sequence:@[[SKAction rotateToAngle:0.2 duration:0.3],[SKAction rotateToAngle:-0.2 duration:0.3]]]]]]];
 }
+
+-(void)flyAnimation
+{
+    [self setSprite:@"plane.png" atX:160.0 andY:325.0];
+    [self setSprite:@"plane.png" atX:160.0 andY:217.0];
+    [self setSprite:@"slice.png" atX:160.0 andY:243.0];
+    SKSpriteNode *cheeses = [self setSprite:@"cheeses.png" atX:160.0 andY:351.0];
+}
+
 
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h
 {
