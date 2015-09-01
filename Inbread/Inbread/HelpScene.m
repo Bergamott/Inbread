@@ -287,6 +287,33 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,2,3};
     [self setSprite:@"plane.png" atX:160.0 andY:217.0];
     [self setSprite:@"slice.png" atX:160.0 andY:243.0];
     SKSpriteNode *cheeses = [self setSprite:@"cheeses.png" atX:160.0 andY:351.0];
+    SKSpriteNode *hand = [self hideSprite:@"hand.png" atX:259.0 andY:359.0];
+    hand.zPosition = 10.0;
+
+    SKSpriteNode *fly = [self setSprite:@"fly0.png" atX:160.0 andY:self.frame.size.height+30.0];
+    SKAction *xWobbleRight = [SKAction moveToX:150.0f duration:0.45f];
+    SKAction *xWobbleLeft = [SKAction moveToX:170.0f duration:0.45f];
+    xWobbleRight.timingMode = SKActionTimingEaseInEaseOut;
+    xWobbleLeft.timingMode = SKActionTimingEaseInEaseOut;
+    NSArray *flyFrames = @[[myAtlas textureNamed:@"fly0.png"],[myAtlas textureNamed:@"fly1.png"]];
+    [fly runAction:[SKAction group:@[[SKAction repeatActionForever:[SKAction animateWithTextures:flyFrames timePerFrame:0.05f]],
+                                        [SKAction repeatActionForever:[SKAction sequence:@[xWobbleRight,xWobbleLeft]]],
+                                        [SKAction moveToY:370.0 duration:3.0f]]]];
+    
+    [hand runAction:[SKAction sequence:@[[SKAction waitForDuration:2.0],
+                                         [SKAction fadeAlphaTo:1.0 duration:0.3],
+                                         [SKAction moveTo:CGPointMake(200.0, 339.0) duration:0.5],
+                                         [SKAction runBlock:^{
+        [fly removeAllActions];
+        [self dropSlice:cheeses height:97.0];
+        [fly runAction:[SKAction group:@[[SKAction repeatActionForever:[SKAction animateWithTextures:flyFrames timePerFrame:0.05f]],
+                                         [SKAction moveByX:-200.0 y:150.0 duration:1.8]]]];
+    }],
+                                         [SKAction waitForDuration:0.2],
+                                         [SKAction moveTo:CGPointMake(259.0, 359.0) duration:0.5],
+                                         [SKAction fadeAlphaTo:0.0 duration:0.3],
+                                         [SKAction moveByX:0 y:20.0 duration:0.3]
+                                         ]]];
 }
 
 
