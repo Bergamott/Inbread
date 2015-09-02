@@ -42,6 +42,7 @@
 -(void)dropSlice:(SKSpriteNode*)slice height:(float)h;
 -(void)dropGroup:(NSArray*)sprites height:(float)h;
 -(void)putSplat:(NSString*)cName atX:(float)x andY:(float)y;
+-(void)putSwat:(NSString*)cName atX:(float)x andY:(float)y;
 
 -(void)makeStarsOnSprite:(SKSpriteNode*)sp;
 

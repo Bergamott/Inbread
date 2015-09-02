@@ -306,13 +306,32 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,2,3};
                                          [SKAction runBlock:^{
         [fly removeAllActions];
         [self dropSlice:cheeses height:97.0];
-        [fly runAction:[SKAction group:@[[SKAction repeatActionForever:[SKAction animateWithTextures:flyFrames timePerFrame:0.05f]],
-                                         [SKAction moveByX:-200.0 y:150.0 duration:1.8]]]];
+        [fly runAction:[SKAction group:@[[SKAction repeatActionForever:[SKAction animateWithTextures:flyFrames timePerFrame:0.05f]],[SKAction sequence:@[
+                                         [SKAction moveByX:-200.0 y:150.0 duration:1.8],
+                                         [SKAction moveToY:self.frame.size.height+30.0 duration:0.1],
+                                         [SKAction moveToX:160.0 duration:0.1],
+                                         [SKAction group:@[[SKAction repeatActionForever:[SKAction sequence:@[xWobbleRight,xWobbleLeft]]],
+                                                           [SKAction moveToY:375.0 duration:2.7f]]]
+                                         ]]]]];
     }],
                                          [SKAction waitForDuration:0.2],
                                          [SKAction moveTo:CGPointMake(259.0, 359.0) duration:0.5],
                                          [SKAction fadeAlphaTo:0.0 duration:0.3],
-                                         [SKAction moveByX:0 y:20.0 duration:0.3]
+                                         [SKAction moveByX:0 y:20.0 duration:3.0],
+                                         [SKAction fadeAlphaTo:1.0 duration:0.3],
+                                         [SKAction moveTo:CGPointMake(200.0, 359.0) duration:0.5],
+                                         [SKAction waitForDuration:0.2],
+                                         [SKAction runBlock:^{
+        [fly removeAllActions];
+        [fly removeFromParent];
+        [self putSwat:@"crumbs_tomato" atX:160.0 andY:375.0];
+    }],
+                                         [SKAction moveTo:CGPointMake(259.0, 359.0) duration:0.5],
+                                         [SKAction fadeAlphaTo:0.0 duration:0.3],
+                                         [SKAction waitForDuration:1.0],
+                                         [SKAction runBlock:^{
+        [self endEverything];
+    }]
                                          ]]];
 }
 
@@ -370,6 +389,14 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,2,3};
     crumbs.position = CGPointMake(x,y);
     [backgroundNode addChild:crumbs];
     [soundPlayer playSplatWithNode:backgroundNode];
+}
+
+-(void)putSwat:(NSString*)cName atX:(float)x andY:(float)y
+{
+    SKEmitterNode *crumbs = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:cName ofType:@"sks"]];
+    crumbs.position = CGPointMake(x,y);
+    [backgroundNode addChild:crumbs];
+    [soundPlayer playSwatWithNode:backgroundNode];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
