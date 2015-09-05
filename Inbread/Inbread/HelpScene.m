@@ -54,24 +54,29 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,2,3};
         if (seenHelp == NULL || [seenHelp length] < NUM_HELP_SCENES)
         {
             newSeenHelp = [NSMutableString stringWithCapacity:NUM_HELP_SCENES];
-            for (int j=0;j<NUM_HELP_SCENES;j++)
+            int k = 0;
+            if (seenHelp != NULL)
+            {
+                k = (int)seenHelp.length;
+                [newSeenHelp appendString:seenHelp];
+            }
+            for (int j=k;j<NUM_HELP_SCENES;j++)
                 [newSeenHelp appendString:@"0"];
         }
         else
             newSeenHelp = [seenHelp mutableCopy];
-/*        if ([newSeenHelp characterAtIndex:foundIndex] == '0')
+        if ([newSeenHelp characterAtIndex:foundIndex] == '0')
         {
             [newSeenHelp replaceCharactersInRange:NSMakeRange(foundIndex, 1) withString:@"1"];
             [defaults setObject:newSeenHelp forKey:@"seenHelp"];
             [defaults synchronize];
         }
         else
-            foundIndex = -1;*/
+            foundIndex = -1;
         if (foundIndex == 0)
             foundIndex = -1;
     }
-    return 3; // Test
-//    return foundIndex;
+    return foundIndex;
 }
 
 -(void)setUpWithType:(int)t

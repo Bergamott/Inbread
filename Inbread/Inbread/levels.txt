@@ -18,23 +18,28 @@
                 {
                     "orders": ["0"],
                     "belts": [30,-20,20],
-                    "time": 90,
-                    "condiments": [0,1,2],
-                    "condimentInterval": 10,
+                    "time": 60,
                     "plates": 4
                 },
                 {
                     "orders": ["30"],
                     "belts": [30,-30,30],
-                    "time": 35,
+                    "time": 40,
                     "plates": 4
                 },
                 {
                     "orders": ["30","20"],
-                    "belts": [30,-30,30],
+                    "belts": [-30,30,-30],
                     "time": 50,
                     "plates": 4
                 },
+                {
+                    "orders": ["230","020"],
+                    "belts": [35,-35,35],
+                    "time": 50,
+                    "plates": 4
+                },
+
                 {
                     "orders": ["01230","120","0230","010","020"],
                     "belts": [30,-30,30],
