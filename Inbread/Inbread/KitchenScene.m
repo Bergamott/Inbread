@@ -282,6 +282,12 @@ static int condimentScores[4] = {4,5,6, 0};
         plateS.position = CGPointMake(360.0, planeY[0]);
         [conveyorNode addChild:plateS];
         [plateS runAction:[SKAction sequence:@[[SKAction waitForDuration:i*0.3],[SKEase MoveToWithNode:plateS EaseFunction:CurveTypeQuadratic Mode:EaseOut Time:0.5 ToVector:CGVectorMake(plateX, plateS.position.y)]]]];
+        
+        Food *plateFoodCatcher = [[Food alloc] initAtPosition:CGPointMake(plateX, planeY[0])];
+        plateFoodCatcher.overallType = TYPE_COMPOUND;
+        plateFoodCatcher.plane = 0;
+        [foodNode addChild:plateFoodCatcher.holderNode];
+        [sprites addObject:plateFoodCatcher];
     }
     
     // Condiments
@@ -676,6 +682,7 @@ static int condimentScores[4] = {4,5,6, 0};
     float heightDifference = 0.0;
     float dropTime = 0.0;
     float impactX = 0.0;
+    float selfX = sliceFood.holderNode.position.x;
     for (Food *tmpF in sprites)
         if (tmpF.overallType == TYPE_COMPOUND && tmpF.plane == sliceFood.plane && tmpF.typeCount+sliceFood.typeCount <= MAX_STACK)
         {
@@ -683,7 +690,7 @@ static int condimentScores[4] = {4,5,6, 0};
             heightDifference = planeY[sliceFood.plane+1] - planeY[sliceFood.plane] - tmpF.height;
             dropTime = heightDifference/FALL_SPEED;
             impactX = tmpF.holderNode.position.x + dropTime*beltVelocities[sliceFood.plane];
-            if (sliceFood.holderNode.position.x < impactX+HIT_DISTANCE && sliceFood.holderNode.position.x > impactX-HIT_DISTANCE) // Success!
+            if (selfX < impactX+HIT_DISTANCE && selfX > impactX-HIT_DISTANCE) // Success!
             {
                 targetFood = tmpF;
                 break;
@@ -693,7 +700,9 @@ static int condimentScores[4] = {4,5,6, 0};
     if (targetFood != NULL) // Land on food
     {
         [soundPlayer playLandWithDelay:dropTime*0.8 withNode:backgroundNode];
-        targetFood.overallType = TYPE_CATCHING;
+        // Food not on plate should be blocked from interaction
+        if (targetFood.plane > 0)
+            targetFood.overallType = TYPE_CATCHING;
         [sliceFood.holderNode runAction:[SKAction sequence:@[
                                                              [SKAction group:@[
                                                                                [SKEase MoveToWithNode:sliceFood.holderNode EaseFunction:CurveTypeCartoony Mode:EaseOut Time:dropTime ToVector:CGVectorMake(sliceFood.holderNode.position.x, sliceFood.holderNode.position.y-heightDifference)],
@@ -706,14 +715,14 @@ static int condimentScores[4] = {4,5,6, 0};
     }
     else if (sliceFood.plane > 0) // Land on belt
     {
-        float landX = sliceFood.holderNode.position.x;
+        float landX = selfX;
         float landY = planeY[sliceFood.plane];
         float fallTime = (sliceFood.holderNode.position.y - landY)/FALL_SPEED;
         SKAction *slideOutAction;
         if (beltVelocities[sliceFood.plane] < 0)
-            slideOutAction = [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-sliceFood.holderNode.position.x)/beltVelocities[sliceFood.plane]];
+            slideOutAction = [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-selfX)/beltVelocities[sliceFood.plane]];
         else
-            slideOutAction = [SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-sliceFood.holderNode.position.x)/beltVelocities[sliceFood.plane]];
+            slideOutAction = [SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-selfX)/beltVelocities[sliceFood.plane]];
         [soundPlayer playLandWithDelay:fallTime*0.8 withNode:backgroundNode];
         [sliceFood.holderNode runAction:[SKAction sequence:@[
                                                              [SKEase MoveToWithNode:sliceFood.holderNode EaseFunction:CurveTypeCartoony Mode:EaseOut Time:fallTime ToVector:CGVectorMake(landX, landY)],
@@ -730,7 +739,7 @@ static int condimentScores[4] = {4,5,6, 0};
                 heightDifference = planeY[sliceFood.plane+1] - planeY[sliceFood.plane] - CONDIMENT_Y_MARGIN;
                 dropTime = heightDifference/FALL_SPEED;
                 impactX = cond.condimentHolder.position.x + dropTime*cond.xVelocity;
-                if (sliceFood.holderNode.position.x < impactX+CONDIMENT_HIT_DISTANCE && sliceFood.holderNode.position.x > impactX-CONDIMENT_HIT_DISTANCE) // Success!
+                if (selfX < impactX+CONDIMENT_HIT_DISTANCE && selfX > impactX-CONDIMENT_HIT_DISTANCE) // Success!
                 {
                     cond.plane = -1; // Block against further impacts
                     [cond.condimentHolder runAction:[SKAction sequence:@[[SKAction waitForDuration:dropTime],[SKAction runBlock:^{[self splatCondiment:cond withFood:sliceFood];}]]]];
@@ -740,10 +749,10 @@ static int condimentScores[4] = {4,5,6, 0};
     }
     else // Possibly land on plate
     {
-        float landX = sliceFood.holderNode.position.x;
+        float landX = selfX;
         float landY = -sliceFood.height-40;
         BOOL foundPlate = FALSE;
-        for (int i=0;i<numPlates;i++)
+/*        for (int i=0;i<numPlates;i++) // Remove this
         {
             float plateX = i*320.0/numPlates+160.0/numPlates;
             if (landX < plateX + HIT_DISTANCE && landX > plateX - HIT_DISTANCE)
@@ -752,7 +761,7 @@ static int condimentScores[4] = {4,5,6, 0};
                 landX = plateX;
                 landY = planeY[0];
             }
-        }
+        }*/
         float fallTime = (sliceFood.holderNode.position.y - landY)/FALL_SPEED;
         if (foundPlate)
         {
@@ -775,9 +784,10 @@ static int condimentScores[4] = {4,5,6, 0};
 
 -(void)checkPlates
 {
+    NSMutableArray *plateFoodReplacements = [NSMutableArray arrayWithCapacity:2];
     for (Food *tmpF in sprites)
     {
-        if (tmpF.overallType == TYPE_COMPOUND && tmpF.plane == 0)
+        if (tmpF.overallType == TYPE_COMPOUND && tmpF.plane == 0 && tmpF.typeCount > 0)
         {
             int matchedFood = -1;
             int foodScore = 0;
@@ -840,6 +850,13 @@ static int condimentScores[4] = {4,5,6, 0};
             
             if (contaminated || (numVisibleOrders > 0 && mismatches == numVisibleOrders)) // Unworkable combination or contaminated with flies
             {
+                // Replace food catcher
+                Food *plateFoodCatcher = [[Food alloc] initAtPosition:CGPointMake(tmpF.holderNode.position.x, planeY[0])];
+                plateFoodCatcher.overallType = TYPE_COMPOUND;
+                plateFoodCatcher.plane = 0;
+                [foodNode addChild:plateFoodCatcher.holderNode];
+                [plateFoodReplacements addObject:plateFoodCatcher];
+                
                 [soundPlayer playErrorWithNode:backgroundNode];
                 tmpF.plane = -1;
                 SKSpriteNode *handSprite = [SKSpriteNode spriteNodeWithImageNamed:@"sweephand.png"];
@@ -872,6 +889,13 @@ static int condimentScores[4] = {4,5,6, 0};
             }
             else if (matchedFood >= 0)
             {
+                // Replace food catcher
+                Food *plateFoodCatcher = [[Food alloc] initAtPosition:CGPointMake(tmpF.holderNode.position.x, planeY[0])];
+                plateFoodCatcher.overallType = TYPE_COMPOUND;
+                plateFoodCatcher.plane = 0;
+                [foodNode addChild:plateFoodCatcher.holderNode];
+                [plateFoodReplacements addObject:plateFoodCatcher];
+                
                 for (int i=0;i<tmpF.plusCount;i++)
                     foodScore += condimentScores[[tmpF getPlusNum:i]];
                 
@@ -907,6 +931,11 @@ static int condimentScores[4] = {4,5,6, 0};
                 break;
             }
         }
+    }
+    if (plateFoodReplacements.count > 0)
+    {
+        [sprites addObjectsFromArray:plateFoodReplacements];
+        [plateFoodReplacements removeAllObjects];
     }
 }
 

@@ -54,9 +54,9 @@
                 },
                 {
                     "orders": ["01230"],
-                    "belts": [60],
-                    "time": 40,
-                    "plates": 1,
+                    "belts": [30,30,30],
+                    "time": 60,
+                    "plates": 4,
                 },
                 {
                     "orders": ["330","110","310","130"],
@@ -75,13 +75,27 @@
                     "condiments": [0],
                     "condimentInterval": 8
                 },
-
-
                 {
-                    "orders": ["01230","120","0230","010","020"],
-                    "belts": [30,-30,30],
-                    "time": 360,
-                    "plates": 4
+                    "orders": ["01230"],
+                    "belts": [60],
+                    "time": 40,
+                    "plates": 1,
+                },
+                {
+                    "orders": ["120","230","310","320","210"],
+                    "belts": [35,-35,35,-40],
+                    "time": 120,
+                    "plates": 3,
+                    "condiments": [1],
+                    "condimentInterval": 10
+                },
+                {
+                    "orders": ["0120","0230","0310","0130"],
+                    "belts": [50,-50,40],
+                    "time": 120,
+                    "plates": 3,
+                    "condiments": [0,1],
+                    "condimentInterval": 8
                 }
             ]
         },
