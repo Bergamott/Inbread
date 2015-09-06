@@ -313,7 +313,10 @@ static int condimentScores[4] = {4,5,6, 0};
     clockTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self
                                                 selector: @selector(gameLoop:) userInfo: nil repeats: YES];
     
-    spawnFoodTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_DISTANCE/beltVelocities[numPlanes-1] target:self
+    float ingredientInterval = FOOD_DISTANCE/beltVelocities[numPlanes-1];
+    if (ingredientInterval < 0)
+        ingredientInterval = -ingredientInterval;
+    spawnFoodTimer = [NSTimer scheduledTimerWithTimeInterval:ingredientInterval target:self
                                                     selector:@selector(spawnIngredient) userInfo:nil repeats:YES];
     
     if (condimentTypes != NULL)
@@ -420,7 +423,8 @@ static int condimentScores[4] = {4,5,6, 0};
 -(void)spawnIngredient
 {
     float breadY = planeY[numPlanes-1];
-    Food *breadFood = [[Food alloc] initAtPosition:CGPointMake(FOOD_START_X, breadY)];
+    BOOL goRight = (beltVelocities[numPlanes-1] > 0);
+    Food *breadFood = [[Food alloc] initAtPosition:CGPointMake(goRight?FOOD_START_X:FOOD_END_X, breadY)];
     
     int foodType = (int)([ingredientsString characterAtIndex:(arc4random()%ingredientsString.length)]-'0');
     
@@ -434,9 +438,12 @@ static int condimentScores[4] = {4,5,6, 0};
     
     [foodNode addChild:breadFood.holderNode];
     
+    float moveTime = (FOOD_END_X-FOOD_START_X)/beltVelocities[numPlanes-1];
+    if (moveTime < 0)
+        moveTime = -moveTime;
     [breadFood.holderNode runAction:
      [SKAction sequence:@[
-                          [SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-FOOD_START_X)/beltVelocities[numPlanes-1]],
+                          [SKAction moveToX:goRight?FOOD_END_X:FOOD_START_X duration:moveTime],
                           [SKAction runBlock:^{ [self removeFood:breadFood]; }]
                           ]]
      ];
@@ -959,7 +966,7 @@ static int condimentScores[4] = {4,5,6, 0};
 {
     gameState = STATE_DONE;
     [self stopEverything];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+/*    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *highscores = [[defaults objectForKey:@"highscores"] mutableCopy];
     int prevScore = [((NSNumber*)[highscores objectAtIndex:level]) intValue];
     if (score > prevScore)
@@ -967,7 +974,7 @@ static int condimentScores[4] = {4,5,6, 0};
         [highscores replaceObjectAtIndex:level withObject:[NSNumber numberWithInt:score]];
         [defaults setObject:highscores forKey:@"highscores"];
         [defaults synchronize];
-    }
+    }*/
     DataHandler *dh = [DataHandler sharedDataHandler];
     [owner showFailDialogWithNext:(level < dh.availableLevels-1 && level < dh.currentLevelAccess)];
 }

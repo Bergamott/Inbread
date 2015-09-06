@@ -20,7 +20,7 @@
 @synthesize owner;
 @synthesize backgroundNode;
 
-static int helpScenes[NUM_HELP_SCENES] = {0,1,2,3};
+static int helpScenes[NUM_HELP_SCENES] = {0,1,6,15};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
