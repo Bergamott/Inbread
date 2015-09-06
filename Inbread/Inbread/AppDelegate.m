@@ -25,7 +25,6 @@
     NSMutableArray *highscores = [defaults objectForKey:@"highscores"];
     if (highscores == NULL)
     {
-        NSLog(@"Initializing highscores");
         highscores = [[NSMutableArray alloc] initWithCapacity:NUM_LEVELS];
         for (int i=0;i<NUM_LEVELS;i++)
             [highscores addObject:[NSNumber numberWithInt:0]];

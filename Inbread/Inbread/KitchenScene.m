@@ -110,7 +110,6 @@ static int condimentScores[4] = {4,5,6, 0};
 -(void)setUpWithLevel:(int)l
 {
     level = l;
-    NSLog(@"Level: %d",level);
     DataHandler *dh = [DataHandler sharedDataHandler];
     [conveyorNode removeAllChildren];
     [foodNode removeAllChildren];
@@ -133,8 +132,6 @@ static int condimentScores[4] = {4,5,6, 0};
     
     levDic = [dh getLevelNumber:level];
     NSDictionary *restDic = [dh getRestaurantForLevel:level];
-    NSLog(@"levDic: %@",levDic);
-    NSLog(@"restDic: %@",restDic);
     
     // Put in background image
     SKSpriteNode *backgroundTiles = [SKSpriteNode spriteNodeWithImageNamed:[restDic objectForKey:@"background"]];
@@ -234,6 +231,7 @@ static int condimentScores[4] = {4,5,6, 0};
     // Conveyor belts
 //    y = planeY[numPlanes-1];
     y = planeY[1];
+    beltVelocities[0] = 0;
     for (int i=0;i<numPlanes-1;i++)
     {
         SKNode *beltNode = [SKNode node];
@@ -504,7 +502,6 @@ static int condimentScores[4] = {4,5,6, 0};
 
 -(void)removeCondiment:(Condiment*)cObj
 {
-    NSLog(@"Removing condiment");
     [cObj removeSprite];
     [condiments removeObject:cObj];
 }
@@ -600,13 +597,10 @@ static int condimentScores[4] = {4,5,6, 0};
         CGPoint location = [touch locationInNode:backgroundNode];
         
         Food *touchF = NULL;
-        NSLog(@"Touchdown %f,%f",location.x,location.y);
         for (Food *tmpF in sprites)
         {
-            NSLog(@"Food position: %f,%f",tmpF.holderNode.position.x,tmpF.holderNode.position.y);
             if ([tmpF isTouchingAtX:location.x andY:location.y])
             {
-                NSLog(@"Touching");
                 touchF = tmpF;
             }
         }

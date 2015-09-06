@@ -233,7 +233,6 @@ static float extraHeight[3] = {32,32,20};
 
 -(void)removeFood:(Food*)fObj
 {
-    NSLog(@"Loaf removed");
     [fObj removeSprites];
     [sprites removeObject:fObj];
 }
