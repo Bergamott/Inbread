@@ -134,5 +134,11 @@
         [skn runAction:[SKAction playSoundFileNamed:@"swat.wav" waitForCompletion:FALSE]];
 }
 
+-(void)playBuzzWithNode:(SKNode*)skn
+{
+    if (soundOn)
+        [skn runAction:[SKAction playSoundFileNamed:@"buzz.wav" waitForCompletion:FALSE]];
+}
+
 
 @end

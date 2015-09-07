@@ -304,6 +304,7 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
     [fly runAction:[SKAction group:@[[SKAction repeatActionForever:[SKAction animateWithTextures:flyFrames timePerFrame:0.05f]],
                                         [SKAction repeatActionForever:[SKAction sequence:@[xWobbleRight,xWobbleLeft]]],
                                         [SKAction moveToY:370.0 duration:3.0f]]]];
+    [soundPlayer playBuzzWithNode:backgroundNode];
     
     [hand runAction:[SKAction sequence:@[[SKAction waitForDuration:2.0],
                                          [SKAction fadeAlphaTo:1.0 duration:0.3],
@@ -315,6 +316,9 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
                                          [SKAction moveByX:-200.0 y:150.0 duration:1.8],
                                          [SKAction moveToY:self.frame.size.height+30.0 duration:0.1],
                                          [SKAction moveToX:160.0 duration:0.1],
+                                         [SKAction runBlock:^{
+            [soundPlayer playBuzzWithNode:backgroundNode];
+    }],
                                          [SKAction group:@[[SKAction repeatActionForever:[SKAction sequence:@[xWobbleRight,xWobbleLeft]]],
                                                            [SKAction moveToY:375.0 duration:2.7f]]]
                                          ]]]]];

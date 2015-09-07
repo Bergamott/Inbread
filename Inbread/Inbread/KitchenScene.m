@@ -555,6 +555,7 @@ static int condimentScores[4] = {4,5,6, 0};
             [fAn startAtX:targetX andY:screenHeight+FLY_SCREEN_MARGIN withFrames:flyFrames];
             [foodNode addChild:fAn.sprite];
             [animals addObject:fAn];
+            [soundPlayer playBuzzWithNode:backgroundNode];
         }
     }
 }

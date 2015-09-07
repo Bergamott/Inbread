@@ -31,6 +31,7 @@
 -(void)playBurpWithDelay:(float)del withNode:(SKNode*)skn;
 -(void)playHijackWithNode:(SKNode*)skn;
 -(void)playSwatWithNode:(SKNode*)skn;
+-(void)playBuzzWithNode:(SKNode*)skn;
 
 @property(nonatomic) BOOL soundOn;
 
