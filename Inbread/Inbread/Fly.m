@@ -26,6 +26,7 @@
 -(void)startAtX:(float)x andY:(float)y withFrames:(NSArray*)f
 {
     sprite.position = CGPointMake(x, y);
+    sprite.zPosition = 5.0;
     SKAction *xWobbleRight = [SKAction moveToX:x+10.0f duration:WOBBLE_TIME];
     SKAction *xWobbleLeft = [SKAction moveToX:x-10.0f duration:WOBBLE_TIME];
     xWobbleRight.timingMode = SKActionTimingEaseInEaseOut;

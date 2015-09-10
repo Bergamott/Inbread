@@ -103,10 +103,54 @@
             "background": "kitchen1.jpg",
             "levels": [
                 {
-                    "orders": ["54"],
-                    "belts": [30,-30,30],
-                    "time": 45,
-                    "animalInterval": 5,
+                    "orders": ["524","564","624","4654"],
+                    "belts": [40,-40,40],
+                    "time": 100,
+                    "plates": 4,
+                    "condiments": [2],
+                    "condimentInterval": 10
+                },
+                {
+                    "orders": ["64","54","654","54","64"],
+                    "belts": [-40,70,-45],
+                    "time": 100,
+                    "plates": 4,
+                    "condiments": [0,2],
+                    "condimentInterval": 9
+                },
+                {
+                    "orders": ["65234","23654","35624","52364"],
+                    "belts": [-40,45],
+                    "time": 140,
+                    "plates": 3,
+                    "condiments": [0,1,2],
+                    "condimentInterval": 10
+                },
+                {
+                    "orders": ["14","24","34","54","64"],
+                    "belts": [-40,40,-40],
+                    "time": 90,
+                    "plates": 3,
+                    "animalInterval": 7,
+                    "animalTypes": [0],
+                },
+
+                {
+                    "orders": ["34","334","3334","33334"],
+                    "belts": [45,-45,45,-45],
+                    "time": 85,
+                    "plates": 3,
+                    "animalInterval": 6,
+                    "animalTypes": [0],
+                },
+
+
+
+                {
+                    "orders": ["34","334","3334","33334"],
+                    "belts": [45,-45,45,-45],
+                    "time": 100,
+                    "animalInterval": 6,
                     "animalTypes": [0],
                     "plates": 4
                 }
