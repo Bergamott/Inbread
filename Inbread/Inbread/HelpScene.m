@@ -12,7 +12,7 @@
 #import "SKEase.h"
 #import "Condiment.h"
 
-#define NUM_HELP_SCENES 4
+#define NUM_HELP_SCENES 5
 
 @implementation HelpScene
 
@@ -20,7 +20,7 @@
 @synthesize owner;
 @synthesize backgroundNode;
 
-static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
+static int helpScenes[NUM_HELP_SCENES] = {0,1,2,7,15};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -88,6 +88,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
         [self initialHelpAnimation];
     else if (helpType == TYPE_BREAD_CHEESE)
         [self breadCheeseAnimation];
+    else if (helpType == TYPE_ORDER)
+        [self orderAnimation];
     else if (helpType == TYPE_CONDIMENT)
         [self condimentAnimation];
     else if (helpType == TYPE_FLY)
@@ -115,21 +117,21 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
 
 -(void)initialHelpAnimation
 {
-    [self setSprite:@"headshoulders.png" atX:60.0 andY:382.0];
-    [self setSprite:@"mouth0.png" atX:60.0 andY:425.0];
+    [self setSprite:@"headshoulders" atX:60.0 andY:382.0];
+    [self setSprite:@"mouth0" atX:60.0 andY:425.0];
     
-    SKSpriteNode *loaf = [self setSprite:@"loaf.png" atX:160.0 andY:351.0];
-    [self setSprite:@"plane.png" atX:160.0 andY:325.0];
-    [self setSprite:@"plane.png" atX:160.0 andY:247.0];
-    [self setSprite:@"plate.png" atX:160.0 andY:186.0];
+    SKSpriteNode *loaf = [self setSprite:@"loaf" atX:160.0 andY:351.0];
+    [self setSprite:@"plane" atX:160.0 andY:325.0];
+    [self setSprite:@"plane" atX:160.0 andY:247.0];
+    [self setSprite:@"plate" atX:160.0 andY:186.0];
     
-    SKSpriteNode *bubble = [self hideSprite:@"bubble.png" atX:157.0 andY:457.0];
-    SKSpriteNode *bSlice = [self hideSprite:@"slice.png" atX:161.0 andY:485.0];
+    SKSpriteNode *bubble = [self hideSprite:@"bubble" atX:157.0 andY:457.0];
+    SKSpriteNode *bSlice = [self hideSprite:@"slice" atX:161.0 andY:485.0];
     [bubble runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
     [bSlice runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
-    SKSpriteNode *hand = [self hideSprite:@"hand.png" atX:259.0 andY:374.0];
+    SKSpriteNode *hand = [self hideSprite:@"hand" atX:259.0 andY:374.0];
     hand.zPosition = 10.0;
-    SKSpriteNode *slice = [self hideSprite:@"slice.png" atX:160.0 andY:376.0];
+    SKSpriteNode *slice = [self hideSprite:@"slice" atX:160.0 andY:376.0];
     [hand runAction:[SKAction sequence:@[[SKAction waitForDuration:1.5],
                                          [SKAction fadeAlphaTo:1.0 duration:0.3],
                                          [SKAction moveTo:CGPointMake(200.0, 354.0) duration:0.5],
@@ -152,8 +154,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
                                          [SKAction moveTo:CGPointMake(259.0, 278.0) duration:0.5],
                                          [SKAction fadeAlphaTo:0.0 duration:0.3]]]];
 
-    SKSpriteNode *head2 = [self hideSprite:@"headshoulders.png" atX:261.0 andY:107.0];
-    SKSpriteNode *smile = [self hideSprite:@"smile.png" atX:261.0 andY:160.0];
+    SKSpriteNode *head2 = [self hideSprite:@"headshoulders" atX:261.0 andY:107.0];
+    SKSpriteNode *smile = [self hideSprite:@"smile" atX:261.0 andY:160.0];
     [self performSelector:@selector(makeStarsOnSprite:) withObject:slice afterDelay:6.0];
     [head2 runAction:[SKAction sequence:@[[SKAction waitForDuration:6.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
     [smile runAction:[SKAction sequence:@[[SKAction waitForDuration:6.5],[SKAction fadeAlphaTo:1.0 duration:0.3],[SKAction runBlock:^{
@@ -167,25 +169,25 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
 
 -(void)breadCheeseAnimation
 {
-    [self setSprite:@"headshoulders.png" atX:60.0 andY:382.0];
-    [self setSprite:@"mouth0.png" atX:60.0 andY:425.0];
+    [self setSprite:@"headshoulders" atX:60.0 andY:382.0];
+    [self setSprite:@"mouth0" atX:60.0 andY:425.0];
     
-    SKSpriteNode *loaf = [self setSprite:@"loaf.png" atX:120.0 andY:351.0];
-    SKSpriteNode *cheese = [self setSprite:@"cheese.png" atX:200.0 andY:351.0];
-    [self setSprite:@"wideplane.png" atX:160.0 andY:325.0];
-    [self setSprite:@"plane.png" atX:160.0 andY:247.0];
-    [self setSprite:@"plate.png" atX:160.0 andY:186.0];
+    SKSpriteNode *loaf = [self setSprite:@"loaf" atX:120.0 andY:351.0];
+    SKSpriteNode *cheese = [self setSprite:@"cheese" atX:200.0 andY:351.0];
+    [self setSprite:@"wideplane" atX:160.0 andY:325.0];
+    [self setSprite:@"plane" atX:160.0 andY:247.0];
+    [self setSprite:@"plate" atX:160.0 andY:186.0];
     
-    SKSpriteNode *bubble = [self hideSprite:@"bubble.png" atX:157.0 andY:457.0];
-    SKSpriteNode *bSlice = [self hideSprite:@"slice.png" atX:161.0 andY:480.0];
-    SKSpriteNode *bCheese = [self hideSprite:@"cheeses.png" atX:161.0 andY:490.0];
+    SKSpriteNode *bubble = [self hideSprite:@"bubble" atX:157.0 andY:457.0];
+    SKSpriteNode *bSlice = [self hideSprite:@"slice" atX:161.0 andY:480.0];
+    SKSpriteNode *bCheese = [self hideSprite:@"cheeses" atX:161.0 andY:490.0];
     [bubble runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
     [bSlice runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
     [bCheese runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
-    SKSpriteNode *hand = [self hideSprite:@"hand.png" atX:219.0 andY:374.0];
+    SKSpriteNode *hand = [self hideSprite:@"hand" atX:219.0 andY:374.0];
     hand.zPosition = 10.0;
-    SKSpriteNode *slice = [self hideSprite:@"slice.png" atX:120.0 andY:376.0];
-    SKSpriteNode *cheeses = [self hideSprite:@"cheeses.png" atX:200.0 andY:376.0];
+    SKSpriteNode *slice = [self hideSprite:@"slice" atX:120.0 andY:376.0];
+    SKSpriteNode *cheeses = [self hideSprite:@"cheeses" atX:200.0 andY:376.0];
     [hand runAction:[SKAction sequence:@[[SKAction waitForDuration:1.5],
                                          [SKAction fadeAlphaTo:1.0 duration:0.3],
                                          [SKAction moveTo:CGPointMake(160.0, 354.0) duration:0.5],
@@ -220,8 +222,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
                                          [SKAction fadeAlphaTo:0.0 duration:0.3]]]];
     
     [self performSelector:@selector(makeStarsOnSprite:) withObject:slice afterDelay:8.0];
-    SKSpriteNode *head2 = [self hideSprite:@"headshoulders.png" atX:261.0 andY:107.0];
-    SKSpriteNode *smile = [self hideSprite:@"smile.png" atX:261.0 andY:160.0];
+    SKSpriteNode *head2 = [self hideSprite:@"headshoulders" atX:261.0 andY:107.0];
+    SKSpriteNode *smile = [self hideSprite:@"smile" atX:261.0 andY:160.0];
     [self performSelector:@selector(makeStarsOnSprite:) withObject:slice afterDelay:8.0];
     [head2 runAction:[SKAction sequence:@[[SKAction waitForDuration:8.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
     [smile runAction:[SKAction sequence:@[[SKAction waitForDuration:8.5],[SKAction fadeAlphaTo:1.0 duration:0.3],[SKAction runBlock:^{
@@ -233,11 +235,75 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
                                           ]]];
 }
 
+-(void)orderAnimation
+{
+    [self setSprite:@"headshoulders" atX:60.0 andY:382.0];
+    [self setSprite:@"mouth0" atX:60.0 andY:425.0];
+    
+    SKSpriteNode *plate1 = [self setSprite:@"plate" atX:80.0 andY:271.0];
+    SKSpriteNode *plate2 = [self setSprite:@"plate" atX:160.0 andY:271.0];
+    SKSpriteNode *plate3 = [self setSprite:@"plate" atX:240.0 andY:271.0];
+    
+    SKSpriteNode *bubble = [self hideSprite:@"bubble" atX:157.0 andY:457.0];
+    SKSpriteNode *bSlice = [self hideSprite:@"slice" atX:161.0 andY:475.0];
+    SKSpriteNode *bCheese = [self hideSprite:@"leaves" atX:161.0 andY:485.0];
+    SKSpriteNode *bLeaves = [self hideSprite:@"cheeses" atX:161.0 andY:495.0];
+    [bubble runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
+    [bSlice runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
+    [bCheese runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
+    [bLeaves runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
+    
+    [self dropAndFadeInSprite:@"cheeses" toX:80.0 andY:280.0 withDelay:2.0];
+    [self dropAndFadeInSprite:@"slice" toX:80.0 andY:290.0 withDelay:2.5];
+    [self dropAndFadeInSprite:@"leaves" toX:80.0 andY:300.0 withDelay:3.0];
+    
+    [self dropAndFadeInSprite:@"slice" toX:160.0 andY:280.0 withDelay:6.0];
+    [self dropAndFadeInSprite:@"cheeses" toX:160.0 andY:290.0 withDelay:6.5];
+    [self dropAndFadeInSprite:@"leaves" toX:160.0 andY:300.0 withDelay:7.0];
+
+    [self dropAndFadeInSprite:@"slice" toX:240.0 andY:280.0 withDelay:10.0];
+    [self dropAndFadeInSprite:@"leaves" toX:240.0 andY:290.0 withDelay:10.5];
+    [self dropAndFadeInSprite:@"cheeses" toX:240.0 andY:300.0 withDelay:11.0];
+
+    [self performSelector:@selector(makeStarsOnSprite:) withObject:plate1 afterDelay:4.0];
+    [self performSelector:@selector(makeStarsOnSprite:) withObject:plate2 afterDelay:8.0];
+    [self performSelector:@selector(makeStarsOnSprite:) withObject:plate3 afterDelay:12.0];
+    
+    SKSpriteNode *head2 = [self hideSprite:@"headshoulders" atX:240.0 andY:137.0];
+    SKSpriteNode *smile = [self hideSprite:@"smile" atX:240.0 andY:190.0];
+    [head2 runAction:[SKAction sequence:@[[SKAction waitForDuration:13.5],[SKAction fadeAlphaTo:1.0 duration:0.3]]]];
+    [smile runAction:[SKAction sequence:@[[SKAction waitForDuration:13.5],[SKAction fadeAlphaTo:1.0 duration:0.3],[SKAction waitForDuration:2.0],
+                                          [SKAction runBlock:^{
+        [self endEverything];
+    }]
+                                          ]]];
+
+}
+
+-(void)dropAndFadeInSprite:(NSString*)spr toX:(float)x andY:(float)y withDelay:(float)d
+{
+    SKSpriteNode *tmpS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:spr]];
+    tmpS.anchorPoint = CGPointMake(0.5, 0);
+    tmpS.alpha = 0;
+    tmpS.position = CGPointMake(x, y+80.0);
+    [backgroundNode addChild:tmpS];
+    [tmpS runAction:[SKAction sequence:@[[SKAction waitForDuration:d],[SKAction group:@[[SKAction fadeAlphaTo:1.0 duration:0.3],[SKEase MoveToWithNode:tmpS EaseFunction:CurveTypeCartoony Mode:EaseOut Time:0.75 ToVector:CGVectorMake(x, y)]]]]]];
+    [soundPlayer playLandWithDelay:0.67+d withNode:backgroundNode];
+}
+
+-(void)animateStarsAtX:(float)x andY:(float)y withNumber:(int)n afterDelay:(float)d
+{
+    SKEmitterNode *stars = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"starburst" ofType:@"sks"]];
+    stars.position = CGPointMake(x,y);
+    stars.numParticlesToEmit = n;
+    [backgroundNode performSelector:@selector(addChild:) withObject:stars afterDelay:d];
+}
+
 -(void)condimentAnimation
 {
-    [self setSprite:@"plane.png" atX:170.0 andY:345.0];
-    [self setSprite:@"wideplane.png" atX:150.0 andY:227.0];
-    SKSpriteNode *tomato = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"tomato.png"]];
+    [self setSprite:@"plane" atX:170.0 andY:345.0];
+    [self setSprite:@"wideplane" atX:150.0 andY:227.0];
+    SKSpriteNode *tomato = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"tomato"]];
     tomato.anchorPoint = CGPointMake(0.5, 0);
     
     SKNode *condimentNode = [SKNode node];
@@ -245,9 +311,9 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
     [condimentNode addChild:tomato];
     [backgroundNode addChild:condimentNode];
     
-    SKSpriteNode *slice = [self setSprite:@"slice.png" atX:200.0 andY:372.0];
+    SKSpriteNode *slice = [self setSprite:@"slice" atX:200.0 andY:372.0];
     
-    SKSpriteNode *hand = [self hideSprite:@"hand.png" atX:299.0 andY:374.0];
+    SKSpriteNode *hand = [self hideSprite:@"hand" atX:299.0 andY:374.0];
     hand.zPosition = 10.0;
     
     SKAction *moveUp = [SKAction moveByX:0 y:CONDIMENT_JUMP_HEIGHT duration:CONDIMENT_JUMP_TIME];
@@ -279,7 +345,7 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
     }]
                                          ]]];
 
-    SKSpriteNode *plusSprite = [self hideSprite:@"plus_tomato.png" atX:190.0 andY:286.0];
+    SKSpriteNode *plusSprite = [self hideSprite:@"plus_tomato" atX:190.0 andY:286.0];
     plusSprite.anchorPoint = CGPointMake(0, 0.5f);
     [plusSprite runAction:[SKAction sequence:@[[SKAction waitForDuration:3.8],
                                                [SKAction fadeAlphaTo:1.0 duration:0.05],
@@ -288,19 +354,19 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
 
 -(void)flyAnimation
 {
-    [self setSprite:@"plane.png" atX:160.0 andY:325.0];
-    [self setSprite:@"plane.png" atX:160.0 andY:217.0];
-    [self setSprite:@"slice.png" atX:160.0 andY:243.0];
-    SKSpriteNode *cheeses = [self setSprite:@"cheeses.png" atX:160.0 andY:351.0];
-    SKSpriteNode *hand = [self hideSprite:@"hand.png" atX:259.0 andY:359.0];
+    [self setSprite:@"plane" atX:160.0 andY:325.0];
+    [self setSprite:@"plane" atX:160.0 andY:217.0];
+    [self setSprite:@"slice" atX:160.0 andY:243.0];
+    SKSpriteNode *cheeses = [self setSprite:@"cheeses" atX:160.0 andY:351.0];
+    SKSpriteNode *hand = [self hideSprite:@"hand" atX:259.0 andY:359.0];
     hand.zPosition = 10.0;
 
-    SKSpriteNode *fly = [self setSprite:@"fly0.png" atX:160.0 andY:self.frame.size.height+30.0];
+    SKSpriteNode *fly = [self setSprite:@"fly0" atX:160.0 andY:self.frame.size.height+30.0];
     SKAction *xWobbleRight = [SKAction moveToX:150.0f duration:0.45f];
     SKAction *xWobbleLeft = [SKAction moveToX:170.0f duration:0.45f];
     xWobbleRight.timingMode = SKActionTimingEaseInEaseOut;
     xWobbleLeft.timingMode = SKActionTimingEaseInEaseOut;
-    NSArray *flyFrames = @[[myAtlas textureNamed:@"fly0.png"],[myAtlas textureNamed:@"fly1.png"]];
+    NSArray *flyFrames = @[[myAtlas textureNamed:@"fly0"],[myAtlas textureNamed:@"fly1"]];
     [fly runAction:[SKAction group:@[[SKAction repeatActionForever:[SKAction animateWithTextures:flyFrames timePerFrame:0.05f]],
                                         [SKAction repeatActionForever:[SKAction sequence:@[xWobbleRight,xWobbleLeft]]],
                                         [SKAction moveToY:370.0 duration:3.0f]]]];
@@ -417,8 +483,14 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,7,15};
 {
     SKEmitterNode *stars = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"starburst" ofType:@"sks"]];
     stars.position = sp.position;
-    stars.numParticlesToEmit = 10;
+    int numStars = 7;
+    if (stars.position.x < 100)
+        numStars = 2;
+    else if (stars.position.x > 200)
+        numStars = 18;
+    stars.numParticlesToEmit = numStars;
     [backgroundNode addChild:stars];
+    [soundPlayer playScoreWithNode:backgroundNode];
 }
 
 -(void)endEverything

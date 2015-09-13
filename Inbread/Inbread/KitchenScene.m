@@ -76,11 +76,11 @@ static int condimentScores[4] = {4,5,6, 0};
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
-        ingredientNames = @[@"loaf.png",@"ham.png",@"lettuce.png",@"cheese.png",@"brownloaf.png",@"chicken.png", @"roast.png"];
-        sliceNames = @[@"slice.png",@"hams.png",@"leaves.png",@"cheeses.png",@"brownslice.png",@"chickens.png", @"roasts.png"];
-        extraNames = @[@"tomato.png",@"pickle.png",@"onion.png"];
+        ingredientNames = @[@"loaf",@"ham",@"lettuce",@"cheese",@"brownloaf",@"chicken", @"roast"];
+        sliceNames = @[@"slice",@"hams",@"leaves",@"cheeses",@"brownslice",@"chickens", @"roasts"];
+        extraNames = @[@"tomato",@"pickle",@"onion"];
         crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese",@"crumbs_brownloaf", @"crumbs_chicken",@"crumbs_roast"];
-        plusNames = @[@"plus_tomato.png",@"plus_pickle.png",@"plus_onion.png",@"flyhead.png"];
+        plusNames = @[@"plus_tomato",@"plus_pickle",@"plus_onion",@"flyhead"];
         condimentCrumbNames = @[@"crumbs_tomato",@"crumbs_pickle",@"crumbs_onion"];
         
         sprites = [[NSMutableArray alloc] initWithCapacity:50];
@@ -92,7 +92,7 @@ static int condimentScores[4] = {4,5,6, 0};
  //       backgroundNode.yScale = size.height/568.0f;
         
         myAtlas = [SKTextureAtlas atlasNamed:@"pieces"];
-        flyFrames = @[[myAtlas textureNamed:@"fly0.png"],[myAtlas textureNamed:@"fly1.png"]];
+        flyFrames = @[[myAtlas textureNamed:@"fly0"],[myAtlas textureNamed:@"fly1"]];
 
 
         conveyorNode = [[SKNode alloc] init];
@@ -143,11 +143,11 @@ static int condimentScores[4] = {4,5,6, 0};
     // Clock
     SKNode *clockNode = [SKNode node];
     clockNode.position = CGPointMake(-97.0, screenHeight);
-    SKSpriteNode *clockSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"new_clock.png"]];
+    SKSpriteNode *clockSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"new_clock"]];
     clockSprite.anchorPoint = CGPointMake(0, 1.0);
     clockSprite.position = CGPointMake(0, 0);
     [clockNode addChild:clockSprite];
-    clockHand = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"clock_hand.png"]];
+    clockHand = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"clock_hand"]];
     clockHand.anchorPoint = CGPointMake(0.5, 0.125);
     clockHand.position = CGPointMake(38.0, -32.0);
     [clockNode addChild:clockHand];
@@ -180,7 +180,7 @@ static int condimentScores[4] = {4,5,6, 0};
         
         // Draw sandwich on order note
         SKNode *noteHolder = [SKNode node];
-        SKSpriteNode *notePaper = [SKSpriteNode spriteNodeWithImageNamed:@"paper.png"];
+        SKSpriteNode *notePaper = [SKSpriteNode spriteNodeWithImageNamed:@"paper"];
         [noteHolder addChild:notePaper];
         float sandH = 0;
         for (int j=0;j<tmpS.length;j++)
@@ -240,9 +240,9 @@ static int condimentScores[4] = {4,5,6, 0};
         int beltSpeed = beltVelocity;
         if (beltSpeed < 0)
             beltSpeed = -beltSpeed;
-        SKSpriteNode *topS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"belt.png"]];
+        SKSpriteNode *topS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"belt"]];
         topS.anchorPoint = CGPointMake(0, 1.0);
-        SKSpriteNode *bottomS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"bottom.png"]];
+        SKSpriteNode *bottomS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"bottom"]];
         bottomS.anchorPoint = CGPointMake(0, 1.0);
         
         bottomS.position = CGPointMake(0, -BELT_THICKNESS);
@@ -276,7 +276,7 @@ static int condimentScores[4] = {4,5,6, 0};
     numPlates = [(NSNumber*)[levDic objectForKey:@"plates"] intValue];
     for (int i=0;i<numPlates;i++)
     {
-        SKSpriteNode *plateS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"plate.png"]];
+        SKSpriteNode *plateS = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"plate"]];
         plateS.anchorPoint = CGPointMake(0.5, 1.0);
         float plateX = i*320.0/numPlates+160.0/numPlates;
         plateS.position = CGPointMake(360.0, planeY[0]);
@@ -582,7 +582,7 @@ static int condimentScores[4] = {4,5,6, 0};
 -(void)flyLanded:(Fly*)theFly
 {
 //    SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[plusNames objectAtIndex:FLY_INDEX]]];
-    SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"fly1.png"]];
+    SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"fly1"]];
     plusSprite.anchorPoint = CGPointMake(0, 1.0f);
     [plusSprite runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction rotateToAngle:0.2 duration:0.3],[SKAction rotateToAngle:-0.2 duration:0.3]]]]];
     [theFly.targetFood addCondimentType:FLY_INDEX withSprite:plusSprite];
@@ -860,7 +860,7 @@ static int condimentScores[4] = {4,5,6, 0};
                 
                 [soundPlayer playErrorWithNode:backgroundNode];
                 tmpF.plane = -1;
-                SKSpriteNode *handSprite = [SKSpriteNode spriteNodeWithImageNamed:@"sweephand.png"];
+                SKSpriteNode *handSprite = [SKSpriteNode spriteNodeWithImageNamed:@"sweephand"];
                 handSprite.anchorPoint = CGPointMake(0.5, 0);
                 handSprite.position = CGPointMake(tmpF.holderNode.position.x, -30.0);
                 handSprite.zRotation = 1.5;
@@ -903,7 +903,7 @@ static int condimentScores[4] = {4,5,6, 0};
                 [soundPlayer playScoreWithNode:backgroundNode];
                 [self updateScore:foodScore];
                 tmpF.plane = -1;
-                SKSpriteNode *handPlateSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"handplate.png"]];
+                SKSpriteNode *handPlateSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"handplate"]];
                 handPlateSprite.anchorPoint = CGPointMake(0.5, 0.8);
                 [tmpF.holderNode addChild:handPlateSprite];
                 zCounter += 1.0;

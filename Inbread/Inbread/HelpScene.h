@@ -10,8 +10,9 @@
 
 #define TYPE_SINGLE_SLICE 0
 #define TYPE_BREAD_CHEESE 1
-#define TYPE_CONDIMENT 2
-#define TYPE_FLY 3
+#define TYPE_ORDER 2
+#define TYPE_CONDIMENT 3
+#define TYPE_FLY 4
 
 @class ViewController;
 @class SoundPlayer;
@@ -35,6 +36,7 @@
 -(SKSpriteNode*)hideSprite:(NSString*)spr atX:(float)x andY:(float)y;
 -(void)initialHelpAnimation;
 -(void)breadCheeseAnimation;
+-(void)orderAnimation;
 -(void)condimentAnimation;
 -(void)flyAnimation;
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h;
@@ -43,6 +45,8 @@
 -(void)dropGroup:(NSArray*)sprites height:(float)h;
 -(void)putSplat:(NSString*)cName atX:(float)x andY:(float)y;
 -(void)putSwat:(NSString*)cName atX:(float)x andY:(float)y;
+-(void)dropAndFadeInSprite:(NSString*)spr toX:(float)x andY:(float)y withDelay:(float)d;
+-(void)animateStarsAtX:(float)x andY:(float)y withNumber:(int)n afterDelay:(float)d;
 
 -(void)makeStarsOnSprite:(SKSpriteNode*)sp;
 

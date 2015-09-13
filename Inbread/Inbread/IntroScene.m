@@ -70,7 +70,7 @@ static int numChews[5] = {3,4,5,4,3};
             }
         }
     
-    chewArray = @[[myAtlas textureNamed:@"mouth0.png"],[myAtlas textureNamed:@"mouth1.png"],[myAtlas textureNamed:@"mouth2.png"],[myAtlas textureNamed:@"mouth3.png"],[myAtlas textureNamed:@"mouth4.png"],[myAtlas textureNamed:@"mouth5.png"],[myAtlas textureNamed:@"mouth6.png"],[myAtlas textureNamed:@"mouth7.png"]];
+    chewArray = @[[myAtlas textureNamed:@"mouth0"],[myAtlas textureNamed:@"mouth1"],[myAtlas textureNamed:@"mouth2"],[myAtlas textureNamed:@"mouth3"],[myAtlas textureNamed:@"mouth4"],[myAtlas textureNamed:@"mouth5"],[myAtlas textureNamed:@"mouth6"],[myAtlas textureNamed:@"mouth7"]];
     
     for (int i=0;i<5;i++)
     {
@@ -79,16 +79,16 @@ static int numChews[5] = {3,4,5,4,3};
         hb.holderNode = [SKNode node];
         hb.holderNode.zPosition = hillbillyZ[s[i][1]];
         hb.holderNode.position = CGPointMake(hillbillyX[s[i][1]], hillbillyY[s[i][1]]);
-        hb.bodyNode = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[NSString stringWithFormat:@"person%d.png",i]]];
+        hb.bodyNode = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[NSString stringWithFormat:@"person%d",i]]];
         hb.bodyNode.anchorPoint = CGPointMake(0.5, 0);
         [hb.holderNode addChild:hb.bodyNode];
         
-        hb.mouthNode = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"mouth3.png"]];
+        hb.mouthNode = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"mouth3"]];
         hb.mouthNode.anchorPoint = CGPointMake(0.5, 0.5);
         hb.mouthNode.position = CGPointMake(mouthX[i], mouthY[i]);
         [hb.holderNode addChild:hb.mouthNode];
         
-        hb.armsNode = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[NSString stringWithFormat:@"hands%d.png",i]]];
+        hb.armsNode = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:[NSString stringWithFormat:@"hands%d",i]]];
         hb.armsNode.anchorPoint = CGPointMake(0.5, 0.5);
         hb.armsNode.position = CGPointMake(0, armsHighY[i]);
         
@@ -100,7 +100,7 @@ static int numChews[5] = {3,4,5,4,3};
         [self animateHillbilly:hb];
     }
     
-    SKSpriteNode *backs = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"backs.png"]];
+    SKSpriteNode *backs = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"backs"]];
     backs.zPosition = 2;
     backs.anchorPoint = CGPointMake(0, 0);
     backs.position = CGPointMake(0, 105);
