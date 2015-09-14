@@ -163,6 +163,16 @@
                     "animalInterval": 5,
                     "animalTypes": [0],
                 },
+                {
+                    "orders": ["34","24","14","64","54","34"],
+                    "belts": [-50,55],
+                    "time": 75,
+                    "plates": 2,
+                    "condiments": [0,2],
+                    "condimentInterval": 10,
+                    "animalInterval": 4,
+                    "animalTypes": [0],
+                },
 
 
 
