@@ -20,7 +20,7 @@
 @synthesize owner;
 @synthesize backgroundNode;
 
-static int helpScenes[NUM_HELP_SCENES] = {0,1,2,7,15};
+static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7,15};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -73,7 +73,7 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,2,7,15};
         }
         else
             foundIndex = -1;
-        if (foundIndex == 0)
+        if (foundIndex == 0) // Remove later
             foundIndex = -1;
     }
     return foundIndex;
