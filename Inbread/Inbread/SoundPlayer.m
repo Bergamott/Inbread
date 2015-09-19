@@ -140,5 +140,17 @@
         [skn runAction:[SKAction playSoundFileNamed:@"buzz.wav" waitForCompletion:FALSE]];
 }
 
+-(void)playPaperWithNode:(SKNode*)skn
+{
+    if (soundOn)
+        [skn runAction:[SKAction playSoundFileNamed:@"paper.wav" waitForCompletion:FALSE]];
+}
+
+-(void)playFanfareWithNode:(SKNode*)skn
+{
+    if (soundOn)
+        [skn runAction:[SKAction playSoundFileNamed:@"fanfare.wav" waitForCompletion:FALSE]];
+}
+
 
 @end

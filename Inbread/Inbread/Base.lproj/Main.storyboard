@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="LVB-YS-i5n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1112" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="LVB-YS-i5n">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -208,6 +208,57 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" id="NKL-FD-3nE" userLabel="Reviews view">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="b0K-o3-fP0" userLabel="Top background">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fence.png" id="rof-cF-djQ">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="179"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reviews_sign.png" id="wud-Dl-Qbn">
+                                        <rect key="frame" x="71" y="107" width="179" height="57"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="Xf6-0e-1nL">
+                                        <rect key="frame" x="117" y="207" width="97" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="I7V-0J-8px" userLabel="clipping 2">
+                                        <rect key="frame" x="214" y="196" width="97" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="Ye4-85-CcV" userLabel="clipping 3">
+                                        <rect key="frame" x="51" y="324" width="97" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="mDg-qB-eND" userLabel="clipping 4">
+                                        <rect key="frame" x="173" y="325" width="97" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="D9H-oe-xjF" userLabel="Next Button">
+                                        <rect key="frame" x="233" y="479" width="59" height="59"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="forwardbutton_0.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="forwardbutton_1.png"/>
+                                        <connections>
+                                            <action selector="reviewDonePressed:" destination="LVB-YS-i5n" eventType="touchUpInside" id="wAA-wi-5dC"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping0.png" id="w74-iN-dJs">
+                                        <rect key="frame" x="8" y="193" width="108" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.81960784313725488" green="0.70588235294117641" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -217,6 +268,11 @@
                         <outlet property="bubble0" destination="xMi-l3-KrW" id="wuC-XY-0Xb"/>
                         <outlet property="bubble1" destination="W27-3a-IIo" id="HLJ-pS-WKF"/>
                         <outlet property="bubble2" destination="JNs-9x-dfN" id="zZa-Ze-pu3"/>
+                        <outlet property="clipping0" destination="w74-iN-dJs" id="OXG-oE-6Sw"/>
+                        <outlet property="clipping1" destination="Xf6-0e-1nL" id="cX9-MH-ADm"/>
+                        <outlet property="clipping2" destination="I7V-0J-8px" id="4MR-23-3Im"/>
+                        <outlet property="clipping3" destination="Ye4-85-CcV" id="kl0-uv-41G"/>
+                        <outlet property="clipping4" destination="mDg-qB-eND" id="ZsX-3S-AHV"/>
                         <outlet property="dialogBoxHolder" destination="mxO-Kx-oGQ" id="tcr-BY-mRg"/>
                         <outlet property="dialogView" destination="cuW-3J-nQy" id="foh-0h-B1a"/>
                         <outlet property="failView" destination="XcW-kL-n2m" id="qRx-wb-jVK"/>
@@ -234,6 +290,7 @@
                         <outlet property="outline0" destination="zyE-m6-zfC" id="vMy-kd-M2n"/>
                         <outlet property="outline1" destination="ZwY-h1-HrC" id="dfY-AN-ZmK"/>
                         <outlet property="outline2" destination="47T-Ea-Ghi" id="TFg-5o-YWh"/>
+                        <outlet property="reviewView" destination="NKL-FD-3nE" id="CUK-W1-tc0"/>
                         <outlet property="soundButton" destination="pVY-Xi-9ij" id="1cA-xt-mA1"/>
                         <segue destination="wxd-Km-faE" kind="modal" identifier="ShowLevelScreen" modalTransitionStyle="crossDissolve" id="LTo-zd-y4q"/>
                     </connections>
@@ -735,6 +792,8 @@
         <image name="bubble0.png" width="67" height="71"/>
         <image name="bubble1.png" width="67" height="79"/>
         <image name="bubble2.png" width="69" height="67"/>
+        <image name="clipping0.png" width="108" height="120"/>
+        <image name="clipping1.png" width="97" height="113"/>
         <image name="dialog_frame.png" width="290" height="302"/>
         <image name="fail.png" width="172" height="87"/>
         <image name="fence.png" width="320" height="179"/>
@@ -764,6 +823,7 @@
         <image name="plus0.png" width="60" height="21"/>
         <image name="replaybutton_0.png" width="59" height="59"/>
         <image name="replaybutton_1.png" width="59" height="59"/>
+        <image name="reviews_sign.png" width="179" height="57"/>
         <image name="roof.png" width="320" height="170"/>
         <image name="sign0.png" width="128" height="59"/>
         <image name="sign1.png" width="130" height="58"/>

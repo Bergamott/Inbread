@@ -134,6 +134,8 @@
 -(void)clockRundown:(NSTimer*)t;
 -(void)showLevelCompleteDialog;
 
+@property(nonatomic) int level;
+
 @property(nonatomic,strong) ViewController *owner;
 @property(nonatomic,strong) SKTextureAtlas *myAtlas;
 @property(nonatomic,strong) NSMutableArray *conveyorBelts;

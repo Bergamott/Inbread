@@ -10,8 +10,6 @@
 #import "ViewController.h"
 #import "DataHandler.h"
 
-#define LEVELS_PER_RESTAURANT 12
-
 @interface LevelViewController ()
 
 @end

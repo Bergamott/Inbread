@@ -32,6 +32,8 @@
 -(void)playHijackWithNode:(SKNode*)skn;
 -(void)playSwatWithNode:(SKNode*)skn;
 -(void)playBuzzWithNode:(SKNode*)skn;
+-(void)playPaperWithNode:(SKNode*)skn;
+-(void)playFanfareWithNode:(SKNode*)skn;
 
 @property(nonatomic) BOOL soundOn;
 

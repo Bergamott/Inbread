@@ -46,6 +46,13 @@
     IBOutlet UIView *levelIndicatorView;
     IBOutlet UIView *levelBread;
     IBOutlet UILabel *levelLabel;
+    
+    IBOutlet UIView *reviewView;
+    IBOutlet UIImageView *clipping0;
+    IBOutlet UIImageView *clipping1;
+    IBOutlet UIImageView *clipping2;
+    IBOutlet UIImageView *clipping3;
+    IBOutlet UIImageView *clipping4;
 }
 
 -(void)showIntro;
@@ -64,9 +71,12 @@
 -(IBAction)nextButtonPressed:(id)sender;
 
 -(void)showFailDialogWithNext:(BOOL)nxt;
--(void)showPlusDialog:(int)pluses nextLevelAvailable:(BOOL)nla;
+-(void)showPlusDialog:(int)pluses;
 
 -(BOOL)showHelpSceneForLevel:(int)l;
+
+-(void)showReviewsForDiner:(int)d;
+-(IBAction)reviewDonePressed:(id)sender;
 
 @property(nonatomic,strong) MyScene *gameScene;
 @property(nonatomic,strong) IntroScene *introScene;

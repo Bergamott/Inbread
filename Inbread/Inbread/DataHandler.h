@@ -10,6 +10,8 @@
 
 #define NUM_LEVELS 24
 
+#define LEVELS_PER_RESTAURANT 12
+
 @interface DataHandler : NSObject {
     NSMutableDictionary *levelDic;
     

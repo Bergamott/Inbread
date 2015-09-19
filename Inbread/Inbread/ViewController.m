@@ -23,6 +23,9 @@
 @synthesize kitchenScene;
 @synthesize helpScene;
 
+static float clipCenterX[5][5] = {{160.0,0,0,0,0},{93.0,227.0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -216,7 +219,10 @@
 {
     [[SoundPlayer sharedPlayer] playTapWithNode:kitchenScene.backgroundNode];
     dialogView.hidden = TRUE;
-    [kitchenScene nextLevel];
+    if ((kitchenScene.level % LEVELS_PER_RESTAURANT) != (LEVELS_PER_RESTAURANT-1))
+        [kitchenScene nextLevel];
+    else
+        [self showReviewsForDiner:kitchenScene.level/LEVELS_PER_RESTAURANT];
 }
 
 -(void)showFailDialogWithNext:(BOOL)nxt
@@ -277,7 +283,7 @@
                      }];
 }
 
--(void)showPlusDialog:(int)pluses nextLevelAvailable:(BOOL)nla
+-(void)showPlusDialog:(int)pluses
 {
     outline0.hidden = FALSE;
     outline1.hidden = FALSE;
@@ -288,7 +294,10 @@
     mouthView.image = [UIImage imageNamed:@"mouth12.png"];
     failView.alpha = 0;
     
-    nextButton.enabled = nla;
+    DataHandler *dh = [DataHandler sharedDataHandler];
+    BOOL nextButtonActive = (kitchenScene.level < dh.currentLevelAccess) || ((kitchenScene.level % LEVELS_PER_RESTAURANT) == (LEVELS_PER_RESTAURANT - 1));
+    
+    nextButton.enabled = nextButtonActive;
 
     NSArray *myImages = [NSArray arrayWithObjects:
                          [UIImage imageNamed:@"mouth9.png"],
@@ -431,5 +440,54 @@
     else
         return FALSE;
 }
+
+-(void)showReviewsForDiner:(int)d
+{
+    reviewView.hidden = FALSE;
+    NSArray *clippings = @[clipping0,clipping1,clipping2,clipping3,clipping4];
+    DataHandler *dh = [DataHandler sharedDataHandler];
+    int completeDiners = dh.currentLevelAccess / LEVELS_PER_RESTAURANT;
+    float midY = self.view.frame.size.height * 0.5;
+    for (int i=0;i<5;i++)
+    {
+        UIView *clipV = [clippings objectAtIndex:i];
+        clipV.center = CGPointMake(clipCenterX[completeDiners-1][i], midY+clipCenterY[completeDiners-1][i]);
+        if (i == d)
+        {
+            clipV.hidden = FALSE;
+            clipV.alpha = 0;
+            clipV.transform = CGAffineTransformMakeScale(1.7, 1.7);
+            [UIView animateWithDuration:0.5
+                             animations:^{
+                                 clipV.alpha = 1.0;
+                                 clipV.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                             }
+                             completion:^(BOOL finished){
+                                 [[SoundPlayer sharedPlayer] playFanfareWithNode:kitchenScene.backgroundNode];
+                             }];
+        }
+        else if (i < completeDiners)
+        {
+            clipV.hidden = FALSE;
+        }
+        else
+        {
+            clipV.hidden = TRUE;
+        }
+    }
+    [[SoundPlayer sharedPlayer] playPaperWithNode:kitchenScene.backgroundNode];
+}
+
+-(IBAction)reviewDonePressed:(id)sender
+{
+    [[SoundPlayer sharedPlayer] playTapWithNode:kitchenScene.backgroundNode];
+    reviewView.hidden = TRUE;
+    DataHandler *dh = [DataHandler sharedDataHandler];
+    if (kitchenScene.level < dh.availableLevels - 1)
+        [kitchenScene nextLevel];
+    else
+        [self showIntro];
+}
+
 
 @end

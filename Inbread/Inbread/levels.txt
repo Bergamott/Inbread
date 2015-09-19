@@ -184,17 +184,24 @@
                     "animalInterval": 8,
                     "animalTypes": [0],
                 },
-
-
-
-                {
-                    "orders": ["34","334","3334","33334"],
-                    "belts": [45,-45,45,-45],
-                    "time": 100,
-                    "animalInterval": 6,
-                    "animalTypes": [0],
-                    "plates": 4
-                }
+{
+"orders": ["0"],
+"belts": [30,-20,20],
+"time": 60,
+"plates": 4
+},
+{
+"orders": ["0"],
+"belts": [30,-20,20],
+"time": 60,
+"plates": 4
+},
+{
+"orders": ["0"],
+"belts": [30,-20,20],
+"time": 60,
+"plates": 4
+}
             ]
         }
     ]

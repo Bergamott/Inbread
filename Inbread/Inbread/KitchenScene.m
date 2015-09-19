@@ -46,6 +46,8 @@
 
 @implementation KitchenScene
 
+@synthesize level;
+
 @synthesize owner;
 @synthesize myAtlas;
 @synthesize conveyorBelts;
@@ -1066,7 +1068,7 @@ static int condimentScores[4] = {4,5,6, 0};
         [defaults synchronize];
         [dh recomputeLevelAccessWithScore:score andLevel:level];
     }
-    [owner showPlusDialog:score>=topScoreLimit?3:(score>=middleScoreLimit?2:1) nextLevelAvailable:(level < dh.availableLevels-1 && level < dh.currentLevelAccess)];
+    [owner showPlusDialog:score>=topScoreLimit?3:(score>=middleScoreLimit?2:1)];
 }
 
 @end
