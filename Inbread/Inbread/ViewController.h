@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
-@class MyScene;
 @class IntroScene;
 @class KitchenScene;
 @class HelpScene;
@@ -23,7 +22,6 @@
     IBOutlet UIButton *soundButton;
     IBOutlet UIButton *noSoundButton;
     
-    MyScene *gameScene;
     KitchenScene *kitchenScene;
     
     IntroScene *introScene;
@@ -80,7 +78,6 @@
 -(void)showReviewsForDiner:(int)d;
 -(IBAction)reviewDonePressed:(id)sender;
 
-@property(nonatomic,strong) MyScene *gameScene;
 @property(nonatomic,strong) IntroScene *introScene;
 @property(nonatomic,strong) KitchenScene *kitchenScene;
 @property(nonatomic,strong) HelpScene *helpScene;

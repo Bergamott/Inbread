@@ -1020,7 +1020,8 @@ static int condimentScores[4] = {4,5,6, 0};
     {
         rundownTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self
                                                     selector: @selector(clockRundown:) userInfo: nil repeats: NO];
-        [backgroundNode runAction:[SKAction repeatAction:[SKAction sequence:@[[SKAction playSoundFileNamed:@"drop.wav" waitForCompletion:FALSE],[SKAction waitForDuration:0.1]]] count:(int)rundownTime]];
+        if (soundPlayer.soundOn)
+            [backgroundNode runAction:[SKAction repeatAction:[SKAction sequence:@[[SKAction playSoundFileNamed:@"drop.wav" waitForCompletion:FALSE],[SKAction waitForDuration:0.1]]] count:(int)rundownTime]];
     }
     else
     {

@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "MyScene.h"
 #import "IntroScene.h"
 #import "KitchenScene.h"
 #import "SoundPlayer.h"
@@ -19,7 +18,6 @@
 @implementation ViewController
 
 @synthesize introScene;
-@synthesize gameScene;
 @synthesize kitchenScene;
 @synthesize helpScene;
 
@@ -38,7 +36,6 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{-40,-35,80,0,0},{-40,
     skView.showsNodeCount = NO;
     
     // Create and configure the scene.
-//    SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
     self.introScene = [IntroScene sceneWithSize:skView.bounds.size];
     introScene.scaleMode = SKSceneScaleModeAspectFill;
     

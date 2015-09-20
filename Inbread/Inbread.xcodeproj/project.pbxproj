@@ -150,7 +150,6 @@
 		9AC27B8F19980A1100D7F84B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC27B8E19980A1100D7F84B /* AppDelegate.m */; };
 		9AC27B9219980A1100D7F84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC27B9019980A1100D7F84B /* Main.storyboard */; };
 		9AC27B9519980A1100D7F84B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC27B9419980A1100D7F84B /* ViewController.m */; };
-		9AC27B9819980A1100D7F84B /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC27B9719980A1100D7F84B /* MyScene.m */; };
 		9AC27B9A19980A1100D7F84B /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC27B9919980A1100D7F84B /* Spaceship.png */; };
 		9AC27B9C19980A1100D7F84B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC27B9B19980A1100D7F84B /* Images.xcassets */; };
 		9AC27BA319980A1200D7F84B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC27BA219980A1200D7F84B /* XCTest.framework */; };
@@ -223,6 +222,7 @@
 		9AF5B5541BAEF21A003FB0F1 /* review_arms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF5B5501BAEF21A003FB0F1 /* review_arms@2x.png */; };
 		9AF5B5571BAEF456003FB0F1 /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF5B5551BAEF456003FB0F1 /* smile.png */; };
 		9AF5B5581BAEF456003FB0F1 /* smile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF5B5561BAEF456003FB0F1 /* smile@2x.png */; };
+		9AF5B55A1BAF3B66003FB0F1 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF5B5591BAF3B66003FB0F1 /* Icon-180.png */; };
 		9AF8D60F1B7FECD400766448 /* kitchen1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AF8D60D1B7FECD300766448 /* kitchen1.jpg */; };
 		9AF8D6101B7FECD400766448 /* kitchen1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AF8D60E1B7FECD300766448 /* kitchen1@2x.jpg */; };
 		9AFC1E3B1B3762AD008B6987 /* boing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9AFC1E3A1B3762AD008B6987 /* boing.wav */; };
@@ -396,8 +396,6 @@
 		9AC27B9119980A1100D7F84B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9AC27B9319980A1100D7F84B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9AC27B9419980A1100D7F84B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9AC27B9619980A1100D7F84B /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
-		9AC27B9719980A1100D7F84B /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
 		9AC27B9919980A1100D7F84B /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		9AC27B9B19980A1100D7F84B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9AC27BA119980A1200D7F84B /* InbreadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InbreadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -477,6 +475,7 @@
 		9AF5B5501BAEF21A003FB0F1 /* review_arms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "review_arms@2x.png"; sourceTree = "<group>"; };
 		9AF5B5551BAEF456003FB0F1 /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
 		9AF5B5561BAEF456003FB0F1 /* smile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smile@2x.png"; sourceTree = "<group>"; };
+		9AF5B5591BAF3B66003FB0F1 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
 		9AF8D60D1B7FECD300766448 /* kitchen1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kitchen1.jpg; sourceTree = "<group>"; };
 		9AF8D60E1B7FECD300766448 /* kitchen1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "kitchen1@2x.jpg"; sourceTree = "<group>"; };
 		9AFC1E3A1B3762AD008B6987 /* boing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boing.wav; sourceTree = "<group>"; };
@@ -586,6 +585,7 @@
 				9A20A76919E1F18200C030C0 /* Icon-76.png */,
 				9A20A76A19E1F18200C030C0 /* Icon-76@2x.png */,
 				9A20A76B19E1F18200C030C0 /* Icon-120.png */,
+				9AF5B5591BAF3B66003FB0F1 /* Icon-180.png */,
 				9A20A76C19E1F18200C030C0 /* Icon-Small-50.png */,
 				9A20A76D19E1F18200C030C0 /* Icon-Small-50@2x.png */,
 				9A20A76E19E1F18200C030C0 /* Icon-Small.png */,
@@ -668,8 +668,6 @@
 				9AC27B9019980A1100D7F84B /* Main.storyboard */,
 				9AC27B9319980A1100D7F84B /* ViewController.h */,
 				9AC27B9419980A1100D7F84B /* ViewController.m */,
-				9AC27B9619980A1100D7F84B /* MyScene.h */,
-				9AC27B9719980A1100D7F84B /* MyScene.m */,
 				9AC7901E19F1B51300EF9D6D /* KitchenScene.h */,
 				9AC7901F19F1B51300EF9D6D /* KitchenScene.m */,
 				9AED49D919AA347900EBD460 /* Food.h */,
@@ -1084,6 +1082,7 @@
 				9AF5B5581BAEF456003FB0F1 /* smile@2x.png in Resources */,
 				9ABF27331A0FB46800F1B6B7 /* slide.wav in Resources */,
 				9A8412AB1AD2E279006FE31E /* plus2.png in Resources */,
+				9AF5B55A1BAF3B66003FB0F1 /* Icon-180.png in Resources */,
 				9AD993541BAE041D00D8B386 /* clipping1.png in Resources */,
 				9A0C4FBA1A06EB6000AB629D /* title.png in Resources */,
 				9A0C4F9B1A06A40500AB629D /* playbutton_1@2x.png in Resources */,
@@ -1157,7 +1156,6 @@
 				9A599E101B86802D006FEEBB /* Fly.m in Sources */,
 				9A85F07519E1854500311520 /* IntroScene.m in Sources */,
 				9AED49DB19AA347900EBD460 /* Food.m in Sources */,
-				9AC27B9819980A1100D7F84B /* MyScene.m in Sources */,
 				9AC27B9519980A1100D7F84B /* ViewController.m in Sources */,
 				9AC27B8F19980A1100D7F84B /* AppDelegate.m in Sources */,
 				9AC7EC831A18057D000FD6F5 /* LevelViewController.m in Sources */,
@@ -1318,7 +1316,7 @@
 				GCC_PREFIX_HEADER = "Inbread/Inbread-Prefix.pch";
 				INFOPLIST_FILE = "Inbread/Inbread-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7273c158-b6c9-418f-a1bf-5357ed914114";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
