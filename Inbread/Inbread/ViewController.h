@@ -53,6 +53,8 @@
     IBOutlet UIImageView *clipping2;
     IBOutlet UIImageView *clipping3;
     IBOutlet UIImageView *clipping4;
+    IBOutlet UIImageView *fence;
+    IBOutlet UIView *thumbsUpView;
 }
 
 -(void)showIntro;

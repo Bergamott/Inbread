@@ -49,7 +49,7 @@
                 {
                     "orders": ["010","120","230","310"],
                     "belts": [30,-30,30,-40],
-                    "time": 80,
+                    "time": 90,
                     "plates": 3
                 },
                 {
@@ -172,6 +172,12 @@
                     "condimentInterval": 10,
                     "animalInterval": 4,
                     "animalTypes": [0],
+                },
+                {
+                    "orders": ["4123654"],
+                    "belts": [-65],
+                    "time": 40,
+                    "plates": 1,
                 },
 
                 {

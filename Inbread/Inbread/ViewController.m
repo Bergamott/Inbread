@@ -23,8 +23,8 @@
 @synthesize kitchenScene;
 @synthesize helpScene;
 
-static float clipCenterX[5][5] = {{160.0,0,0,0,0},{93.0,227.0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
-static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}};
+static float clipCenterX[5][5] = {{160.0,0,0,0,0},{93.0,227.0,0,0,0},{93.0,227.0,160.0,0,0},{93.0,227.0,93.0,227.0,0},{60.0,163.0,267.0,93.0,227.0}};
+static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{-40,-35,80,0,0},{-40,-35,80,80,0},{-40,-35,-35,80,80}};
 
 - (void)viewDidLoad
 {
@@ -97,6 +97,9 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{0,0,0,0,0},{0,0,0,0,0
     logoView.hidden = TRUE;
     menuView.hidden = TRUE;
     
+
+//    [self showReviewsForDiner:0]; // Test
+
     // Check if it is the first time
     // If so, show tutorial
     if (![self showHelpSceneForLevel:0])
@@ -443,11 +446,13 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{0,0,0,0,0},{0,0,0,0,0
 
 -(void)showReviewsForDiner:(int)d
 {
+    thumbsUpView.frame = CGRectMake(thumbsUpView.frame.origin.x, fence.frame.origin.y+20.0, thumbsUpView.frame.size.width, thumbsUpView.frame.size.height);
     reviewView.hidden = FALSE;
     NSArray *clippings = @[clipping0,clipping1,clipping2,clipping3,clipping4];
     DataHandler *dh = [DataHandler sharedDataHandler];
     int completeDiners = dh.currentLevelAccess / LEVELS_PER_RESTAURANT;
-    float midY = self.view.frame.size.height * 0.5;
+//    completeDiners = 5; // Test
+    float midY = (self.view.frame.size.height + fence.frame.origin.y + 40.0) * 0.5;
     for (int i=0;i<5;i++)
     {
         UIView *clipV = [clippings objectAtIndex:i];
@@ -455,6 +460,7 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{0,0,0,0,0},{0,0,0,0,0
         if (i == d)
         {
             clipV.hidden = FALSE;
+            [reviewView bringSubviewToFront:clipV];
             clipV.alpha = 0;
             clipV.transform = CGAffineTransformMakeScale(1.7, 1.7);
             [UIView animateWithDuration:0.5
@@ -464,6 +470,14 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{0,0,0,0,0},{0,0,0,0,0
                              }
                              completion:^(BOOL finished){
                                  [[SoundPlayer sharedPlayer] playFanfareWithNode:kitchenScene.backgroundNode];
+                                 [UIView animateWithDuration:1.0
+                                                  animations:^{
+                                                      thumbsUpView.frame = CGRectMake(thumbsUpView.frame.origin.x, fence.frame.origin.y-125.0, thumbsUpView.frame.size.width, thumbsUpView.frame.size.height);
+                                                  }
+                                                  completion:^(BOOL finished){
+                                                      
+                                                  }];
+
                              }];
         }
         else if (i < completeDiners)

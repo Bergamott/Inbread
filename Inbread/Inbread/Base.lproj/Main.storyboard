@@ -212,37 +212,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" id="b0K-o3-fP0" userLabel="Top background">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fence.png" id="rof-cF-djQ">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="179"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reviews_sign.png" id="wud-Dl-Qbn">
-                                        <rect key="frame" x="71" y="107" width="179" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="Xf6-0e-1nL">
-                                        <rect key="frame" x="117" y="207" width="97" height="113"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="I7V-0J-8px" userLabel="clipping 2">
-                                        <rect key="frame" x="214" y="196" width="97" height="113"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="Ye4-85-CcV" userLabel="clipping 3">
-                                        <rect key="frame" x="51" y="324" width="97" height="113"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="mDg-qB-eND" userLabel="clipping 4">
-                                        <rect key="frame" x="173" y="325" width="97" height="113"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="D9H-oe-xjF" userLabel="Next Button">
-                                        <rect key="frame" x="233" y="479" width="59" height="59"/>
+                                        <rect key="frame" x="249" y="18" width="59" height="59"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="forwardbutton_0.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -252,12 +223,60 @@
                                             <action selector="reviewDonePressed:" destination="LVB-YS-i5n" eventType="touchUpInside" id="wAA-wi-5dC"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" id="23k-BL-BAu" userLabel="Thumbs up view">
+                                        <rect key="frame" x="5" y="25" width="185" height="168"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person0.png" id="TaJ-Ht-GoO">
+                                                <rect key="frame" x="37" y="0.0" width="106" height="168"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smile.png" id="Yy3-Bf-ibs">
+                                                <rect key="frame" x="70" y="40" width="45" height="18"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="review_arms.png" id="LCN-C2-YOU">
+                                                <rect key="frame" x="0.0" y="6" width="185" height="126"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="b0K-o3-fP0" userLabel="Bottom background">
+                                        <rect key="frame" x="0.0" y="253" width="320" height="315"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="0.81960784310000001" green="0.70588235290000001" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fence.png" id="rof-cF-djQ">
+                                        <rect key="frame" x="0.0" y="159" width="320" height="179"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reviews_sign.png" id="wud-Dl-Qbn">
+                                        <rect key="frame" x="71" y="205" width="179" height="57"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping0.png" id="w74-iN-dJs">
-                                        <rect key="frame" x="8" y="193" width="108" height="120"/>
+                                        <rect key="frame" x="8" y="278" width="108" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="Xf6-0e-1nL">
+                                        <rect key="frame" x="117" y="292" width="97" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="I7V-0J-8px" userLabel="clipping 2">
+                                        <rect key="frame" x="214" y="281" width="97" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="Ye4-85-CcV" userLabel="clipping 3">
+                                        <rect key="frame" x="51" y="409" width="97" height="113"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="mDg-qB-eND" userLabel="clipping 4">
+                                        <rect key="frame" x="173" y="410" width="97" height="113"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.81960784313725488" green="0.70588235294117641" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -276,6 +295,7 @@
                         <outlet property="dialogBoxHolder" destination="mxO-Kx-oGQ" id="tcr-BY-mRg"/>
                         <outlet property="dialogView" destination="cuW-3J-nQy" id="foh-0h-B1a"/>
                         <outlet property="failView" destination="XcW-kL-n2m" id="qRx-wb-jVK"/>
+                        <outlet property="fence" destination="rof-cF-djQ" id="5h7-PF-c7Z"/>
                         <outlet property="headView" destination="dPG-rj-hQ5" id="COZ-kv-R5Z"/>
                         <outlet property="levelBread" destination="DDT-2v-GAN" id="Jsn-FF-whA"/>
                         <outlet property="levelIndicatorView" destination="Xlo-mS-6GT" id="UwV-jD-aiA"/>
@@ -292,6 +312,7 @@
                         <outlet property="outline2" destination="47T-Ea-Ghi" id="TFg-5o-YWh"/>
                         <outlet property="reviewView" destination="NKL-FD-3nE" id="CUK-W1-tc0"/>
                         <outlet property="soundButton" destination="pVY-Xi-9ij" id="1cA-xt-mA1"/>
+                        <outlet property="thumbsUpView" destination="23k-BL-BAu" id="LCo-C0-yKv"/>
                         <segue destination="wxd-Km-faE" kind="modal" identifier="ShowLevelScreen" modalTransitionStyle="crossDissolve" id="LTo-zd-y4q"/>
                     </connections>
                 </viewController>
@@ -818,15 +839,18 @@
         <image name="outline0.png" width="63" height="61"/>
         <image name="outline1.png" width="62" height="59"/>
         <image name="outline2.png" width="62" height="60"/>
+        <image name="person0.png" width="106" height="168"/>
         <image name="playbutton_0.png" width="68" height="67"/>
         <image name="playbutton_1.png" width="68" height="67"/>
         <image name="plus0.png" width="60" height="21"/>
         <image name="replaybutton_0.png" width="59" height="59"/>
         <image name="replaybutton_1.png" width="59" height="59"/>
+        <image name="review_arms.png" width="185" height="126"/>
         <image name="reviews_sign.png" width="179" height="57"/>
         <image name="roof.png" width="320" height="170"/>
         <image name="sign0.png" width="128" height="59"/>
         <image name="sign1.png" width="130" height="58"/>
+        <image name="smile.png" width="45" height="18"/>
         <image name="soundbutton_0.png" width="59" height="59"/>
         <image name="soundbutton_1.png" width="59" height="59"/>
         <image name="subtitle.png" width="226" height="53"/>
