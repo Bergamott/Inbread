@@ -16,11 +16,14 @@
     IBOutlet UIImageView *lock0;
     IBOutlet UIImageView *mouth1;
     IBOutlet UIImageView *lock1;
+    IBOutlet UIImageView *mouth2;
+    IBOutlet UIImageView *lock2;
     
     IBOutlet UIScrollView *scrollView;
     
     IBOutlet UIView *holderView0;
     IBOutlet UIView *holderView1;
+    IBOutlet UIView *holderView2;
 }
 
 -(IBAction)breadPressed:(id)sender;

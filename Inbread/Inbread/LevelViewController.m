@@ -47,6 +47,11 @@
     mouth1.animationRepeatCount = 0;
     mouth1.animationDuration = 1.1;
     [mouth1 startAnimating];
+    
+    mouth2.animationImages = mouth0.animationImages;
+    mouth2.animationRepeatCount = 0;
+    mouth2.animationDuration = 1.2;
+    [mouth2 startAnimating];
 }
 
 -(BOOL)prefersStatusBarHidden
@@ -67,8 +72,8 @@
     
     NSArray *plusImages = @[[UIImage imageNamed:@"plus0.png"],[UIImage imageNamed:@"plus1.png"],
                             [UIImage imageNamed:@"plus2.png"],[UIImage imageNamed:@"plus3.png"]];
-    NSArray *tavernViews = @[holderView0,holderView1];
-    NSArray *locks = @[lock0,lock1];
+    NSArray *tavernViews = @[holderView0,holderView1,holderView2];
+    NSArray *locks = @[lock0,lock1,lock2];
     
     int currentLevelAccess = [DataHandler sharedDataHandler].currentLevelAccess;
     NSArray *highscores = [[NSUserDefaults standardUserDefaults] objectForKey:@"highscores"];
@@ -109,7 +114,7 @@
 {
     ViewController *vc = (ViewController*)self.presentingViewController;
     UIButton *but = (UIButton*)sender;
-    [vc showKitchenSceneWithLevel:but.tag];
+    [vc showKitchenSceneWithLevel:(int)but.tag];
     [self dismissViewControllerAnimated:TRUE completion:NULL];
 }
 

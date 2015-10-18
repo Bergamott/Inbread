@@ -235,6 +235,7 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{-40,-35,80,0,0},{-40,
     bubble2.hidden = TRUE;
     nextButton.enabled = nxt;
     mouthView.image = [UIImage imageNamed:@"mouth8.png"];
+    headView.image = [UIImage imageNamed:[NSString stringWithFormat:@"head%d.png",kitchenScene.level/LEVELS_PER_RESTAURANT]];
     failView.alpha = 0;
     failView.transform = CGAffineTransformMakeScale(0.5, 0.5);
     dialogView.hidden = FALSE;
@@ -292,6 +293,7 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{-40,-35,80,0,0},{-40,
     bubble1.hidden = TRUE;
     bubble2.hidden = TRUE;
     mouthView.image = [UIImage imageNamed:@"mouth12.png"];
+    headView.image = [UIImage imageNamed:[NSString stringWithFormat:@"head%d.png",kitchenScene.level/LEVELS_PER_RESTAURANT]];
     failView.alpha = 0;
     
     DataHandler *dh = [DataHandler sharedDataHandler];

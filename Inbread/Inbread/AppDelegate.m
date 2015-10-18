@@ -31,6 +31,14 @@
         [defaults setObject:highscores forKey:@"highscores"];
         [defaults synchronize];
     }
+    else if (highscores.count < NUM_LEVELS) // For when adding new restaurants
+    {
+        int j = NUM_LEVELS - (int)highscores.count;
+        for (int i=0;i<j;i++)
+            [highscores addObject:[NSNumber numberWithInt:0]];
+        [defaults setObject:highscores forKey:@"highscores"];
+        [defaults synchronize];
+    }
     
     [[DataHandler sharedDataHandler] loadEverything];
    
