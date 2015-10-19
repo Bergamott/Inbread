@@ -86,6 +86,8 @@
 		9A54285619E347040079B908 /* fragment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A666C7A19D8BC300004EF15 /* fragment@2x.png */; };
 		9A599E101B86802D006FEEBB /* Fly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A599E0F1B86802D006FEEBB /* Fly.m */; };
 		9A5F806B1B85317B00969DF6 /* Animal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5F806A1B85317B00969DF6 /* Animal.m */; };
+		9A6B32F51BD5971800FB5DBE /* crumbs_sausage.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A6B32F31BD5971800FB5DBE /* crumbs_sausage.sks */; };
+		9A6B32F61BD5971800FB5DBE /* crumbs_whiteloaf.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A6B32F41BD5971800FB5DBE /* crumbs_whiteloaf.sks */; };
 		9A6E7A4C1B83CC8A0040F0A7 /* Raccoon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6E7A4B1B83CC8A0040F0A7 /* Raccoon.m */; };
 		9A6F32B31AC89BEE00F21CFD /* level.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A6F32B21AC89BEE00F21CFD /* level.wav */; };
 		9A798DCA1A79982E008E0840 /* help.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9A798DC91A79982E008E0840 /* help.atlas */; };
@@ -335,6 +337,8 @@
 		9A5F806A1B85317B00969DF6 /* Animal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animal.m; sourceTree = "<group>"; };
 		9A666C7919D8BC300004EF15 /* fragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fragment.png; sourceTree = "<group>"; };
 		9A666C7A19D8BC300004EF15 /* fragment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fragment@2x.png"; sourceTree = "<group>"; };
+		9A6B32F31BD5971800FB5DBE /* crumbs_sausage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = crumbs_sausage.sks; sourceTree = "<group>"; };
+		9A6B32F41BD5971800FB5DBE /* crumbs_whiteloaf.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = crumbs_whiteloaf.sks; sourceTree = "<group>"; };
 		9A6E7A4A1B83CC8A0040F0A7 /* Raccoon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Raccoon.h; sourceTree = "<group>"; };
 		9A6E7A4B1B83CC8A0040F0A7 /* Raccoon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Raccoon.m; sourceTree = "<group>"; };
 		9A6F32B21AC89BEE00F21CFD /* level.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = level.wav; sourceTree = "<group>"; };
@@ -728,6 +732,8 @@
 				9AD3FC691B7AA13C0075894B /* crumbs_chicken.sks */,
 				9AD3FC6A1B7AA13C0075894B /* crumbs_roast.sks */,
 				9A0C4F8A1A06916600AB629D /* starburst.sks */,
+				9A6B32F31BD5971800FB5DBE /* crumbs_sausage.sks */,
+				9A6B32F41BD5971800FB5DBE /* crumbs_whiteloaf.sks */,
 				9AC27B9B19980A1100D7F84B /* Images.xcassets */,
 				9AC27B8519980A1100D7F84B /* Supporting Files */,
 				9AB1EDF119D8AE2E0046A9E3 /* TemplateIcon2x.png */,
@@ -992,6 +998,7 @@
 				9A0C4FB91A06EB6000AB629D /* roof@2x.png in Resources */,
 				9A1C8B991A193654000E4529 /* mouth14@2x.png in Resources */,
 				9A924B591BD4038F008ACB57 /* head2@2x.png in Resources */,
+				9A6B32F51BD5971800FB5DBE /* crumbs_sausage.sks in Resources */,
 				9AD3FC6C1B7AA13C0075894B /* crumbs_chicken.sks in Resources */,
 				9A20A77819E1F18200C030C0 /* Icon-120.png in Resources */,
 				9A85F07619E1861E00311520 /* intro.atlas in Resources */,
@@ -1078,6 +1085,7 @@
 				9AC6F2E31A0975B100A75E3F /* fail.png in Resources */,
 				9AA411CB1AFFB44A00F58E33 /* level_slice1.png in Resources */,
 				9A0C4F9A1A06A40500AB629D /* playbutton_1.png in Resources */,
+				9A6B32F61BD5971800FB5DBE /* crumbs_whiteloaf.sks in Resources */,
 				9A8412AC1AD2E279006FE31E /* plus2@2x.png in Resources */,
 				9A9659E31B9E3CFF00C9A335 /* buzz.wav in Resources */,
 				9A8825481A0ADD5900702A2B /* mouth9@2x.png in Resources */,

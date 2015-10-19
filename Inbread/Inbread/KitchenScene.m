@@ -68,20 +68,20 @@
 @synthesize animalTypes;
 
 //static float sliceYMargin[4] = {1,1,1,1};
-static float sliceHeight[7] = {11,11,11,11,11,11,11};
-static float sliceYMargin[7] = {1,1,1,1,1,1,1};
-static float ingredientYMargin[7] = {1,1,1,1,1,2,1};
-static float ingredientHeight[7] = {54,54,64,53,53,53,53};
+static float sliceHeight[9] = {11,11,11,11,11,11,11,11,11};
+static float sliceYMargin[9] = {1,1,1,1,1,1,1,1,1};
+static float ingredientYMargin[9] = {1,1,1,1,1,2,1,1,1};
+static float ingredientHeight[9] = {54,54,64,53,53,53,53,53,53};
 
 static int condimentScores[4] = {4,5,6, 0};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
-        ingredientNames = @[@"loaf",@"ham",@"lettuce",@"cheese",@"brownloaf",@"chicken", @"roast"];
-        sliceNames = @[@"slice",@"hams",@"leaves",@"cheeses",@"brownslice",@"chickens", @"roasts"];
+        ingredientNames = @[@"loaf",@"ham",@"lettuce",@"cheese",@"brownloaf",@"chicken", @"roast", @"whiteloaf", @"sausage"];
+        sliceNames = @[@"slice",@"hams",@"leaves",@"cheeses",@"brownslice",@"chickens", @"roasts", @"whiteslice", @"sausages"];
         extraNames = @[@"tomato",@"pickle",@"onion"];
-        crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese",@"crumbs_brownloaf", @"crumbs_chicken",@"crumbs_roast"];
+        crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese",@"crumbs_brownloaf", @"crumbs_chicken",@"crumbs_roast",@"crumbs_whiteloaf",@"crumbs_sausage"];
         plusNames = @[@"plus_tomato",@"plus_pickle",@"plus_onion",@"flyhead"];
         condimentCrumbNames = @[@"crumbs_tomato",@"crumbs_pickle",@"crumbs_onion"];
         

@@ -7,6 +7,8 @@
         "brown loaf": 4,
         "chicken": 5,
         "roast beef": 6,
+        "white loaf": 7,
+        "sausage": 8,
 
         "fly": 0,
         "raccoon": 1
