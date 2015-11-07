@@ -64,11 +64,11 @@ static float sliceYMargin[7] = {1,1,1,1,1,1,1};
     [topFood.holderNode removeAllActions];
     int c = topFood.typeCount;
     for (int i=0;i<c;i++)
-        [self addType:[topFood getTypeAt:i] withSprite:[topFood.holderNode.children objectAtIndex:1]];
+        [self addType:[topFood getTypeAt:i] withSprite:(SKSpriteNode*)[topFood.holderNode.children objectAtIndex:1]];
     [topFood.holderNode removeFromParent];
     for (int i=topFood.plusCount-1;i>=0;i--)
     {
-        SKSpriteNode *plusS = [topFood.plusNode.children objectAtIndex:i];
+        SKSpriteNode *plusS = (SKSpriteNode*)[topFood.plusNode.children objectAtIndex:i];
         [plusS removeFromParent];
         [self addCondimentType:[topFood getPlusNum:i] withSprite:plusS];
     }

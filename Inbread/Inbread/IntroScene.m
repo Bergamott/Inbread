@@ -164,6 +164,7 @@ static int numChews[5] = {3,4,5,4,3};
 
 -(void)stopEverything
 {
+    backgroundNode.hidden = TRUE;
     [myAudioPlayer stop];
     [backgroundNode removeAllActions];
     for (SKNode *tmpN in backgroundNode.children)
@@ -171,6 +172,7 @@ static int numChews[5] = {3,4,5,4,3};
     [hillbillies removeAllObjects];
     [backgroundNode removeAllChildren];
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    backgroundNode.hidden = FALSE;
 }
 
 @end

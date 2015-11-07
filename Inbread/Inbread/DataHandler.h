@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define NUM_LEVELS 36
+#define NUM_LEVELS 24
 
 #define LEVELS_PER_RESTAURANT 12
 

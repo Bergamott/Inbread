@@ -237,7 +237,7 @@ static int condimentScores[4] = {4,5,6, 0};
     for (int i=0;i<numPlanes-1;i++)
     {
         SKNode *beltNode = [SKNode node];
-        beltNode.position = CGPointMake(0, 600.0);
+        beltNode.position = CGPointMake(0, screenHeight+40.0); // Start outside of screen
         int beltVelocity = [(NSNumber*)[beltArr objectAtIndex:i] intValue];
         int beltSpeed = beltVelocity;
         if (beltSpeed < 0)
@@ -927,10 +927,10 @@ static int condimentScores[4] = {4,5,6, 0};
                 
                 [tmpF.holderNode runAction:[SKAction sequence:@[
                                                                 [SKAction moveBy:CGVectorMake(15.0, 30.0) duration:0.7],
-                                                                [SKAction moveBy:CGVectorMake(15.0, -150.0) duration:2.0],
-                                                                [SKAction runBlock:^{[self removeFood:tmpF];}]
+                                                                [SKAction moveBy:CGVectorMake(15.0, -150.0) duration:2.0] //,
+                                                                //[SKAction runBlock:^{[self removeFood:tmpF];}]
                                                                 ]]];
-                
+                [self performSelector:@selector(removeFood:) withObject:tmpF afterDelay:3.0];
                 break;
             }
         }
@@ -992,15 +992,6 @@ static int condimentScores[4] = {4,5,6, 0};
 {
     gameState = STATE_DONE;
     [self stopEverything];
-/*    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *highscores = [[defaults objectForKey:@"highscores"] mutableCopy];
-    int prevScore = [((NSNumber*)[highscores objectAtIndex:level]) intValue];
-    if (score > prevScore)
-    {
-        [highscores replaceObjectAtIndex:level withObject:[NSNumber numberWithInt:score]];
-        [defaults setObject:highscores forKey:@"highscores"];
-        [defaults synchronize];
-    }*/
     DataHandler *dh = [DataHandler sharedDataHandler];
     [owner showFailDialogWithNext:(level < dh.availableLevels-1 && level < dh.currentLevelAccess)];
 }
@@ -1046,8 +1037,10 @@ static int condimentScores[4] = {4,5,6, 0};
     score++;
     scoreLabel.text = [NSString stringWithFormat:@"%d",score];
     if (rundownTime > 0)
+    {
         rundownTimer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self
                                                   selector: @selector(clockRundown:) userInfo: nil repeats: NO];
+    }
     else
     {
         clockHand.zRotation = 0;

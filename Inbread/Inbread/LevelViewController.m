@@ -72,8 +72,10 @@
     
     NSArray *plusImages = @[[UIImage imageNamed:@"plus0.png"],[UIImage imageNamed:@"plus1.png"],
                             [UIImage imageNamed:@"plus2.png"],[UIImage imageNamed:@"plus3.png"]];
-    NSArray *tavernViews = @[holderView0,holderView1,holderView2];
-    NSArray *locks = @[lock0,lock1,lock2];
+    NSArray *tavernViews = @[holderView0,holderView1];
+    NSArray *locks = @[lock0,lock1]; // TODO: Change back after store update
+//    NSArray *tavernViews = @[holderView0,holderView1,holderView2];
+//    NSArray *locks = @[lock0,lock1,lock2];
     
     int currentLevelAccess = [DataHandler sharedDataHandler].currentLevelAccess;
     NSArray *highscores = [[NSUserDefaults standardUserDefaults] objectForKey:@"highscores"];

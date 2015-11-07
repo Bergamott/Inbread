@@ -91,12 +91,18 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{-40,-35,80,0,0},{-40,
 {
     [[SoundPlayer sharedPlayer] playTapWithNode:introScene.backgroundNode];
     [introScene stopEverything];
+    
+    [self performSelector:@selector(afterPlayPressed) withObject:NULL afterDelay:0.08];
+}
+
+-(void)afterPlayPressed
+{
     logoView.hidden = TRUE;
     menuView.hidden = TRUE;
     
-
-//    [self showReviewsForDiner:0]; // Test
-
+    
+    //    [self showReviewsForDiner:0]; // Test
+    
     // Check if it is the first time
     // If so, show tutorial
     if (![self showHelpSceneForLevel:0])

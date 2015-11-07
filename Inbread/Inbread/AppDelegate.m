@@ -22,7 +22,7 @@
                                  nil];
     [defaults registerDefaults:appDefaults];
     
-    NSMutableArray *highscores = [defaults objectForKey:@"highscores"];
+    NSMutableArray *highscores = [[defaults objectForKey:@"highscores"] mutableCopy];
     if (highscores == NULL)
     {
         highscores = [[NSMutableArray alloc] initWithCapacity:NUM_LEVELS];

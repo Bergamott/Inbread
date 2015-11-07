@@ -57,6 +57,7 @@
 
 -(void)showIntro;
 -(IBAction)playPressed:(id)sender;
+-(void)afterPlayPressed;
 -(void)showKitchenSceneWithLevel:(int)l;
 -(void)presentKitchenSceneWithLevel:(int)l;
 -(void)showLevelIndicatorForLevel:(int)l;

@@ -73,8 +73,6 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7,15};
         }
         else
             foundIndex = -1;
-        if (foundIndex == 0) // Remove later
-            foundIndex = -1;
     }
     return foundIndex;
 }
