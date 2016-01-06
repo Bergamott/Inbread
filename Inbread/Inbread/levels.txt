@@ -1,5 +1,5 @@
 {
-    "condiments": {
+    "ingredients": {
         "loaf": 0,
         "ham": 1,
         "lettuce": 2,
@@ -9,9 +9,15 @@
         "roast beef": 6,
         "white loaf": 7,
         "sausage": 8,
+        "porkbelly": 9,
 
         "fly": 0,
         "raccoon": 1
+    },
+    "condiments": {
+        "tomato":0,
+        "pickle":1,
+        "onion":2
     },
     "restaurants": [
         {
