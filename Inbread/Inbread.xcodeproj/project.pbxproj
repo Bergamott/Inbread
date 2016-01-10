@@ -208,6 +208,8 @@
 		9AC7EC831A18057D000FD6F5 /* LevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7EC821A18057D000FD6F5 /* LevelViewController.m */; };
 		9AD0BB5A1A6C086F00E2F273 /* kitchen0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0BB581A6C086F00E2F273 /* kitchen0.jpg */; };
 		9AD0BB5B1A6C086F00E2F273 /* kitchen0@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0BB591A6C086F00E2F273 /* kitchen0@2x.jpg */; };
+		9AD1133B1C42A75800728D24 /* Goo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1133A1C42A75800728D24 /* Goo.m */; };
+		9AD1133D1C42B46500728D24 /* splat_goo.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9AD1133C1C42B46500728D24 /* splat_goo.sks */; };
 		9AD3FC6B1B7AA13C0075894B /* crumbs_brownloaf.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9AD3FC681B7AA13C0075894B /* crumbs_brownloaf.sks */; };
 		9AD3FC6C1B7AA13C0075894B /* crumbs_chicken.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9AD3FC691B7AA13C0075894B /* crumbs_chicken.sks */; };
 		9AD3FC6D1B7AA13C0075894B /* crumbs_roast.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9AD3FC6A1B7AA13C0075894B /* crumbs_roast.sks */; };
@@ -470,6 +472,9 @@
 		9AC7EC821A18057D000FD6F5 /* LevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelViewController.m; sourceTree = "<group>"; };
 		9AD0BB581A6C086F00E2F273 /* kitchen0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kitchen0.jpg; sourceTree = "<group>"; };
 		9AD0BB591A6C086F00E2F273 /* kitchen0@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "kitchen0@2x.jpg"; sourceTree = "<group>"; };
+		9AD113391C42A75800728D24 /* Goo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goo.h; sourceTree = "<group>"; };
+		9AD1133A1C42A75800728D24 /* Goo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goo.m; sourceTree = "<group>"; };
+		9AD1133C1C42B46500728D24 /* splat_goo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = splat_goo.sks; sourceTree = "<group>"; };
 		9AD3FC681B7AA13C0075894B /* crumbs_brownloaf.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = crumbs_brownloaf.sks; sourceTree = "<group>"; };
 		9AD3FC691B7AA13C0075894B /* crumbs_chicken.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = crumbs_chicken.sks; sourceTree = "<group>"; };
 		9AD3FC6A1B7AA13C0075894B /* crumbs_roast.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = crumbs_roast.sks; sourceTree = "<group>"; };
@@ -706,6 +711,8 @@
 				9A3B9A7D1AE3F07100C6CC32 /* Condiment.m */,
 				9A5F80691B85317B00969DF6 /* Animal.h */,
 				9A5F806A1B85317B00969DF6 /* Animal.m */,
+				9AD113391C42A75800728D24 /* Goo.h */,
+				9AD1133A1C42A75800728D24 /* Goo.m */,
 				9A599E0E1B86802D006FEEBB /* Fly.h */,
 				9A599E0F1B86802D006FEEBB /* Fly.m */,
 				9A6E7A4A1B83CC8A0040F0A7 /* Raccoon.h */,
@@ -740,6 +747,7 @@
 				9A6B32F41BD5971800FB5DBE /* crumbs_whiteloaf.sks */,
 				9A6DD11C1C3D69D100DD302A /* crumbs_borkbelly.sks */,
 				9A6DD11E1C3D6D2B00DD302A /* crumbs_egg.sks */,
+				9AD1133C1C42B46500728D24 /* splat_goo.sks */,
 				9AC27B9B19980A1100D7F84B /* Images.xcassets */,
 				9AC27B8519980A1100D7F84B /* Supporting Files */,
 				9AB1EDF119D8AE2E0046A9E3 /* TemplateIcon2x.png */,
@@ -1187,6 +1195,7 @@
 				9A0C4FA01A06A75F00AB629D /* nomusicbutton_0.png in Resources */,
 				9A20A77219E1F18200C030C0 /* Icon-40.png in Resources */,
 				9AC6091F1A58589900C0E200 /* sign1@2x.png in Resources */,
+				9AD1133D1C42B46500728D24 /* splat_goo.sks in Resources */,
 				9A8825421A0ADD5900702A2B /* bubble0@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1209,6 +1218,7 @@
 				9A8773C319E4905400ABFD45 /* DataHandler.m in Sources */,
 				9AC7902019F1B51300EF9D6D /* KitchenScene.m in Sources */,
 				9A47DB6D19CF1800005141F8 /* easing.c in Sources */,
+				9AD1133B1C42A75800728D24 /* Goo.m in Sources */,
 				9A599E101B86802D006FEEBB /* Fly.m in Sources */,
 				9A85F07519E1854500311520 /* IntroScene.m in Sources */,
 				9AED49DB19AA347900EBD460 /* Food.m in Sources */,

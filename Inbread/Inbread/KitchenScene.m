@@ -15,12 +15,15 @@
 #import "Condiment.h"
 #import "Animal.h"
 #import "Fly.h"
+#import "Goo.h"
 
 #define FOOD_START_X -40.0
 #define FOOD_END_X 360.0
 #define FOOD_DISTANCE 90.0
 #define CRUMB_OFFSET 20.0
 #define HIT_DISTANCE 30.0
+#define GOO_HIT_DISTANCE 40.0
+#define GOO_THICKNESS 3.0
 
 #define TOP_PLANE_Y 168
 #define BOTTOM_PLANE_Y 10
@@ -530,7 +533,7 @@ static int condimentScores[4] = {4,5,6,6};
 -(void)spawnAnimal
 {
     int aType = [(NSNumber*)[animalTypes objectAtIndex:arc4random()%animalTypes.count] intValue];
-    if (aType == 0) // Fly
+    if (aType == ANIMAL_FLY)
     {
         // Track down food to land on
         Food *targetFood = NULL;
@@ -559,6 +562,19 @@ static int condimentScores[4] = {4,5,6,6};
             [animals addObject:fAn];
             [soundPlayer playBuzzWithNode:backgroundNode];
         }
+    }
+    else if (aType == ANIMAL_GOO)
+    {
+        Goo *gAn = [[Goo alloc] initWithOwner:self];
+        gAn.sprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"goo"]];
+        int planeNum = 1+(arc4random()%(numPlanes-2));
+        float velocity = beltVelocities[planeNum];
+        if (velocity < 0)
+             [gAn startAtX:360.0 andY:planeY[planeNum] onPlane:planeNum withVelocity:velocity];
+        else
+            [gAn startAtX:-40.0 andY:planeY[planeNum] onPlane:planeNum withVelocity:velocity];
+        [foodNode addChild:gAn.sprite];
+        [animals addObject:gAn];
     }
 }
 
@@ -718,34 +734,75 @@ static int condimentScores[4] = {4,5,6,6};
     }
     else if (sliceFood.plane > 0) // Land on belt
     {
-        float landX = selfX;
-        float landY = planeY[sliceFood.plane];
-        float fallTime = (sliceFood.holderNode.position.y - landY)/FALL_SPEED;
-        SKAction *slideOutAction;
-        if (beltVelocities[sliceFood.plane] < 0)
-            slideOutAction = [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-selfX)/beltVelocities[sliceFood.plane]];
-        else
-            slideOutAction = [SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-selfX)/beltVelocities[sliceFood.plane]];
-        [soundPlayer playLandWithDelay:fallTime*0.8 withNode:backgroundNode];
-        [sliceFood.holderNode runAction:[SKAction sequence:@[
-                                                             [SKEase MoveToWithNode:sliceFood.holderNode EaseFunction:CurveTypeCartoony Mode:EaseOut Time:fallTime ToVector:CGVectorMake(landX, landY)],
-                                                             [SKAction runBlock:^{ [sliceFood makeCompoundClickable]; }],
-                                                             slideOutAction,
-                                                             [SKAction runBlock:^{ [self removeFood:sliceFood]; }]
-                                                             ]]];
-        // Check if food hits condiment
-        for (Condiment *cond in condiments)
-        {
-            if (cond.plane == sliceFood.plane)
+        // Check if it lands on goo
+        BOOL landOnGoo = FALSE;
+        Goo *landGoo = NULL;
+        for (Animal *tmpA in animals)
+            if (tmpA.animalType == ANIMAL_GOO && ((Goo*)tmpA).planeNum == sliceFood.plane)
             {
-                // Check if falling food is close enough to hit
-                heightDifference = planeY[sliceFood.plane+1] - planeY[sliceFood.plane] - CONDIMENT_Y_MARGIN;
+                heightDifference = planeY[sliceFood.plane+1] - planeY[sliceFood.plane] - GOO_THICKNESS;
                 dropTime = heightDifference/FALL_SPEED;
-                impactX = cond.condimentHolder.position.x + dropTime*cond.xVelocity;
-                if (selfX < impactX+CONDIMENT_HIT_DISTANCE && selfX > impactX-CONDIMENT_HIT_DISTANCE) // Success!
+                impactX = tmpA.sprite.position.x + dropTime*beltVelocities[sliceFood.plane];
+                if (selfX < impactX+GOO_HIT_DISTANCE && selfX > impactX-GOO_HIT_DISTANCE) // Success!
                 {
-                    cond.plane = -1; // Block against further impacts
-                    [cond.condimentHolder runAction:[SKAction sequence:@[[SKAction waitForDuration:dropTime],[SKAction runBlock:^{[self splatCondiment:cond withFood:sliceFood];}]]]];
+                    NSLog(@"Landed on goo");
+                    landOnGoo = TRUE;
+                    landGoo = (Goo*)tmpA;
+                    break;
+                }
+            }
+        
+        if (landOnGoo)
+        {
+            float landX = selfX;
+            float landY = planeY[sliceFood.plane] + GOO_THICKNESS;
+            float fallTime = (sliceFood.holderNode.position.y - landY)/FALL_SPEED;
+            SKAction *slideOutAction;
+            if (beltVelocities[sliceFood.plane] < 0)
+                slideOutAction = [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-selfX)/beltVelocities[sliceFood.plane]];
+            else
+                slideOutAction = [SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-selfX)/beltVelocities[sliceFood.plane]];
+            
+            [self performSelector:@selector(makeGooSplatOnNode:) withObject:landGoo.sprite afterDelay:fallTime*0.8];
+            
+            [sliceFood.holderNode runAction:[SKAction sequence:@[
+                                                                 [SKEase MoveToWithNode:sliceFood.holderNode EaseFunction:CurveTypeCartoony Mode:EaseOut Time:fallTime ToVector:CGVectorMake(landX, landY)],
+                                                                 [SKAction runBlock:^{ [sliceFood makeStuck]; }],
+                                                                 slideOutAction,
+                                                                 [SKAction runBlock:^{ [self removeFood:sliceFood]; }]
+                                                                 ]]];
+        }
+        else
+        {
+            float landX = selfX;
+            float landY = planeY[sliceFood.plane];
+            float fallTime = (sliceFood.holderNode.position.y - landY)/FALL_SPEED;
+            SKAction *slideOutAction;
+            if (beltVelocities[sliceFood.plane] < 0)
+                slideOutAction = [SKAction moveToX:FOOD_START_X duration:(FOOD_START_X-selfX)/beltVelocities[sliceFood.plane]];
+            else
+                slideOutAction = [SKAction moveToX:FOOD_END_X duration:(FOOD_END_X-selfX)/beltVelocities[sliceFood.plane]];
+            [soundPlayer playLandWithDelay:fallTime*0.8 withNode:backgroundNode];
+            [sliceFood.holderNode runAction:[SKAction sequence:@[
+                                                                 [SKEase MoveToWithNode:sliceFood.holderNode EaseFunction:CurveTypeCartoony Mode:EaseOut Time:fallTime ToVector:CGVectorMake(landX, landY)],
+                                                                 [SKAction runBlock:^{ [sliceFood makeCompoundClickable]; }],
+                                                                 slideOutAction,
+                                                                 [SKAction runBlock:^{ [self removeFood:sliceFood]; }]
+                                                                 ]]];
+            // Check if food hits condiment
+            for (Condiment *cond in condiments)
+            {
+                if (cond.plane == sliceFood.plane)
+                {
+                    // Check if falling food is close enough to hit
+                    heightDifference = planeY[sliceFood.plane+1] - planeY[sliceFood.plane] - CONDIMENT_Y_MARGIN;
+                    dropTime = heightDifference/FALL_SPEED;
+                    impactX = cond.condimentHolder.position.x + dropTime*cond.xVelocity;
+                    if (selfX < impactX+CONDIMENT_HIT_DISTANCE && selfX > impactX-CONDIMENT_HIT_DISTANCE) // Success!
+                    {
+                        cond.plane = -1; // Block against further impacts
+                        [cond.condimentHolder runAction:[SKAction sequence:@[[SKAction waitForDuration:dropTime],[SKAction runBlock:^{[self splatCondiment:cond withFood:sliceFood];}]]]];
+                    }
                 }
             }
         }
@@ -783,6 +840,15 @@ static int condimentScores[4] = {4,5,6,6};
                                                                  ]]];
         }
     }
+}
+
+-(void)makeGooSplatOnNode:(SKNode*)s
+{
+    SKEmitterNode *splat = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"splat_goo" ofType:@"sks"]];
+    splat.position = s.position;
+    splat.zPosition = 1.0;
+    [foodNode addChild:splat];
+    [soundPlayer playSwatWithNode:backgroundNode];
 }
 
 -(void)checkPlates

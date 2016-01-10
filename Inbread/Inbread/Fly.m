@@ -15,7 +15,7 @@
 
 @implementation Fly
 
--(id)initWithOwner:(KitchenScene*)o;
+-(id)initWithOwner:(KitchenScene*)o
 {
     if (self = [super initWithOwner:o]) {
         animalType = ANIMAL_FLY;

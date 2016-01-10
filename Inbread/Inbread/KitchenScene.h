@@ -122,6 +122,7 @@
 -(void)callOffAnimalAttackForFood:(Food*)f;
 -(void)flyLanded:(Fly*)theFly;
 -(void)removeAnimal:(Animal*)a;
+-(void)makeGooSplatOnNode:(SKNode*)s;
 
 -(void)checkPlates;
 

@@ -19,6 +19,7 @@
 #define TYPE_CATCHING 98
 #define TYPE_FALLING 99
 #define TYPE_COMPOUND 100
+#define TYPE_STUCK 101
 #define TYPE_SLICE 0
 #define TYPE_HAMS 1
 #define TYPE_LEAVES 2
@@ -52,6 +53,7 @@
 -(void)putOnTop:(Food*)topFood;
 -(void)makeCompoundClickable;
 -(void)addCondimentType:(int)t withSprite:(SKSpriteNode*)sp;
+-(void)makeStuck;
 
 -(BOOL)isTouchingAtX:(float)x andY:(float)y;
 

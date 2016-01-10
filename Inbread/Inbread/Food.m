@@ -108,6 +108,11 @@ static float sliceYMargin[7] = {1,1,1,1,1,1,1};
     overallType = TYPE_COMPOUND;
 }
 
+-(void)makeStuck
+{
+    overallType = TYPE_STUCK;
+}
+
 -(int)getPlusNum:(int)n
 {
     return pluses[n];

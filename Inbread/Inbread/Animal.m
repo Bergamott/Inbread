@@ -16,7 +16,7 @@
 @synthesize targetFood;
 @synthesize animalType;
 
--(id)initWithOwner:(KitchenScene*)o;
+-(id)initWithOwner:(KitchenScene*)o
 {
     if (self = [super init]) {
         owner = o;

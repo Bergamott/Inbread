@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 
-#define ANIMAL_FLY 1
+#define ANIMAL_FLY 0
+#define ANIMAL_GOO 1
 
 @class Food;
 

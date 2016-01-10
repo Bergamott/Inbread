@@ -27,7 +27,9 @@
                     "orders": ["0"],
                     "belts": [30,-20,20],
                     "time": 60,
-                    "plates": 4
+                    "plates": 4,
+"animalInterval": 7,
+"animalTypes": [1]
                 },
                 {
                     "orders": ["30"],
