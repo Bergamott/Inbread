@@ -12,7 +12,7 @@
 #import "SKEase.h"
 #import "Condiment.h"
 
-#define NUM_HELP_SCENES 5
+#define NUM_HELP_SCENES 6
 
 @implementation HelpScene
 
@@ -20,7 +20,7 @@
 @synthesize owner;
 @synthesize backgroundNode;
 
-static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7,15};
+static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -92,6 +92,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7,15};
         [self condimentAnimation];
     else if (helpType == TYPE_FLY)
         [self flyAnimation];
+    else if (helpType == TYPE_GOO)
+        [self gooAnimation];
 }
 
 -(SKSpriteNode*)setSprite:(NSString*)spr atX:(float)x andY:(float)y
@@ -406,6 +408,52 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7,15};
         [self endEverything];
     }]
                                          ]]];
+}
+
+-(void)gooAnimation
+{
+    [self setSprite:@"headshoulders" atX:60.0 andY:382.0];
+    SKSpriteNode *mouth = [self setSprite:@"mouth0" atX:60.0 andY:425.0];
+    
+    [self setSprite:@"plane" atX:170.0 andY:345.0];
+    [self setSprite:@"plane" atX:170.0 andY:217.0];
+    SKSpriteNode *goo = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"goo"]];
+    goo.anchorPoint = CGPointMake(0.5, 0.5);
+    goo.position = CGPointMake(170.0, 239.0);
+    [backgroundNode addChild:goo];
+    
+    SKSpriteNode *slice = [self setSprite:@"slice" atX:170.0 andY:372.0];
+    
+    SKSpriteNode *hand = [self hideSprite:@"hand" atX:279.0 andY:374.0];
+    hand.zPosition = 10.0;
+    
+    SKSpriteNode *wrong = [self hideSprite:@"wrong" atX:170.0 andY:230.0];
+    
+    [wrong runAction:[SKAction sequence:@[[SKAction waitForDuration:4.0],[SKAction runBlock:^{
+        mouth.texture = [myAtlas textureNamed:@"mouth8"];
+    }],[SKAction fadeAlphaTo:1.0 duration:0.7]]]];
+    
+    [hand runAction:[SKAction sequence:@[[SKAction waitForDuration:1.7],
+                                         [SKAction fadeAlphaTo:1.0 duration:0.3],
+                                         [SKAction moveTo:CGPointMake(220.0, 354.0) duration:0.5],
+                                         [SKAction runBlock:^{
+        [self dropGroup:@[slice] height:126.0];
+    }],
+                                         [SKAction waitForDuration:0.5],
+                                         [SKAction runBlock:^{
+        SKEmitterNode *splat = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"splat_goo" ofType:@"sks"]];
+        splat.position = goo.position;
+        [backgroundNode addChild:splat];
+        [soundPlayer playSwatWithNode:backgroundNode];
+    }],
+                                         [SKAction moveTo:CGPointMake(279.0, 374.0) duration:0.5],
+                                         [SKAction fadeAlphaTo:0.0 duration:0.3],
+                                         [SKAction waitForDuration:4.5],
+                                         [SKAction runBlock:^{
+        [self endEverything];
+    }]
+                                         ]]];
+    
 }
 
 
