@@ -68,22 +68,22 @@
 @synthesize animalTypes;
 
 //static float sliceYMargin[4] = {1,1,1,1};
-static float sliceHeight[9] = {11,11,11,11,11,11,11,11,11};
-static float sliceYMargin[9] = {1,1,1,1,1,1,1,1,1};
-static float ingredientYMargin[9] = {1,1,1,1,1,2,1,1,1};
-static float ingredientHeight[9] = {54,54,64,53,53,53,53,53,53};
+static float sliceHeight[10] = {11,11,11,11,11,11,11,11,11,11};
+static float sliceYMargin[10] = {1,1,1,1,1,1,1,1,1,1};
+static float ingredientYMargin[10] = {1,1,1,1,1,2,1,1,1,1};
+static float ingredientHeight[10] = {54,54,64,53,53,53,53,53,53,53};
 
-static int condimentScores[4] = {4,5,6, 0};
+static int condimentScores[4] = {4,5,6,6};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
-        ingredientNames = @[@"loaf",@"ham",@"lettuce",@"cheese",@"brownloaf",@"chicken", @"roast", @"whiteloaf", @"sausage"];
-        sliceNames = @[@"slice",@"hams",@"leaves",@"cheeses",@"brownslice",@"chickens", @"roasts", @"whiteslice", @"sausages"];
-        extraNames = @[@"tomato",@"pickle",@"onion"];
-        crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese",@"crumbs_brownloaf", @"crumbs_chicken",@"crumbs_roast",@"crumbs_whiteloaf",@"crumbs_sausage"];
-        plusNames = @[@"plus_tomato",@"plus_pickle",@"plus_onion",@"flyhead"];
-        condimentCrumbNames = @[@"crumbs_tomato",@"crumbs_pickle",@"crumbs_onion"];
+        ingredientNames = @[@"loaf",@"ham",@"lettuce",@"cheese",@"brownloaf",@"chicken", @"roast", @"whiteloaf", @"sausage", @"porkbelly"];
+        sliceNames = @[@"slice",@"hams",@"leaves",@"cheeses",@"brownslice",@"chickens", @"roasts", @"whiteslice", @"sausages", @"bacon"];
+        extraNames = @[@"tomato",@"pickle",@"onion", @"egg"];
+        crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese",@"crumbs_brownloaf", @"crumbs_chicken",@"crumbs_roast",@"crumbs_whiteloaf",@"crumbs_sausage", @"crumbs_porkbelly"];
+        plusNames = @[@"plus_tomato",@"plus_pickle",@"plus_onion",@"plus_egg"];
+        condimentCrumbNames = @[@"crumbs_tomato",@"crumbs_pickle",@"crumbs_onion", @"crumbs_egg"];
         
         sprites = [[NSMutableArray alloc] initWithCapacity:50];
         condiments = [[NSMutableArray alloc] initWithCapacity:20];

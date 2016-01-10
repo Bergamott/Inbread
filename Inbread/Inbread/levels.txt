@@ -219,6 +219,19 @@
                     "animalTypes": [0],
                 }
             ]
+        },
+        {
+            "background": "kitchen2.jpg",
+            "levels": [
+                {
+                    "orders": ["78","79","789"],
+                    "belts": [40,-40,40],
+                    "time": 100,
+                    "plates": 4,
+                    "condiments": [3],
+                    "condimentInterval": 10
+                },
+            ]
         }
     ]
 }
