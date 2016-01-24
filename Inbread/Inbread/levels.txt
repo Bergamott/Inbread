@@ -12,7 +12,8 @@
         "porkbelly": 9,
 
         "fly": 0,
-        "raccoon": 1
+        "goo": 1,
+        "ketchup": 1
     },
     "condiments": {
         "tomato":0,
@@ -29,7 +30,7 @@
                     "time": 60,
                     "plates": 4,
 "animalInterval": 7,
-"animalTypes": [1]
+"animalTypes": [2]
                 },
                 {
                     "orders": ["30"],

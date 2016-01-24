@@ -11,6 +11,7 @@
 
 #define ANIMAL_FLY 0
 #define ANIMAL_GOO 1
+#define ANIMAL_KETCHUP 2
 
 @class Food;
 

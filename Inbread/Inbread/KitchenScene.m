@@ -16,6 +16,7 @@
 #import "Animal.h"
 #import "Fly.h"
 #import "Goo.h"
+#import "Ketchup.h"
 
 #define FOOD_START_X -40.0
 #define FOOD_END_X 360.0
@@ -576,6 +577,19 @@ static int condimentScores[4] = {4,5,6,6};
         [foodNode addChild:gAn.sprite];
         [animals addObject:gAn];
     }
+    else if (aType == ANIMAL_KETCHUP)
+    {
+        Ketchup *gAn = [[Ketchup alloc] initWithOwner:self];
+        gAn.sprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"ketchup0"]];
+        int planeNum = 1+(arc4random()%(numPlanes-2));
+        float velocity = beltVelocities[planeNum];
+        if (velocity < 0)
+            [gAn startAtX:360.0 andY:planeY[planeNum] onPlane:planeNum withVelocity:velocity];
+        else
+            [gAn startAtX:-40.0 andY:planeY[planeNum] onPlane:planeNum withVelocity:velocity];
+        [foodNode addChild:gAn.sprite];
+        [animals addObject:gAn];
+    }
 }
 
 -(void)callOffAnimalAttackForFood:(Food*)f
@@ -745,7 +759,6 @@ static int condimentScores[4] = {4,5,6,6};
                 impactX = tmpA.sprite.position.x + dropTime*beltVelocities[sliceFood.plane];
                 if (selfX < impactX+GOO_HIT_DISTANCE && selfX > impactX-GOO_HIT_DISTANCE) // Success!
                 {
-                    NSLog(@"Landed on goo");
                     landOnGoo = TRUE;
                     landGoo = (Goo*)tmpA;
                     break;

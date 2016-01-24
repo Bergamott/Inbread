@@ -207,6 +207,7 @@
 		9AC7EC801A1804DE000FD6F5 /* tavern0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC7EC7A1A1804DE000FD6F5 /* tavern0@2x.png */; };
 		9AC7EC831A18057D000FD6F5 /* LevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7EC821A18057D000FD6F5 /* LevelViewController.m */; };
 		9ACDA5B31C557E2800FEBA6E /* splat_ketchup.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9ACDA5B21C557E2700FEBA6E /* splat_ketchup.sks */; };
+		9ACDA5B61C557F4E00FEBA6E /* Ketchup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACDA5B51C557F4E00FEBA6E /* Ketchup.m */; };
 		9AD0BB5A1A6C086F00E2F273 /* kitchen0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0BB581A6C086F00E2F273 /* kitchen0.jpg */; };
 		9AD0BB5B1A6C086F00E2F273 /* kitchen0@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AD0BB591A6C086F00E2F273 /* kitchen0@2x.jpg */; };
 		9AD1133B1C42A75800728D24 /* Goo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1133A1C42A75800728D24 /* Goo.m */; };
@@ -472,6 +473,8 @@
 		9AC7EC811A18057D000FD6F5 /* LevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelViewController.h; sourceTree = "<group>"; };
 		9AC7EC821A18057D000FD6F5 /* LevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelViewController.m; sourceTree = "<group>"; };
 		9ACDA5B21C557E2700FEBA6E /* splat_ketchup.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = splat_ketchup.sks; sourceTree = "<group>"; };
+		9ACDA5B41C557F4E00FEBA6E /* Ketchup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ketchup.h; sourceTree = "<group>"; };
+		9ACDA5B51C557F4E00FEBA6E /* Ketchup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ketchup.m; sourceTree = "<group>"; };
 		9AD0BB581A6C086F00E2F273 /* kitchen0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kitchen0.jpg; sourceTree = "<group>"; };
 		9AD0BB591A6C086F00E2F273 /* kitchen0@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "kitchen0@2x.jpg"; sourceTree = "<group>"; };
 		9AD113391C42A75800728D24 /* Goo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goo.h; sourceTree = "<group>"; };
@@ -715,6 +718,8 @@
 				9A5F806A1B85317B00969DF6 /* Animal.m */,
 				9AD113391C42A75800728D24 /* Goo.h */,
 				9AD1133A1C42A75800728D24 /* Goo.m */,
+				9ACDA5B41C557F4E00FEBA6E /* Ketchup.h */,
+				9ACDA5B51C557F4E00FEBA6E /* Ketchup.m */,
 				9A599E0E1B86802D006FEEBB /* Fly.h */,
 				9A599E0F1B86802D006FEEBB /* Fly.m */,
 				9A6E7A4A1B83CC8A0040F0A7 /* Raccoon.h */,
@@ -1234,6 +1239,7 @@
 				9A47DB6E19CF1800005141F8 /* SKEase.m in Sources */,
 				9AC27B8B19980A1100D7F84B /* main.m in Sources */,
 				9A3B9A7E1AE3F07100C6CC32 /* Condiment.m in Sources */,
+				9ACDA5B61C557F4E00FEBA6E /* Ketchup.m in Sources */,
 				9AD532701A0C2D3D003413F1 /* SoundPlayer.m in Sources */,
 				9A85F07919E186F200311520 /* Hillbilly.m in Sources */,
 				9AB8758B1A7845CD007D4522 /* HelpScene.m in Sources */,
