@@ -16,6 +16,8 @@
 
 -(void)startAtX:(float)x andY:(float)y onPlane:(int)p withVelocity:(float)vel;
 
+-(void)animateWithFrames:(NSArray*)fms;
+
 @property(nonatomic) int planeNum;
 @property(nonatomic) BOOL spilling;
 

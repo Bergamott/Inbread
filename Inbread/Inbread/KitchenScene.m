@@ -100,6 +100,11 @@ static int condimentScores[4] = {4,5,6,6};
         myAtlas = [SKTextureAtlas atlasNamed:@"pieces"];
         flyFrames = @[[myAtlas textureNamed:@"fly0"],[myAtlas textureNamed:@"fly1"]];
 
+        ketchupFrames = [NSMutableArray arrayWithCapacity:10];
+        for (int i=0;i<5;i++)
+            [ketchupFrames addObject:[myAtlas textureNamed:[NSString stringWithFormat:@"ketchup%d",i]]];
+        for (int i=4;i>=0;i--)
+            [ketchupFrames addObject:[myAtlas textureNamed:[NSString stringWithFormat:@"ketchup%d",i]]];
 
         conveyorNode = [[SKNode alloc] init];
         foodNode = [[SKNode alloc] init];
@@ -697,6 +702,11 @@ static int condimentScores[4] = {4,5,6,6};
                     [touchA removeSprite];
                     [animals removeObject:touchA];
                     [soundPlayer playSwatWithNode:backgroundNode];
+                    break;
+                }
+                case ANIMAL_KETCHUP:
+                {
+                    [(Ketchup*)touchA animateWithFrames:ketchupFrames];
                     break;
                 }
                 default:

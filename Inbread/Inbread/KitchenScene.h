@@ -47,6 +47,7 @@
     NSArray *plusNames;
     NSArray *condimentCrumbNames;
     NSArray *flyFrames;
+    NSMutableArray *ketchupFrames;
     
     int level;
     int numPlates;
