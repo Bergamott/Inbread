@@ -12,6 +12,8 @@
 #define TYPE_ONION 0
 #define TYPE_TOMATO 1
 #define TYPE_PICKLE 2
+#define TYPE_EGG 3
+#define TYPE_KETCHUP 4
 
 #define CONDIMENT_DELTA_Y 3.0
 #define CONDIMENT_JUMP_HEIGHT 20.0

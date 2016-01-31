@@ -46,6 +46,8 @@
 #define CONDIMENT_HIT_DISTANCE 25.0
 #define CONDIMENT_SPEED_RATIO 1.6f
 
+#define KETCHUP_HIT_MARGIN 30.0
+
 #define FLY_INDEX 3
 
 @implementation KitchenScene
@@ -77,7 +79,7 @@ static float sliceYMargin[10] = {1,1,1,1,1,1,1,1,1,1};
 static float ingredientYMargin[10] = {1,1,1,1,1,2,1,1,1,1};
 static float ingredientHeight[10] = {54,54,64,53,53,53,53,53,53,53};
 
-static int condimentScores[4] = {4,5,6,6};
+static int condimentScores[5] = {4,5,6,6,5};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -86,8 +88,8 @@ static int condimentScores[4] = {4,5,6,6};
         sliceNames = @[@"slice",@"hams",@"leaves",@"cheeses",@"brownslice",@"chickens", @"roasts", @"whiteslice", @"sausages", @"bacon"];
         extraNames = @[@"tomato",@"pickle",@"onion", @"egg"];
         crumbNames = @[@"crumbs_bread",@"crumbs_ham",@"crumbs_lettuce",@"crumbs_cheese",@"crumbs_brownloaf", @"crumbs_chicken",@"crumbs_roast",@"crumbs_whiteloaf",@"crumbs_sausage", @"crumbs_porkbelly"];
-        plusNames = @[@"plus_tomato",@"plus_pickle",@"plus_onion",@"plus_egg"];
-        condimentCrumbNames = @[@"crumbs_tomato",@"crumbs_pickle",@"crumbs_onion", @"crumbs_egg"];
+        plusNames = @[@"plus_tomato",@"plus_pickle",@"plus_onion",@"plus_egg", @"plus_ketchup"];
+        condimentCrumbNames = @[@"crumbs_tomato",@"crumbs_pickle",@"crumbs_onion", @"crumbs_egg", @"splat_ketchup"];
         
         sprites = [[NSMutableArray alloc] initWithCapacity:50];
         condiments = [[NSMutableArray alloc] initWithCapacity:20];
@@ -707,6 +709,7 @@ static int condimentScores[4] = {4,5,6,6};
                 case ANIMAL_KETCHUP:
                 {
                     [(Ketchup*)touchA animateWithFrames:ketchupFrames];
+                    [self performSelector:@selector(dropKetchupWithBottle:) withObject:touchA afterDelay:0.45];
                     break;
                 }
                 default:
@@ -865,12 +868,77 @@ static int condimentScores[4] = {4,5,6,6};
     }
 }
 
+-(void)dropKetchupWithBottle:(Ketchup*)ket;
+{
+    float startX = ket.sprite.position.x;
+    float startY = ket.sprite.position.y + 5.0;
+    float endY;
+   
+    // Check for food to hit
+    Food *targetFood = NULL;
+    float heightDifference = 0;
+    float fallTime = 0;
+    for (Food *tmpF in sprites)
+        if (tmpF.overallType == TYPE_COMPOUND && tmpF.typeCount > 0 && tmpF.plane == ket.planeNum-1)
+        {
+            // Check if falling food is close enough to hit
+            heightDifference = startY - planeY[tmpF.plane] - tmpF.height;
+            fallTime = 0.5*heightDifference/FALL_SPEED;
+            float impactX = tmpF.holderNode.position.x + fallTime*beltVelocities[tmpF.plane];
+            if (startX < impactX+KETCHUP_HIT_MARGIN && startX > impactX-KETCHUP_HIT_MARGIN) // Success!
+            {
+                targetFood = tmpF;
+                break;
+            }
+        }
+    
+    SKSpriteNode *drop = [SKSpriteNode spriteNodeWithImageNamed:@"drop"];
+    drop.position = CGPointMake(startX, startY);
+    [foodNode addChild:drop];
+    if (targetFood != NULL)
+    {
+        endY = startY - heightDifference;
+        targetFood.overallType = TYPE_CATCHING;
+        SKAction *fallAction = [SKAction moveTo:CGPointMake(startX, endY) duration:fallTime];
+        fallAction.timingMode = SKActionTimingEaseIn;
+        [drop runAction:[SKAction sequence:@[fallAction,[SKAction runBlock:^{[self makeKetchupSplatOnNode:drop];[self landKetchupOnFood:targetFood];}],[SKAction removeFromParent]]]];
+    }
+    else // Land on nothing
+    {
+        endY = planeY[ket.planeNum-1];
+        fallTime = 0.5*(startY-endY)/FALL_SPEED;
+        SKAction *fallAction = [SKAction moveTo:CGPointMake(startX, endY) duration:fallTime];
+        fallAction.timingMode = SKActionTimingEaseIn;
+        [drop runAction:[SKAction sequence:@[fallAction,[SKAction runBlock:^{[self makeKetchupSplatOnNode:drop];}],[SKAction removeFromParent]]]];
+    }
+    [soundPlayer playKetchupWithNode:backgroundNode];
+}
+
 -(void)makeGooSplatOnNode:(SKNode*)s
 {
     SKEmitterNode *splat = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"splat_goo" ofType:@"sks"]];
     splat.position = s.position;
     splat.zPosition = 1.0;
     [foodNode addChild:splat];
+    [soundPlayer playSwatWithNode:backgroundNode];
+}
+
+-(void)makeKetchupSplatOnNode:(SKNode*)s
+{
+    SKEmitterNode *splat = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"splat_ketchup" ofType:@"sks"]];
+    splat.position = s.position;
+    splat.zPosition = 1.0;
+    [foodNode addChild:splat];
+    [soundPlayer playSwatWithNode:backgroundNode];
+}
+
+-(void)landKetchupOnFood:(Food*)fObj
+{
+    SKSpriteNode *plusSprite = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"plus_ketchup"]];
+    plusSprite.anchorPoint = CGPointMake(0, 0.5f);
+    [plusSprite runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction rotateToAngle:0.2 duration:0.3],[SKAction rotateToAngle:-0.2 duration:0.3]]]]];
+    [fObj addCondimentType:TYPE_KETCHUP withSprite:plusSprite];
+    fObj.overallType = TYPE_COMPOUND;
     [soundPlayer playSwatWithNode:backgroundNode];
 }
 

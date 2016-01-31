@@ -25,6 +25,7 @@
 @class Condiment;
 @class Animal;
 @class Fly;
+@class Ketchup;
 
 @interface KitchenScene : SKScene {
     
@@ -114,6 +115,7 @@
 -(void)removeFood:(Food*)fObj;
 
 -(void)dropFood:(Food*)sliceFood;
+-(void)dropKetchupWithBottle:(Ketchup*)ket;
 
 -(void)spawnCondiment;
 -(void)removeCondiment:(Condiment*)cObj;
@@ -124,6 +126,8 @@
 -(void)flyLanded:(Fly*)theFly;
 -(void)removeAnimal:(Animal*)a;
 -(void)makeGooSplatOnNode:(SKNode*)s;
+-(void)makeKetchupSplatOnNode:(SKNode*)s;
+-(void)landKetchupOnFood:(Food*)fObj;
 
 -(void)checkPlates;
 

@@ -152,5 +152,10 @@
         [skn runAction:[SKAction playSoundFileNamed:@"fanfare.wav" waitForCompletion:FALSE]];
 }
 
+-(void)playKetchupWithNode:(SKNode*)skn
+{
+    if (soundOn)
+        [skn runAction:[SKAction playSoundFileNamed:@"ketchup.wav" waitForCompletion:FALSE]];
+}
 
 @end
