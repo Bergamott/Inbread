@@ -24,8 +24,8 @@
 @synthesize plusCount;
 @synthesize plusNode;
 
-static float sliceHeight[7] = {11,11,11,11,11,11,11};
-static float sliceYMargin[7] = {1,1,1,1,1,1,1};
+static float sliceHeight[10] = {11,11,11,11,11,11,11,11,12,11};
+static float sliceYMargin[10] = {1,1,1,1,1,1,1,1,1,1};
 
 -(id)initAtPosition:(CGPoint)p
 {

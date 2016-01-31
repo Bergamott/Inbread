@@ -93,6 +93,8 @@
             currentLevelAccess = ix + 1;
         ix++;
     }
+    
+    currentLevelAccess = NUM_LEVELS; // TODO: Remove later
 }
 
 -(NSMutableDictionary*)getLevelNumber:(int)l

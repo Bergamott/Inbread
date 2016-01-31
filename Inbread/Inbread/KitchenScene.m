@@ -48,7 +48,7 @@
 
 #define KETCHUP_HIT_MARGIN 30.0
 
-#define FLY_INDEX 3
+#define FLY_INDEX 50
 
 @implementation KitchenScene
 
@@ -73,8 +73,7 @@
 @synthesize animalTimer;
 @synthesize animalTypes;
 
-//static float sliceYMargin[4] = {1,1,1,1};
-static float sliceHeight[10] = {11,11,11,11,11,11,11,11,11,11};
+static float sliceHeight[10] = {11,11,11,11,11,11,11,11,12,11};
 static float sliceYMargin[10] = {1,1,1,1,1,1,1,1,1,1};
 static float ingredientYMargin[10] = {1,1,1,1,1,2,1,1,1,1};
 static float ingredientHeight[10] = {54,54,64,53,53,53,53,53,53,53};
@@ -97,7 +96,6 @@ static int condimentScores[5] = {4,5,6,6,5};
         
         backgroundNode = [SKNode node];
         screenHeight = size.height;
- //       backgroundNode.yScale = size.height/568.0f;
         
         myAtlas = [SKTextureAtlas atlasNamed:@"pieces"];
         flyFrames = @[[myAtlas textureNamed:@"fly0"],[myAtlas textureNamed:@"fly1"]];

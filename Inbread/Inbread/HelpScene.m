@@ -12,7 +12,7 @@
 #import "SKEase.h"
 #import "Condiment.h"
 
-#define NUM_HELP_SCENES 6
+#define NUM_HELP_SCENES 7
 
 @implementation HelpScene
 
@@ -20,7 +20,7 @@
 @synthesize owner;
 @synthesize backgroundNode;
 
-static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25};
+static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25, 30};
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -74,7 +74,9 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25};
         else
             foundIndex = -1;
     }
-    return foundIndex;
+    // Temporary
+    return TYPE_KETCHUP_BOTTLE;
+//    return foundIndex;
 }
 
 -(void)setUpWithType:(int)t
@@ -94,6 +96,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25};
         [self flyAnimation];
     else if (helpType == TYPE_GOO)
         [self gooAnimation];
+    else if (helpType == TYPE_KETCHUP_BOTTLE)
+        [self ketchupAnimation];
 }
 
 -(SKSpriteNode*)setSprite:(NSString*)spr atX:(float)x andY:(float)y
@@ -422,7 +426,7 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25};
     goo.position = CGPointMake(170.0, 239.0);
     [backgroundNode addChild:goo];
     
-    SKSpriteNode *slice = [self setSprite:@"slice" atX:170.0 andY:372.0];
+    SKSpriteNode *slice = [self setSprite:@"whiteslice" atX:170.0 andY:372.0];
     
     SKSpriteNode *hand = [self hideSprite:@"hand" atX:279.0 andY:374.0];
     hand.zPosition = 10.0;
@@ -456,6 +460,34 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25};
     
 }
 
+-(void)ketchupAnimation
+{
+    [self setSprite:@"plane" atX:160.0 andY:345.0];
+    [self setSprite:@"plane" atX:160.0 andY:207.0];
+    SKSpriteNode *bottle = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"ketchup0"]];
+    bottle.anchorPoint = CGPointMake(0.5, 0);
+    bottle.position = CGPointMake(160.0, 371.0);
+    [backgroundNode addChild:bottle];
+    
+    [self setSprite:@"whiteslice" atX:160.0 andY:232.0];
+    [self setSprite:@"leaves" atX:160.0 andY:243.0];
+    
+    SKSpriteNode *hand = [self hideSprite:@"hand" atX:264.0 andY:394.0];
+    hand.zPosition = 10.0;
+    
+    [hand runAction:[SKAction sequence:@[[SKAction waitForDuration:1.7],
+                                         [SKAction fadeAlphaTo:1.0 duration:0.3],
+                                         [SKAction moveTo:CGPointMake(205.0, 374.0) duration:0.5],
+                                        [SKAction waitForDuration:0.5],
+                                         [SKAction moveTo:CGPointMake(264.0, 394.0) duration:0.5],
+                                         [SKAction fadeAlphaTo:0.0 duration:0.3],
+                                         [SKAction waitForDuration:4.5],
+                                         [SKAction runBlock:^{
+        [self endEverything];
+    }]
+                                         ]]];
+
+}
 
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h
 {

@@ -14,6 +14,7 @@
 #define TYPE_CONDIMENT 3
 #define TYPE_FLY 4
 #define TYPE_GOO 5
+#define TYPE_KETCHUP_BOTTLE 6
 
 @class ViewController;
 @class SoundPlayer;
@@ -41,6 +42,7 @@
 -(void)condimentAnimation;
 -(void)flyAnimation;
 -(void)gooAnimation;
+-(void)ketchupAnimation;
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h;
 -(void)putSlice:(SKSpriteNode*)slice atX:(float)x andY:(float)y withLoaf:(SKSpriteNode*)loaf andDrop:(float)h adjustX:(float)dx;
 -(void)dropSlice:(SKSpriteNode*)slice height:(float)h;

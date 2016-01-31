@@ -13,12 +13,14 @@
 
         "fly": 0,
         "goo": 1,
-        "ketchup": 1
+        "ketchup": 2
     },
     "condiments": {
         "tomato":0,
         "pickle":1,
-        "onion":2
+        "onion":2,
+        "egg":3,
+        "ketchup":4
     },
     "restaurants": [
         {
@@ -29,8 +31,6 @@
                     "belts": [30,-20,20],
                     "time": 60,
                     "plates": 4,
-"animalInterval": 7,
-"animalTypes": [2]
                 },
                 {
                     "orders": ["30"],
@@ -227,13 +227,13 @@
             "background": "kitchen2.jpg",
             "levels": [
                 {
-                    "orders": ["78","79","789"],
+                    "orders": ["87","97","897"],
                     "belts": [40,-40,40],
                     "time": 100,
                     "plates": 4,
                     "condiments": [3],
                     "condimentInterval": 10
-                },
+                }
             ]
         }
     ]
