@@ -74,9 +74,8 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25, 30};
         else
             foundIndex = -1;
     }
-    // Temporary
-    return TYPE_KETCHUP_BOTTLE;
-//    return foundIndex;
+
+    return foundIndex;
 }
 
 -(void)setUpWithType:(int)t
@@ -475,13 +474,33 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25, 30};
     SKSpriteNode *hand = [self hideSprite:@"hand" atX:264.0 andY:394.0];
     hand.zPosition = 10.0;
     
+    SKSpriteNode *drop = [self hideSprite:@"drop" atX:160 andY:372.0];
+    
+    NSArray *bottleTextures = @[[myAtlas textureNamed:@"ketchup0"],[myAtlas textureNamed:@"ketchup1"],
+                                [myAtlas textureNamed:@"ketchup2"],[myAtlas textureNamed:@"ketchup3"],
+                                [myAtlas textureNamed:@"ketchup4"],[myAtlas textureNamed:@"ketchup4"],
+                                [myAtlas textureNamed:@"ketchup3"],[myAtlas textureNamed:@"ketchup2"],
+                                [myAtlas textureNamed:@"ketchup1"],[myAtlas textureNamed:@"ketchup0"]];
+    
+    SKAction *fallAction = [SKAction moveToY:259.0 duration:0.6];
+    fallAction.timingMode = SKActionTimingEaseIn;
+    [bottle runAction:[SKAction sequence:@[[SKAction waitForDuration:2.8],[SKAction animateWithTextures:bottleTextures timePerFrame:0.1]]]];
+    
+    [drop runAction:[SKAction sequence:@[[SKAction waitForDuration:3.3],[SKAction fadeAlphaTo:1.0 duration:0.05],fallAction,[SKAction runBlock:^{[self putSplat:@"splat_ketchup" atX:160.0 andY:259.0];}],[SKAction removeFromParent]]]];
+
+    SKSpriteNode *plusSprite = [self hideSprite:@"plus_ketchup" atX:150.0 andY:271.0];
+    plusSprite.anchorPoint = CGPointMake(0, 0.5f);
+    [plusSprite runAction:[SKAction sequence:@[[SKAction waitForDuration:4.3],
+                                               [SKAction fadeAlphaTo:1.0 duration:0.05],
+                                               [SKAction repeatActionForever:[SKAction sequence:@[[SKAction rotateToAngle:0.2 duration:0.3],[SKAction rotateToAngle:-0.2 duration:0.3]]]]]]];
+    
     [hand runAction:[SKAction sequence:@[[SKAction waitForDuration:1.7],
                                          [SKAction fadeAlphaTo:1.0 duration:0.3],
                                          [SKAction moveTo:CGPointMake(205.0, 374.0) duration:0.5],
                                         [SKAction waitForDuration:0.5],
                                          [SKAction moveTo:CGPointMake(264.0, 394.0) duration:0.5],
                                          [SKAction fadeAlphaTo:0.0 duration:0.3],
-                                         [SKAction waitForDuration:4.5],
+                                         [SKAction waitForDuration:4.7],
                                          [SKAction runBlock:^{
         [self endEverything];
     }]
