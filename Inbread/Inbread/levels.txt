@@ -233,6 +233,22 @@
                     "plates": 4,
                     "condiments": [3],
                     "condimentInterval": 10
+                },
+                {
+                    "orders": ["97","997","9997","99997"],
+                    "belts": [-40,40,-40],
+                    "time": 90,
+                    "plates": 3,
+                    "animalInterval": 8,
+                    "animalTypes": [1]
+                },
+                {
+                    "orders": ["297","937","897","997"],
+                    "belts": [-40,40,-35,40],
+                    "time": 120,
+                    "plates": 3,
+                    "animalInterval": 6,
+                    "animalTypes": [1]
                 }
             ]
         }
