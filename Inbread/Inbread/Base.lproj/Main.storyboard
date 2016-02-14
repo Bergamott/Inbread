@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="LVB-YS-i5n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="LVB-YS-i5n">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -263,8 +263,8 @@
                                         <rect key="frame" x="117" y="292" width="97" height="113"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="I7V-0J-8px" userLabel="clipping 2">
-                                        <rect key="frame" x="214" y="281" width="97" height="113"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping2.png" id="I7V-0J-8px" userLabel="clipping 2">
+                                        <rect key="frame" x="218" y="281" width="93" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clipping1.png" id="Ye4-85-CcV" userLabel="clipping 3">
@@ -1041,6 +1041,7 @@
         <image name="bubble2.png" width="69" height="67"/>
         <image name="clipping0.png" width="108" height="120"/>
         <image name="clipping1.png" width="97" height="113"/>
+        <image name="clipping2.png" width="93" height="114"/>
         <image name="dialog_frame.png" width="290" height="302"/>
         <image name="fail.png" width="172" height="87"/>
         <image name="fence.png" width="320" height="179"/>
