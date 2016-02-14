@@ -272,12 +272,32 @@
                     "animalTypes": [1]
                 },
                 {
+                    "orders": ["97","57","697","57","87"],
+                    "belts": [40,-60,45],
+                    "time": 100,
+                    "plates": 2,
+                    "condiments": [1,3],
+                    "condimentInterval": 9,
+                    "animalInterval": 5,
+                    "animalTypes": [1]
+                },
+                {
                     "orders": ["287","527","897","957"],
                     "belts": [-40,40,-40],
                     "time": 100,
                     "plates": 3,
                     "animalInterval": 7,
                     "animalTypes": [2]
+                },
+                {
+                    "orders": ["87","97","897","827","937"],
+                    "belts": [35,-45,30,40],
+                    "time": 120,
+                    "plates": 4,
+                    "condiments": [0,3],
+                    "condimentInterval": 6,
+                    "animalInterval": 5,
+                    "animalTypes": [1,2]
                 }
 
             ]
