@@ -39,9 +39,8 @@
         [defaults setObject:highscores forKey:@"highscores"];
         [defaults synchronize];
     }
-    
     [[DataHandler sharedDataHandler] loadEverything];
-   
+    
     return YES;
 }
 							

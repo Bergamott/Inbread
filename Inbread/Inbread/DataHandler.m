@@ -37,18 +37,6 @@
 
 -(void)loadEverything
 {
-/*    NSString *ownedFilePath = [self getFullPathNameForFile:@"levels.data"];
-    NSMutableDictionary *tmpD = [[NSMutableDictionary alloc] initWithContentsOfFile:ownedFilePath];
-    if (tmpD == NULL)
-    {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"txt"];
-        NSData *data = [NSData dataWithContentsOfFile:filePath];
-        NSError *err;
-        NSDictionary *json = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&err];
-        tmpD = [json mutableCopy];
-        [tmpD writeToFile:ownedFilePath atomically:TRUE];
-    }*/
-    
     NSString *ownedFilePath = [self getFullPathNameForFile:@"levels.data"];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"levels" ofType:@"txt"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
@@ -82,7 +70,7 @@
         }
     }
     availableLevels = ix;
-    
+   
     currentLevelAccess = 0;
     NSArray *highscores = [[NSUserDefaults standardUserDefaults] objectForKey:@"highscores"];
     ix = 0;
@@ -94,7 +82,7 @@
         ix++;
     }
     
-    currentLevelAccess = NUM_LEVELS; // TODO: Remove later
+//    currentLevelAccess = NUM_LEVELS; // TODO: Remove later
 }
 
 -(NSMutableDictionary*)getLevelNumber:(int)l
