@@ -29,7 +29,12 @@ static int helpScenes[NUM_HELP_SCENES] = {0,1,3,7, 15, 25, 30};
         
         self.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.6 alpha:1.0];
         backgroundNode = [SKNode node];
-        backgroundNode.position = CGPointMake(0, size.height-568.0f);
+        
+        float backgroundScale = size.width/320.0;
+        backgroundNode.xScale = backgroundScale;
+        backgroundNode.yScale = backgroundScale;
+        
+        backgroundNode.position = CGPointMake(0, size.height-568.0f*backgroundScale);
         
         soundPlayer = [SoundPlayer sharedPlayer];
         [self addChild:backgroundNode];

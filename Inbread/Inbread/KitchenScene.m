@@ -95,9 +95,21 @@ static int condimentScores[5] = {4,5,6,6,5};
         animals = [[NSMutableArray alloc] initWithCapacity:20];
         
         backgroundNode = [SKNode node];
-        screenHeight = size.height;
+        
+        backgroundScale = size.width/320.0;
+        backgroundNode.xScale = backgroundScale;
+        backgroundNode.yScale = backgroundScale;
         
         myAtlas = [SKTextureAtlas atlasNamed:@"pieces"];
+
+        actualScreenHeight = size.height/backgroundScale;
+        screenHeight = actualScreenHeight;
+        if (screenHeight > 570.0f)
+        {
+            screenHeight = 568.0f;
+            backgroundNode.position = CGPointMake(0, 0.5f*(actualScreenHeight-screenHeight));
+        }
+        
         flyFrames = @[[myAtlas textureNamed:@"fly0"],[myAtlas textureNamed:@"fly1"]];
 
         ketchupFrames = [NSMutableArray arrayWithCapacity:10];
@@ -150,6 +162,20 @@ static int condimentScores[5] = {4,5,6,6,5};
     backgroundTiles.position = CGPointMake(0, screenHeight-backgroundTiles.size.height);
     [backgroundNode addChild:backgroundTiles];
     
+    // Possible padding for iPhone X screen
+    if (actualScreenHeight > 570.0f)
+    {
+        SKSpriteNode *topPadding = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"padding_top"]];
+        topPadding.anchorPoint = CGPointMake(0, 0);
+        topPadding.position = CGPointMake(0, screenHeight);
+        topPadding.zPosition = 1.0f;
+        SKSpriteNode *bottomPadding = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"padding_bottom"]];
+        bottomPadding.anchorPoint = CGPointMake(0, 1.0f);
+        bottomPadding.position = CGPointMake(0, 0);
+        bottomPadding.zPosition = 10.0f;
+        [backgroundNode addChild:topPadding];
+        [backgroundNode addChild:bottomPadding];
+    }
     
     // Clock
     SKNode *clockNode = [SKNode node];

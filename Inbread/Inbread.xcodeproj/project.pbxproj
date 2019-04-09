@@ -141,6 +141,8 @@
 		9A924B581BD4038F008ACB57 /* head2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A924B561BD4038F008ACB57 /* head2.png */; };
 		9A924B591BD4038F008ACB57 /* head2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A924B571BD4038F008ACB57 /* head2@2x.png */; };
 		9A9659E31B9E3CFF00C9A335 /* buzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9A9659E21B9E3CFF00C9A335 /* buzz.wav */; };
+		9AA09F19225B5DAB0075DC15 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AA09F18225B5DAB0075DC15 /* Launch Screen.storyboard */; };
+		9AA09F1B225B74460075DC15 /* eweguo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA09F1A225B74460075DC15 /* eweguo.png */; };
 		9AA411CB1AFFB44A00F58E33 /* level_slice1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA411C91AFFB44A00F58E33 /* level_slice1.png */; };
 		9AA411CC1AFFB44A00F58E33 /* level_slice1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA411CA1AFFB44A00F58E33 /* level_slice1@2x.png */; };
 		9AAE4DC71A59D92800FE893E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE4DC51A59D92800FE893E /* Default-568h@2x.png */; };
@@ -402,6 +404,8 @@
 		9A924B561BD4038F008ACB57 /* head2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head2.png; sourceTree = "<group>"; };
 		9A924B571BD4038F008ACB57 /* head2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head2@2x.png"; sourceTree = "<group>"; };
 		9A9659E21B9E3CFF00C9A335 /* buzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buzz.wav; sourceTree = "<group>"; };
+		9AA09F18225B5DAB0075DC15 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		9AA09F1A225B74460075DC15 /* eweguo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eweguo.png; sourceTree = "<group>"; };
 		9AA411C91AFFB44A00F58E33 /* level_slice1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_slice1.png; sourceTree = "<group>"; };
 		9AA411CA1AFFB44A00F58E33 /* level_slice1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_slice1@2x.png"; sourceTree = "<group>"; };
 		9AAE4DC51A59D92800FE893E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -576,6 +580,7 @@
 		9A47DB6F19CF1C6B005141F8 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9AA09F1A225B74460075DC15 /* eweguo.png */,
 				9A472F091C71333A00FE8CCE /* clipping2.png */,
 				9A472F0A1C71333A00FE8CCE /* clipping2@2x.png */,
 				9A924B461BD40072008ACB57 /* kitchen2.jpg */,
@@ -722,6 +727,7 @@
 				9AED49DA19AA347900EBD460 /* Food.m */,
 				9A3B9A7C1AE3F07100C6CC32 /* Condiment.h */,
 				9A3B9A7D1AE3F07100C6CC32 /* Condiment.m */,
+				9AA09F18225B5DAB0075DC15 /* Launch Screen.storyboard */,
 				9A5F80691B85317B00969DF6 /* Animal.h */,
 				9A5F806A1B85317B00969DF6 /* Animal.m */,
 				9AD113391C42A75800728D24 /* Goo.h */,
@@ -1119,6 +1125,7 @@
 				9AC6F2E31A0975B100A75E3F /* fail.png in Resources */,
 				9AA411CB1AFFB44A00F58E33 /* level_slice1.png in Resources */,
 				9A0C4F9A1A06A40500AB629D /* playbutton_1.png in Resources */,
+				9AA09F1B225B74460075DC15 /* eweguo.png in Resources */,
 				9A6B32F61BD5971800FB5DBE /* crumbs_whiteloaf.sks in Resources */,
 				9A8412AC1AD2E279006FE31E /* plus2@2x.png in Resources */,
 				9A9659E31B9E3CFF00C9A335 /* buzz.wav in Resources */,
@@ -1145,6 +1152,7 @@
 				9AC6F2DF1A0965DB00A75E3F /* mouth8.png in Resources */,
 				9A1C9F5719E720B700354AA7 /* crumbs_lettuce.sks in Resources */,
 				9A1C9F5619E720B700354AA7 /* crumbs_ham.sks in Resources */,
+				9AA09F19225B5DAB0075DC15 /* Launch Screen.storyboard in Resources */,
 				9A88254F1A0ADD5900702A2B /* outline0.png in Resources */,
 				9A8825521A0ADD5900702A2B /* outline1@2x.png in Resources */,
 				9A09B6501B2DE17D009E01AE /* crumbs_onion.sks in Resources */,
@@ -1383,14 +1391,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Q5HHAHTS7L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Inbread/Inbread-Prefix.pch";
 				INFOPLIST_FILE = "Inbread/Inbread-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1ed40e61-08c5-4c2f-bdb0-933fda270837";
+				PROVISIONING_PROFILE_SPECIFIER = "General iPhone dev profile";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1400,14 +1409,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Eweguo AB (Q5HHAHTS7L)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eweguo AB (Q5HHAHTS7L)";
+				DEVELOPMENT_TEAM = Q5HHAHTS7L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Inbread/Inbread-Prefix.pch";
 				INFOPLIST_FILE = "Inbread/Inbread-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7273c158-b6c9-418f-a1bf-5357ed914114";
+				PROVISIONING_PROFILE_SPECIFIER = "Inbread App Store";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};

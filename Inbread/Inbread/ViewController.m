@@ -62,7 +62,7 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{-40,-35,80,0,0},{-40,
     return TRUE;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return UIInterfaceOrientationMaskAllButUpsideDown;

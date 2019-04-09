@@ -39,8 +39,13 @@ static int numChews[5] = {3,4,5,4,3};
         myAtlas = [SKTextureAtlas atlasNamed:@"intro"];
         
         backgroundNode = [SKNode node];
-        if (size.height < 500)
+        float backgroundScale = size.width/320.0;
+        if (size.height<size.width*1.6)
             backgroundNode.position = CGPointMake(0, -22.0f);
+        else if (size.height > size.width * 1.8)
+            backgroundNode.position = CGPointMake(0,30.0f*backgroundScale);
+        backgroundNode.xScale = backgroundScale;
+        backgroundNode.yScale = backgroundScale;
         [self addChild:backgroundNode];
     }
     return self;

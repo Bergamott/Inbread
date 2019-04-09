@@ -101,6 +101,9 @@
     SoundPlayer *soundPlayer;
     AVAudioPlayer *myAudioPlayer;
     NSArray *backgroundTunes;
+    
+    float backgroundScale;
+    float actualScreenHeight;
 }
 
 -(void)setUpWithLevel:(int)l;
