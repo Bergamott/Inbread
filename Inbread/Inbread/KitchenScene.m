@@ -172,7 +172,7 @@ static int condimentScores[5] = {4,5,6,6,5};
         SKSpriteNode *bottomPadding = [SKSpriteNode spriteNodeWithTexture:[myAtlas textureNamed:@"padding_bottom"]];
         bottomPadding.anchorPoint = CGPointMake(0, 1.0f);
         bottomPadding.position = CGPointMake(0, 0);
-        bottomPadding.zPosition = 10.0f;
+        bottomPadding.zPosition = 100.0f;
         [backgroundNode addChild:topPadding];
         [backgroundNode addChild:bottomPadding];
     }

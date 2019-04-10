@@ -451,17 +451,19 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{-40,-35,80,0,0},{-40,
 
 -(void)showReviewsForDiner:(int)d
 {
+    float originalY = thumbsUpView.frame.origin.y;
     thumbsUpView.frame = CGRectMake(thumbsUpView.frame.origin.x, fence.frame.origin.y+20.0, thumbsUpView.frame.size.width, thumbsUpView.frame.size.height);
     reviewView.hidden = FALSE;
     NSArray *clippings = @[clipping0,clipping1,clipping2,clipping3,clipping4];
     DataHandler *dh = [DataHandler sharedDataHandler];
     int completeDiners = dh.currentLevelAccess / LEVELS_PER_RESTAURANT;
-//    completeDiners = 5; // Test
-    float midY = (self.view.frame.size.height + fence.frame.origin.y + 40.0) * 0.5;
+    float scaleFactor = self.view.frame.size.width / 320.0f;
+    //completeDiners = 5; // Test
+    float midY = (self.view.frame.size.height + fence.frame.origin.y + 40.0*scaleFactor) * 0.5;
     for (int i=0;i<5;i++)
     {
         UIView *clipV = [clippings objectAtIndex:i];
-        clipV.center = CGPointMake(clipCenterX[completeDiners-1][i], midY+clipCenterY[completeDiners-1][i]);
+        clipV.center = CGPointMake(clipCenterX[completeDiners-1][i]*scaleFactor, midY+clipCenterY[completeDiners-1][i]*scaleFactor);
         if (i == d)
         {
             clipV.hidden = FALSE;
@@ -477,7 +479,7 @@ static float clipCenterY[5][5] = {{0,0,0,0,0},{0,5,0,0,0},{-40,-35,80,0,0},{-40,
                                  [[SoundPlayer sharedPlayer] playFanfareWithNode:kitchenScene.backgroundNode];
                                  [UIView animateWithDuration:1.0
                                                   animations:^{
-                                                      thumbsUpView.frame = CGRectMake(thumbsUpView.frame.origin.x, fence.frame.origin.y-125.0, thumbsUpView.frame.size.width, thumbsUpView.frame.size.height);
+                                                      thumbsUpView.frame = CGRectMake(thumbsUpView.frame.origin.x, originalY, thumbsUpView.frame.size.width, thumbsUpView.frame.size.height);
                                                   }
                                                   completion:^(BOOL finished){
                                                       
