@@ -9,7 +9,7 @@
 #import "KitchenScene.h"
 #import "DataHandler.h"
 #import "Food.h"
-#import "SKEase.h"
+#import "SpriteKit-Easing/SKEase.h"
 #import "ViewController.h"
 #import "SoundPlayer.h"
 #import "Condiment.h"
